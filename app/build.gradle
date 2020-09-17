@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        applicationId "com.jx3box"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        buildConfigField "String", "BASE_URL", "\"https://www.jx3box.com\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':Module-GlideLib')
+    implementation project(':Module-Log')
+    //jetPack相关库
+    implementation rootProject.ext.jetpack["constraintlayout"]
+    implementation rootProject.ext.jetpack["room"]
+    implementation rootProject.ext.jetpack["room_ktx"]
+    implementation rootProject.ext.jetpack["navigation_fragment"]
+    implementation rootProject.ext.jetpack["navigation_ui"]
+    implementation rootProject.ext.jetpack["liveData"]
+    implementation rootProject.ext.jetpack["viewModel"]
+    implementation rootProject.ext.jetpack["lifecycle"]
+    //三方库
+    implementation rootProject.ext.thirdPack["retrofit2"]
+    implementation rootProject.ext.thirdPack["retrofit2_gson"]
+    implementation rootProject.ext.thirdPack["permissionx"]
+    implementation rootProject.ext.thirdPack["koin_android"]
+    implementation rootProject.ext.thirdPack["koin_androidx_scope"]
+    implementation rootProject.ext.thirdPack["koin_androidx_viewmodel"]
+    implementation rootProject.ext.thirdPack["androidAutoSize"]
+    implementation rootProject.ext.thirdPack["PersistentCookieJar"]
+    debugImplementation rootProject.ext.thirdPack["stetho"]
+    debugImplementation rootProject.ext.thirdPack["stetho_okhttp"]
+    //注解包
+    kapt rootProject.ext.jetpack["room_compiler"]
+
+}

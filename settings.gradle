@@ -1,0 +1,4 @@
+include ':Module-Log'
+include ':app'
+include ':Module-GlideLib'
+rootProject.name = "JX3BOX"

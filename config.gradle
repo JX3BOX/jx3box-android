@@ -1,0 +1,70 @@
+ext {
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.2",
+            minSdkVersion    : 21,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+
+    version = [
+            kotlin             : "1.4.0",
+            androidCore        : "1.3.1",
+            appcompat          : "1.2.0",
+            constraintlayout   : "2.0.1",
+            glide              : "4.11.0",
+            stetho             : "1.5.1",
+            okttp3             : "4.9.0",
+            room               : "2.2.5",
+            navigation         : "2.2.0",
+            lifecycle          : "2.2.0",
+            retrofit2          : "2.9.0",
+            utilx              : "1.29.0",
+            permissionx        : "1.4.0",
+            koin               : "2.1.6",
+            autosize           : "1.2.1",
+            PersistentCookieJar: "v1.0.1"
+    ]
+
+    jetpack = [
+            kotlin             : "org.jetbrains.kotlin:kotlin-stdlib:${version["kotlin"]}",
+            androidCore        : "androidx.core:core-ktx:${version["androidCore"]}",
+            appcompat          : "androidx.appcompat:appcompat:${version["appcompat"]}",
+            constraintlayout   : "androidx.constraintlayout:constraintlayout:${version["constraintlayout"]}",
+            room               : "androidx.room:room-runtime:${version["room"]}",
+            room_ktx           : "androidx.room:room-ktx:${version["room"]}",
+            room_compiler      : "androidx.room:room-compiler:${version["room"]}",
+            navigation_fragment: "androidx.navigation:navigation-fragment-ktx:${version["navigation"]}",
+            navigation_ui      : "androidx.navigation:navigation-ui-ktx:${version["navigation"]}",
+            liveData           : "androidx.lifecycle:lifecycle-livedata-ktx:${version["lifecycle"]}",
+            viewModel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version["lifecycle"]}",
+            lifecycle          : "androidx.lifecycle:lifecycle-extensions:${version["lifecycle"]}"
+    ]
+
+    thirdPack = [
+            //Glide
+            glide                  : "com.github.bumptech.glide:glide:${version["glide"]}",
+            glide_compiler         : "com.github.bumptech.glide:compiler:${version["glide"]}",
+            //Retrofit
+            retrofit2              : "com.squareup.retrofit2:retrofit:${version["retrofit2"]}",
+            retrofit2_gson         : "com.squareup.retrofit2:converter-gson:${version["retrofit2"]}",
+            //Stetho网络拦截器
+            stetho                 : "com.facebook.stetho:stetho:${version["stetho"]}",
+            stetho_okhttp          : "com.facebook.stetho:stetho-okhttp3:${version["stetho"]}",
+            //AndroidUtilCode
+            utilx                  : "com.blankj:utilcodex:${version["utilx"]}",
+            //okHttp
+            okttp3                 : "com.squareup.okhttp3:okhttp:${version["okttp3"]}",
+            //权限申请
+            permissionx            : "com.permissionx.guolindev:permissionx:${version["permissionx"]}",
+            //kotlin注入框架
+            koin_android           : "org.koin:koin-android:${version.koin}",
+            koin_androidx_scope    : "org.koin:koin-androidx-scope:${version.koin}",
+            koin_androidx_viewmodel: "org.koin:koin-androidx-viewmodel:${version.koin}",
+            //屏幕适配方案
+            androidAutoSize        : "me.jessyan:autosize:${version.autosize}",
+            //Cookie持久化
+            PersistentCookieJar    : "com.github.franmontiel:PersistentCookieJar:${version.PersistentCookieJar}"
+    ]
+}
