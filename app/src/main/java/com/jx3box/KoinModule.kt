@@ -18,6 +18,9 @@ package com.jx3box
 
 import com.jx3box.data.net.BoxService
 import com.jx3box.data.net.RetrofitClient
+import com.jx3box.data.net.repository.AdvertRepository
+import com.jx3box.ui.splash.SplashViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -26,13 +29,14 @@ import org.koin.dsl.module
  */
 
 val viewModelModule = module {
+    viewModel { SplashViewModel(get()) }
 }
 
 
 val repositoryModule = module {
-    single { RetrofitClient.init(App.CONTEXT) }
     single { RetrofitClient.getService(BoxService::class.java, BoxService.BASE_URL) }
     single { CoroutinesDispatcherProvider() }
+    single { AdvertRepository() }
 }
 
 val appModule = listOf(viewModelModule, repositoryModule)

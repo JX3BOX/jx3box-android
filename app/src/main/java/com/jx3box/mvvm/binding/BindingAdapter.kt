@@ -14,16 +14,18 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.mvvm.binding
+
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.carey.module_glidelib.EasyGlide.loadImage
+import com.carey.module_glidelib.R
 
 /**
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-object NetConfig {
-    /**登录接口*/
-    const val login_url = ""
-
-    /**获取启动页广告*/
-    const val advert_url = "cb=20120726013115"
+@BindingAdapter("imageUrl", "placeholder")
+fun bindImage(imageView: ImageView, url: String?, placeholder: Int = R.color.transparent) {
+    imageView.loadImage(imageView.context, url, placeholder)
 }

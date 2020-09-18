@@ -14,39 +14,46 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui
+package com.jx3box.mvvm.base
 
-import android.content.Context
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.blankj.utilcode.util.ToastUtils
 
 /**
+ * 绑定ViewModel的activity基类
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-abstract class BaseActivity : AppCompatActivity() {
-    var mContext: Context? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mContext = this
-        setContentView(layoutId)
-        initImmersionBar()
-
-        this.initData()
+abstract class BaseVMActivity : AppCompatActivity() {
+    protected inline fun <reified T : ViewDataBinding> binding(
+        @LayoutRes resId: Int
+    ): Lazy<T> = lazy {
+        DataBindingUtil.setContentView<T>(this, resId).apply {
+            lifecycleOwner = this@BaseVMActivity
+        }
     }
 
-    /**
-     * 获取布局ID
-     *
-     * @return
-     */
-    protected abstract val layoutId: Int
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        startObserve()
+        initView()
+        initData()
+        initImmersionBar()
+    }
 
     /**
      * 数据初始化操作
      */
     protected abstract fun initData()
+
+    /**
+     * 初始化view操作
+     */
+    protected abstract fun initView()
 
     /**
      * 初始化沉浸状态栏
@@ -62,4 +69,5 @@ abstract class BaseActivity : AppCompatActivity() {
         ToastUtils.showShort(str)
     }
 
+    abstract fun startObserve()
 }

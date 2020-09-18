@@ -14,34 +14,25 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.splash
-
-import com.jx3box.R
-import com.jx3box.databinding.ActivitySplashBinding
-import com.jx3box.mvvm.base.BaseVMActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+package com.jx3box.data.net
 
 /**
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-class SplashActivity : BaseVMActivity() {
-    private val splashViewModel by viewModel<SplashViewModel>()
-    private val binding by binding<ActivitySplashBinding>(R.layout.activity_splash)
-    override fun initData() {
-        splashViewModel.getAdvert()
+inline fun <T : Any> Result<T>.checkResult(
+    crossinline onSuccess: (T) -> Unit,
+    crossinline onError: (String?) -> Unit
+) {
+    if (this is Result.Success) {
+        onSuccess(data)
+    } else if (this is Result.Error) {
+        onError(exception.message)
     }
+}
 
-    override fun initView() {
-        binding.run {
-            viewModel = splashViewModel
-        }
-    }
-
-    override fun initImmersionBar() {
-
-    }
-
-    override fun startObserve() {
+inline fun <T : Any> Result<T>.checkSuccess(success: (T) -> Unit) {
+    if (this is Result.Success) {
+        success(data)
     }
 }

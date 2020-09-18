@@ -14,16 +14,16 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.ui.login
+
+import com.jx3box.CoroutinesDispatcherProvider
+import com.jx3box.data.net.repository.LoginRepository
+import com.jx3box.mvvm.base.BaseViewModel
 
 /**
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-object NetConfig {
-    /**登录接口*/
-    const val login_url = ""
-
-    /**获取启动页广告*/
-    const val advert_url = "cb=20120726013115"
+class LoginViewModel(val repository: LoginRepository, val provider: CoroutinesDispatcherProvider) :
+    BaseViewModel() {
 }

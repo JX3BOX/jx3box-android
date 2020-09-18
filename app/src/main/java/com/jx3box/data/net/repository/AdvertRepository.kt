@@ -14,34 +14,25 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.splash
+package com.jx3box.data.net.repository
 
+import com.jx3box.App
 import com.jx3box.R
-import com.jx3box.databinding.ActivitySplashBinding
-import com.jx3box.mvvm.base.BaseVMActivity
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.jx3box.data.net.Result
+import com.jx3box.data.net.RetrofitClient
 
 /**
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-class SplashActivity : BaseVMActivity() {
-    private val splashViewModel by viewModel<SplashViewModel>()
-    private val binding by binding<ActivitySplashBinding>(R.layout.activity_splash)
-    override fun initData() {
-        splashViewModel.getAdvert()
+class AdvertRepository() : BaseRepository() {
+    suspend fun getAdvert(): Result<String> {
+        return safeApiCall(
+            call = { requestAdvert() },
+            errorMessage = App.CONTEXT.getString(R.string.net_error)
+        )
     }
 
-    override fun initView() {
-        binding.run {
-            viewModel = splashViewModel
-        }
-    }
-
-    override fun initImmersionBar() {
-
-    }
-
-    override fun startObserve() {
-    }
+    private suspend fun requestAdvert(): Result<String> =
+        executeResponse(RetrofitClient.service.getAdvert())
 }

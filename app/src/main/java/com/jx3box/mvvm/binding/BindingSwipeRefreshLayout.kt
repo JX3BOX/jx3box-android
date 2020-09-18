@@ -14,16 +14,22 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.mvvm.binding
+
+import androidx.databinding.BindingAdapter
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 /**
+ * SwipeRefreshLayout binding操作属性
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-object NetConfig {
-    /**登录接口*/
-    const val login_url = ""
+@BindingAdapter("isRefresh")
+fun SwipeRefreshLayout.isRefresh(isRefresh: Boolean) {
+    isRefreshing = isRefresh
+}
 
-    /**获取启动页广告*/
-    const val advert_url = "cb=20120726013115"
+@BindingAdapter("onRefresh")
+fun SwipeRefreshLayout.onRefresh(action: () -> Unit) {
+    setOnRefreshListener { action() }
 }

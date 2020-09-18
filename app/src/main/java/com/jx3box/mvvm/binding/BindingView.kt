@@ -14,16 +14,17 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.mvvm.binding
+
+import android.view.View
+import androidx.databinding.BindingAdapter
 
 /**
+ * view显示隐藏 binding操作属性
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/18
  */
-object NetConfig {
-    /**登录接口*/
-    const val login_url = ""
-
-    /**获取启动页广告*/
-    const val advert_url = "cb=20120726013115"
+@BindingAdapter("isVisible")
+fun View.isVisible(isVisible: Boolean) {
+    visibility = if (isVisible) View.VISIBLE else View.GONE
 }

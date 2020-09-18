@@ -16,4 +16,7 @@
 
 <resources>
     <string name="app_name">剑三魔盒</string>
+    <string name="app_slogan">享受游戏的乐趣</string>
+    <string name="skip_intro">跳过</string>
+    <string name="net_error">网络错误</string>
 </resources>

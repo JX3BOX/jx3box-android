@@ -16,7 +16,6 @@
 
 package com.jx3box
 
-import android.content.Context
 import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
@@ -45,6 +44,7 @@ abstract class BaseRetrofitClient {
 
     private val client: OkHttpClient
         get() {
+            Stetho.initializeWithDefaults(App.CONTEXT)
             val builder = OkHttpClient.Builder()
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(IO_TIMEOUT, TimeUnit.SECONDS)
@@ -57,10 +57,6 @@ abstract class BaseRetrofitClient {
 
             return builder.build()
         }
-
-    fun init(context: Context) {
-        Stetho.initializeWithDefaults(context)
-    }
 
     protected abstract fun handleBuilder(builder: OkHttpClient.Builder)
 

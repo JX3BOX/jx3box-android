@@ -19,6 +19,7 @@ package com.jx3box.data.net
 import com.jx3box.BuildConfig
 import com.jx3box.data.net.model.BoxResponse
 import retrofit2.http.FieldMap
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 /**
@@ -32,4 +33,7 @@ interface BoxService {
 
     @POST(NetConfig.login_url)
     suspend fun login(@FieldMap params: HashMap<String, String>): BoxResponse<String>
+
+    @GET(NetConfig.advert_url)
+    suspend fun getAdvert(): BoxResponse<String>
 }
