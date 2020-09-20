@@ -25,7 +25,11 @@ import com.carey.module_glidelib.R
  * @author Carey
  * @date 2020/9/18
  */
-@BindingAdapter("imageUrl", "placeholder")
-fun bindImage(imageView: ImageView, url: String?, placeholder: Int = R.color.transparent) {
+@BindingAdapter("imageUrl", "placeholder", requireAll = false)
+fun bindImage(
+    imageView: ImageView,
+    url: String?,
+    placeholder: Int = R.color.transparent
+) {
     imageView.loadImage(imageView.context, url, placeholder)
 }

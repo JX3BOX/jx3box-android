@@ -43,6 +43,11 @@ open class BaseRepository {
         }
     }
 
+    /**
+     * @param response 请求结果
+     * @param successBlock 请求成功之后的请求
+     * @param errorBlock 请求失败之后的请求
+     */
     suspend fun <T : Any> executeResponse(
         response: BoxResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null

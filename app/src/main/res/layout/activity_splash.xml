@@ -15,7 +15,6 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -71,8 +70,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/app"
             app:imageUrl="@{viewModel.advertUrl}"
-            placeholder="@{appR.drawable.bg_advertising}"
-            tools:src="@drawable/bg_advertising" />
+            placeholder="@{appR.drawable.bg_advertising}" />
 
         <TextView
             android:id="@+id/mTvSkip"
