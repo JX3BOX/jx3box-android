@@ -18,6 +18,7 @@ package com.jx3box.mvvm.base
 
 import android.content.Context
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.blankj.utilcode.util.ToastUtils
 
@@ -65,6 +66,10 @@ abstract class BaseActivity : AppCompatActivity() {
      * @param str
      */
     fun showToast(str: String) {
+        ToastUtils.showShort(str)
+    }
+
+    fun showToast(@StringRes str: Int) {
         ToastUtils.showShort(str)
     }
 

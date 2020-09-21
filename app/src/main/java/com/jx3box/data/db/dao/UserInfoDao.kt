@@ -14,25 +14,24 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.repository
+package com.jx3box.data.db.dao
 
-import com.jx3box.App
-import com.jx3box.R
-import com.jx3box.data.net.Result
-import com.jx3box.data.net.RetrofitClient
+import androidx.lifecycle.LiveData
+import androidx.room.*
+import com.jx3box.data.net.model.UserInfoResult
 
 /**
  * @author Carey
- * @date 2020/9/18
+ * @date 2020/9/21
  */
-class AdvertRepository() : BaseRepository() {
-    suspend fun getAdvert(): Result<String> {
-        return safeApiCall(
-            call = { requestAdvert() },
-            errorMessage = App.CONTEXT.getString(R.string.net_error)
-        )
-    }
+@Dao
+interface UserInfoDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: UserInfoResult)
 
-    private suspend fun requestAdvert(): Result<String> =
-        executeResponse(RetrofitClient.jsonService.getAdvert())
+    @Query("SELECT * FROM UserInfo WHERE uid=:uid")
+    fun getCurrentUser(uid: Int): LiveData<UserInfoResult>
+
+    @Delete
+    fun deleteUser(user: UserInfoResult)
 }

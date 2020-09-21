@@ -30,7 +30,7 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
-        buildConfigField "String", "BASE_URL", "\"https://www.jx3box.com\""
+        buildConfigField "String", "BASE_URL", "\"https://server.jx3box.com\""
     }
 
     buildTypes {
@@ -64,9 +64,12 @@ dependencies {
     implementation rootProject.ext.jetpack["liveData"]
     implementation rootProject.ext.jetpack["viewModel"]
     implementation rootProject.ext.jetpack["lifecycle"]
+    implementation rootProject.ext.jetpack["material"]
+    implementation rootProject.ext.jetpack["swipeRefreshLayout"]
     //三方库
     implementation rootProject.ext.thirdPack["retrofit2"]
     implementation rootProject.ext.thirdPack["retrofit2_gson"]
+    implementation rootProject.ext.thirdPack["retrofit2_scalars"]
     implementation rootProject.ext.thirdPack["permissionx"]
     implementation rootProject.ext.thirdPack["koin_android"]
     implementation rootProject.ext.thirdPack["koin_androidx_scope"]

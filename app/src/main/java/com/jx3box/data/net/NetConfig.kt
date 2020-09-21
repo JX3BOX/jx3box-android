@@ -21,9 +21,15 @@ package com.jx3box.data.net
  * @date 2020/9/17
  */
 object NetConfig {
-    /**登录接口*/
-    const val login_url = ""
+    /**登录*/
+    const val login_url = "/account/login/email"
+
+    /**注册*/
+    const val register_url = "/account/register/email"
+
+    /**验证用户名是否存在*/
+    const val is_user_exists = "/account/has"
 
     /**获取启动页广告*/
-    const val advert_url = "cb=20120726013115"
+    const val advert_url = ""
 }

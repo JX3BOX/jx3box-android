@@ -14,20 +14,28 @@
  *    limitations under the License.
  */
 
-package com.jx3box
+package com.jx3box.data.net.model
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers.Default
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
- * Provide coroutines context.
+ * @author Carey
+ * @date 2020/9/21
  */
-data class CoroutinesDispatcherProvider(
-    val main: CoroutineDispatcher = Main,
-    val computation: CoroutineDispatcher = Default,
-    val io: CoroutineDispatcher = IO
-) {
-    constructor() : this(Main, Default, IO)
-}
+@Entity(tableName = "UserInfo")
+data class UserInfoResult(
+    @PrimaryKey
+    val uid: Int,
+    @ColumnInfo(name = "token")
+    val token: String,
+    @ColumnInfo(name = "group")
+    val group: String,
+    @ColumnInfo(name = "name")
+    val name: String,
+    @ColumnInfo(name = "avatar")
+    val avatar: String,
+    @ColumnInfo(name = "bio")
+    val bio: String,
+)

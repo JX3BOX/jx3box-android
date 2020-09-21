@@ -14,32 +14,36 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.repository
+package com.jx3box.data.db
 
-import com.google.gson.Gson
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.jx3box.App
-import com.jx3box.R
-import com.jx3box.data.net.Result
-import com.jx3box.data.net.RetrofitClient
+import com.jx3box.data.db.dao.UserInfoDao
 import com.jx3box.data.net.model.UserInfoResult
-import com.jx3box.utils.getJsonRequestBody
 
 /**
+ * 数据库操作
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/21
  */
-class LoginRepository() : BaseRepository() {
+@Database(entities = [UserInfoResult::class], version = 1, exportSchema = false)
+abstract class BoxDatabase : RoomDatabase() {
 
-    suspend fun login(params: Map<String, String>): Result<UserInfoResult> {
-        return safeApiCall(
-            call = { requestLogin(params) },
-            errorMessage = App.CONTEXT.getString(R.string.login_error)
-        )
+    abstract fun getUserInfoDao(): UserInfoDao
+
+    companion object {
+        private const val DB_NAME = "jx3_room.db"
+        val instance: BoxDatabase by lazy {
+            Room.databaseBuilder(
+                App.CONTEXT,
+                BoxDatabase::class.java,
+                DB_NAME
+            )
+                .allowMainThreadQueries()
+                .build()
+        }
+
     }
-
-    private suspend fun requestLogin(params: Map<String, String>): Result<UserInfoResult> {
-        val json = Gson().getJsonRequestBody(params)
-        return executeResponse(RetrofitClient.jsonService.login(json))
-    }
-
 }

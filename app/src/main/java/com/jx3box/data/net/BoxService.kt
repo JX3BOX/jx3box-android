@@ -18,9 +18,12 @@ package com.jx3box.data.net
 
 import com.jx3box.BuildConfig
 import com.jx3box.data.net.model.BoxResponse
-import retrofit2.http.FieldMap
+import com.jx3box.data.net.model.UserInfoResult
+import okhttp3.RequestBody
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 /**
  * @author Carey
@@ -31,9 +34,27 @@ interface BoxService {
         const val BASE_URL = BuildConfig.BASE_URL
     }
 
-    @POST(NetConfig.login_url)
-    suspend fun login(@FieldMap params: HashMap<String, String>): BoxResponse<String>
-
+    /**
+     * 获取启动页广告
+     */
     @GET(NetConfig.advert_url)
     suspend fun getAdvert(): BoxResponse<String>
+
+    /**
+     * 登录
+     */
+    @POST(NetConfig.login_url)
+    suspend fun login(@Body params: RequestBody): BoxResponse<UserInfoResult>
+
+    /**
+     * 注册
+     */
+    @POST(NetConfig.register_url)
+    suspend fun register(@Body params: RequestBody): BoxResponse<String>
+
+    /**
+     * 验证用户名是否存在
+     */
+    @GET(NetConfig.is_user_exists)
+    suspend fun isUserExists(@Query("user_login") email: String): String
 }

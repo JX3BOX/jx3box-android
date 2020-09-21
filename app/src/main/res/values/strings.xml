@@ -19,4 +19,14 @@
     <string name="app_slogan">享受游戏的乐趣</string>
     <string name="skip_intro">跳过</string>
     <string name="net_error">网络错误</string>
+    <string name="login_error">登录失败</string>
+    <string name="login_success">登录成功</string>
+    <string name="password">密码</string>
+    <string name="username">邮箱地址</string>
+    <string name="login">登录</string>
+    <string name="qq">QQ</string>
+    <string name="weibo">微博</string>
+    <string name="github">github</string>
+    <string name="register">注册</string>
+    <string name="email_format_error">邮箱格式错误</string>
 </resources>

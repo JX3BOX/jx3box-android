@@ -35,25 +35,25 @@
         <RelativeLayout
             android:id="@+id/app"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="@dimen/dp_130"
             android:layout_alignParentBottom="true"
             android:gravity="center">
 
             <ImageView
                 android:id="@+id/img"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
                 android:src="@drawable/icon_app" />
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/dp_10"
                 android:layout_toEndOf="@+id/img"
                 android:text="@string/app_name"
-                android:textColor="#5C606F"
-                android:textSize="22sp"
+                android:textColor="@color/color_5c606f"
+                android:textSize="@dimen/sp_22"
                 android:textStyle="bold" />
 
             <TextView
@@ -74,17 +74,17 @@
 
         <TextView
             android:id="@+id/mTvSkip"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_26"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
             android:background="@drawable/btn_splash_shape"
             android:gravity="center"
             android:text="@string/skip_intro"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/sp_12"
             android:visibility="gone" />
     </RelativeLayout>
 </layout>

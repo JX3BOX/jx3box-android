@@ -28,6 +28,7 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 
@@ -60,10 +61,24 @@ abstract class BaseRetrofitClient {
 
     protected abstract fun handleBuilder(builder: OkHttpClient.Builder)
 
-    fun <S> getService(serviceClass: Class<S>, baseUrl: String): S {
+    /**
+     * Json数据解析
+     */
+    fun <S> getJsonService(serviceClass: Class<S>, baseUrl: String): S {
         return Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(buildGson()))
+            .baseUrl(baseUrl)
+            .build().create(serviceClass)
+    }
+
+    /**
+     * Scalars数据解析
+     */
+    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
+        return Retrofit.Builder()
+            .client(client)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .baseUrl(baseUrl)
             .build().create(serviceClass)
     }

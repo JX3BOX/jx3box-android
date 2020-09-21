@@ -19,6 +19,9 @@ package com.jx3box.utils
 import com.google.gson.Gson
 import com.google.gson.internal.LinkedTreeMap
 import com.google.gson.reflect.TypeToken
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 /**
  * @author Carey
@@ -40,4 +43,8 @@ inline fun <reified T : Any> Gson.fromJson(json: String): T {
  */
 inline fun <reified T> Gson.fromListJson(json: String): T {
     return Gson().fromJson(json, object : TypeToken<T>() {}.type)
+}
+
+fun Gson.getJsonRequestBody(params: Any): RequestBody {
+    return Gson().toJson(params).toRequestBody("application/json".toMediaTypeOrNull())
 }

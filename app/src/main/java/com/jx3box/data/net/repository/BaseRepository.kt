@@ -53,13 +53,35 @@ open class BaseRepository {
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
     ): Result<T> {
         return coroutineScope {
-            if (response.errorCode == -1) {
+            if (response.code != 10004) {
                 errorBlock?.let { it() }
-                Result.Error(IOException(response.errorMsg))
+                Result.Error(IOException(response.msg))
             } else {
                 successBlock?.let { it() }
                 Result.Success(response.data)
             }
         }
     }
+
+    /**
+     * @param response 请求结果 非Json格式
+     * @param successBlock 请求成功之后的请求
+     * @param errorBlock 请求失败之后的请求
+     */
+    suspend fun <T : Any> executeResponse(
+        response: T, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
+    ): Result<T> {
+        return coroutineScope {
+            if (response == "true") {
+                errorBlock?.let { it() }
+                Result.Error(IOException("邮箱不存在"))
+            } else {
+                successBlock?.let { it() }
+                Result.Success(response)
+            }
+        }
+    }
+
+
 }
