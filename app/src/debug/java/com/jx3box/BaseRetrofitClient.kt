@@ -16,8 +16,9 @@
 
 package com.jx3box
 
-import com.facebook.stetho.Stetho
-import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.facebook.flipper.android.AndroidFlipperClient
+import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
+import com.facebook.flipper.plugins.network.NetworkFlipperPlugin
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jx3box.data.net.gson.DoubleDefaultAdapter
@@ -45,13 +46,17 @@ abstract class BaseRetrofitClient {
 
     private val client: OkHttpClient
         get() {
-            Stetho.initializeWithDefaults(App.CONTEXT)
             val builder = OkHttpClient.Builder()
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(IO_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(IO_TIMEOUT, TimeUnit.SECONDS)
                 .cache(Cache(App.CONTEXT.cacheDir, NET_CACHE_SIZE))
-                .addNetworkInterceptor(StethoInterceptor())
+                .addNetworkInterceptor(
+                    FlipperOkhttpInterceptor(
+                        AndroidFlipperClient.getInstance(App.CONTEXT)
+                            .getPlugin(NetworkFlipperPlugin.ID)
+                    )
+                )
                 .retryOnConnectionFailure(true)
 
             handleBuilder(builder)

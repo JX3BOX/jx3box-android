@@ -1,6 +1,5 @@
 package com.jx3box
 
-import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jx3box.data.net.gson.DoubleDefaultAdapter
@@ -11,6 +10,7 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -38,15 +38,26 @@ abstract class BaseRetrofitClient {
             return builder.build()
         }
 
-    fun init(context: Context) {
-    }
-
     protected abstract fun handleBuilder(builder: OkHttpClient.Builder)
 
+    /**
+     * Json数据解析
+     */
     fun <S> getService(serviceClass: Class<S>, baseUrl: String): S {
         return Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(buildGson()))
+            .baseUrl(baseUrl)
+            .build().create(serviceClass)
+    }
+
+    /**
+     * Scalars数据解析
+     */
+    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
+        return Retrofit.Builder()
+            .client(client)
+            .addConverterFactory(ScalarsConverterFactory.create())
             .baseUrl(baseUrl)
             .build().create(serviceClass)
     }

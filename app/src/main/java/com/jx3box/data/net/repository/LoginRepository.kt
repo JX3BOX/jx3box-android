@@ -23,6 +23,7 @@ import com.jx3box.data.net.Result
 import com.jx3box.data.net.RetrofitClient
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.utils.getJsonRequestBody
+import kotlinx.coroutines.CoroutineScope
 
 /**
  * @author Carey
@@ -41,5 +42,33 @@ class LoginRepository() : BaseRepository() {
         val json = Gson().getJsonRequestBody(params)
         return executeResponse(RetrofitClient.jsonService.login(json))
     }
+
+    suspend fun register(params: Map<String, String>): Result<String> {
+        return safeApiCall(
+            call = { requestRegister(params) },
+            errorMessage = App.CONTEXT.getString(R.string.net_error)
+        )
+    }
+
+    private suspend fun requestRegister(params: Map<String, String>): Result<String> {
+        val json = Gson().getJsonRequestBody(params)
+        return executeResponse(RetrofitClient.jsonService.register(json))
+    }
+
+    suspend fun isUserExists(
+        email: String,
+        successBlock: (suspend CoroutineScope.() -> Unit)
+    ): Result<String> {
+        return safeApiCall(
+            call = { requestUserExists(email, successBlock) },
+            errorMessage = App.CONTEXT.getString(R.string.net_error)
+        )
+    }
+
+    private suspend fun requestUserExists(
+        email: String,
+        successBlock: (suspend CoroutineScope.() -> Unit)? = null
+    ): Result<String> =
+        executeResponse(RetrofitClient.scalarsService.isUserExists(email), successBlock)
 
 }

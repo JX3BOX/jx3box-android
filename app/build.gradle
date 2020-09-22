@@ -76,8 +76,9 @@ dependencies {
     implementation rootProject.ext.thirdPack["koin_androidx_viewmodel"]
     implementation rootProject.ext.thirdPack["androidAutoSize"]
     implementation rootProject.ext.thirdPack["PersistentCookieJar"]
-    debugImplementation rootProject.ext.thirdPack["stetho"]
-    debugImplementation rootProject.ext.thirdPack["stetho_okhttp"]
+    debugImplementation rootProject.ext.thirdPack["flipper"]
+    debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
+    debugImplementation rootProject.ext.thirdPack["soloader"]
     //注解包
     kapt rootProject.ext.jetpack["room_compiler"]
 

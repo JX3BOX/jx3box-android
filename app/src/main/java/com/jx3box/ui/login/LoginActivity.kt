@@ -17,10 +17,14 @@
 package com.jx3box.ui.login
 
 import android.app.ProgressDialog
+import androidx.appcompat.app.AlertDialog
 import com.jx3box.R
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.databinding.ActivityLoginBinding
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.utils.createLicence
+import com.jx3box.utils.getSpValue
+import com.jx3box.utils.putSpValue
 import kotlinx.android.synthetic.main.layout_title_back_text.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +47,9 @@ class LoginActivity : BaseVMActivity() {
         binding.mTitle.mTvRightText.text = getString(R.string.register)
         binding.mTitle.mImgBack.setOnClickListener { finish() }
         binding.mTitle.mTvRightText.setOnClickListener { showToast(R.string.register) }
+        val isFirst = getSpValue("firstRun", true)
+        if (isFirst)
+            AlertDialog.Builder(this).create().createLicence()
     }
 
     override fun initImmersionBar() {
@@ -56,6 +63,7 @@ class LoginActivity : BaseVMActivity() {
                 it.isSuccess?.let { userInfo ->
                     dismissProgressDialog()
                     BoxDatabase.instance.getUserInfoDao().insert(userInfo)
+                    putSpValue("current_user", userInfo.uid)
                     showToast(R.string.login_success)
 //                    finish()
                 }

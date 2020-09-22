@@ -16,7 +16,9 @@ ext {
             constraintlayout   : "2.0.1",
             swipeRefreshLayout : "1.1.0",
             glide              : "4.11.0",
-            stetho             : "1.5.1",
+//            stetho             : "1.5.1",
+            flipper            : "0.57.0",
+            soloader           : "0.9.0",
             okttp3             : "4.9.0",
             room               : "2.2.5",
             navigation         : "2.2.0",
@@ -55,8 +57,12 @@ ext {
             retrofit2_gson         : "com.squareup.retrofit2:converter-gson:${version.retrofit2}",
             retrofit2_scalars      : "com.squareup.retrofit2:converter-scalars:${version.retrofit2}",
             //Stetho网络拦截器
-            stetho                 : "com.facebook.stetho:stetho:${version.stetho}",
-            stetho_okhttp          : "com.facebook.stetho:stetho-okhttp3:${version.stetho}",
+//            stetho                 : "com.facebook.stetho:stetho:${version.stetho}",
+//            stetho_okhttp          : "com.facebook.stetho:stetho-okhttp3:${version.stetho}",
+            //flipper调试工具
+            flipper                : "com.facebook.flipper:flipper:${version.flipper}",
+            soloader               : "com.facebook.soloader:soloader:${version.soloader}",
+            flipper_network_plugin : "com.facebook.flipper:flipper-network-plugin:${version.flipper}",
             //AndroidUtilCode
             utilx                  : "com.blankj:utilcodex:${version.utilx}",
             //okHttp

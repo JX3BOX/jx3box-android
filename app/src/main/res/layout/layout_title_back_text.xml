@@ -35,7 +35,7 @@
         android:ellipsize="end"
         android:maxEms="12"
         android:singleLine="true"
-        android:textColor="@color/color36373d"
+        android:textColor="@color/color_36373d"
         android:textSize="@dimen/sp_18"
         tools:text="标题" />
 
@@ -53,7 +53,7 @@
         android:layout_centerVertical="true"
         android:padding="@dimen/dp_16"
         android:singleLine="true"
-        android:textColor="@color/color36373d"
+        android:textColor="@color/color_36373d"
         android:textSize="@dimen/sp_14"
         tools:text="菜单" />
 </RelativeLayout>
