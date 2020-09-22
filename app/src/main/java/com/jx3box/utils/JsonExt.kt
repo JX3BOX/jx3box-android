@@ -35,16 +35,16 @@ import okhttp3.RequestBody.Companion.toRequestBody
  * 所以针对于这种情况请使用[fromListJson]
  **/
 inline fun <reified T : Any> Gson.fromJson(json: String): T {
-    return Gson().fromJson(json, T::class.java)
+    return this.fromJson(json, T::class.java)
 }
 
 /**
  * Json字符串转List对象
  */
 inline fun <reified T> Gson.fromListJson(json: String): T {
-    return Gson().fromJson(json, object : TypeToken<T>() {}.type)
+    return this.fromJson(json, object : TypeToken<T>() {}.type)
 }
 
 fun Gson.getJsonRequestBody(params: Any): RequestBody {
-    return Gson().toJson(params).toRequestBody("application/json".toMediaTypeOrNull())
+    return this.toJson(params).toRequestBody("application/json".toMediaTypeOrNull())
 }

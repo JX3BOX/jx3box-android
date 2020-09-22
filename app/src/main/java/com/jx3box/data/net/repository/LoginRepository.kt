@@ -23,7 +23,6 @@ import com.jx3box.data.net.Result
 import com.jx3box.data.net.RetrofitClient
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.utils.getJsonRequestBody
-import kotlinx.coroutines.CoroutineScope
 
 /**
  * @author Carey
@@ -46,7 +45,7 @@ class LoginRepository() : BaseRepository() {
     suspend fun register(params: Map<String, String>): Result<String> {
         return safeApiCall(
             call = { requestRegister(params) },
-            errorMessage = App.CONTEXT.getString(R.string.net_error)
+            errorMessage = App.CONTEXT.getString(R.string.register_error)
         )
     }
 
@@ -56,19 +55,17 @@ class LoginRepository() : BaseRepository() {
     }
 
     suspend fun isUserExists(
-        email: String,
-        successBlock: (suspend CoroutineScope.() -> Unit)
+        email: String
     ): Result<String> {
         return safeApiCall(
-            call = { requestUserExists(email, successBlock) },
+            call = { requestUserExists(email) },
             errorMessage = App.CONTEXT.getString(R.string.net_error)
         )
     }
 
     private suspend fun requestUserExists(
-        email: String,
-        successBlock: (suspend CoroutineScope.() -> Unit)? = null
+        email: String
     ): Result<String> =
-        executeResponse(RetrofitClient.scalarsService.isUserExists(email), successBlock)
+        executeResponse(RetrofitClient.scalarsService.isUserExists(email)) { register(HashMap()) }
 
 }

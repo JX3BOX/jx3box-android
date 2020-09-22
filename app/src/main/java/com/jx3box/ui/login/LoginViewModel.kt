@@ -79,17 +79,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
 
     fun isUserExists() {
         viewModelScope.launch(Dispatchers.Main) {
-            val result = withContext(Dispatchers.IO) {
-                repository.isUserExists("") {
-                    val register = repository.register(HashMap())
-                    register.checkResult(
-                        onSuccess = {
-
-                        }, onError = {
-
-                        })
-                }
-            }
+            val result = withContext(Dispatchers.IO) { repository.isUserExists("") }
         }
     }
 

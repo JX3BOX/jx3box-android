@@ -75,7 +75,7 @@ open class BaseRepository {
         return coroutineScope {
             if (response == "true") {
                 errorBlock?.let { it() }
-                Result.Error(IOException("邮箱不存在"))
+                Result.Error(IOException("邮箱已存在"))
             } else {
                 successBlock?.let { it() }
                 Result.Success(response)
