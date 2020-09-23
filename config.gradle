@@ -21,7 +21,7 @@ ext {
             soloader           : "0.9.0",
             okttp3             : "4.9.0",
             room               : "2.2.5",
-            navigation         : "2.2.0",
+            navigation         : "2.3.0",
             lifecycle          : "2.2.0",
             retrofit2          : "2.9.0",
             utilx              : "1.29.0",

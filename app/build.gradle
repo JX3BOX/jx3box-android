@@ -79,8 +79,6 @@ dependencies {
     implementation rootProject.ext.thirdPack["immersionbar"]
     implementation rootProject.ext.thirdPack["immersionbar_components"]
     implementation rootProject.ext.thirdPack["immersionbar_ktx"]
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]
