@@ -14,18 +14,27 @@
  *    limitations under the License.
  */
 
-package com.jx3box
+package com.jx3box.ui.main.fragment.bbs
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.jx3box.R
+import com.jx3box.mvvm.base.BaseFragment
 
 /**
- * @author carey
- * @date 2020/09/17
+ * 茶馆
+ * @author Carey
+ * @date 2020/9/23
  */
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class BbsFragment : BaseFragment() {
+    override val layoutId: Int
+        get() = R.layout.fragment_bbs
+
+    override fun initView() {
+    }
+
+    override fun initData() {
+    }
+
+    override fun initImmersionBar() {
+
     }
 }

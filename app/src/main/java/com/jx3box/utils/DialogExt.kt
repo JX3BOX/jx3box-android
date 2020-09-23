@@ -25,7 +25,6 @@ import android.text.style.ClickableSpan
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.jx3box.R
 import kotlinx.android.synthetic.main.view_dialog.*
@@ -56,7 +55,7 @@ fun AlertDialog.createLicence() {
         val startIndex = str.indexOf("《")
         sb.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                Toast.makeText(context, "隐私政策", Toast.LENGTH_SHORT).show()
+                context.toast("隐私政策")
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -70,7 +69,7 @@ fun AlertDialog.createLicence() {
         val lastIndex = str.lastIndexOf("《")
         sb.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                Toast.makeText(context, "用户协议", Toast.LENGTH_SHORT).show()
+                context.toast("用户协议")
             }
 
             override fun updateDrawState(ds: TextPaint) {

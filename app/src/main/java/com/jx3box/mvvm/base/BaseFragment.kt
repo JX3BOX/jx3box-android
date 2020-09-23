@@ -16,49 +16,39 @@
 
 package com.jx3box.mvvm.base
 
-import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
+import com.gyf.immersionbar.components.SimpleImmersionFragment
 import com.jx3box.utils.toast
 
 /**
- * activity 基类
  * @author Carey
- * @date 2020/9/17
+ * @date 2020/9/23
  */
-abstract class BaseActivity : AppCompatActivity() {
-    var mContext: Context? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mContext = this
-        setContentView(layoutId)
-        initImmersionBar()
-        initView()
-        initData()
+abstract class BaseFragment : SimpleImmersionFragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(layoutId, container, false)
     }
 
-    /**
-     * 获取布局ID
-     *
-     * @return
-     */
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initView()
+        initData()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     protected abstract val layoutId: Int
 
-    /**
-     * 数据初始化操作
-     */
-    protected abstract fun initData()
+    abstract fun initView()
 
-    /**
-     * 初始化view操作
-     */
-    protected abstract fun initView()
+    abstract fun initData()
 
-    /**
-     * 初始化沉浸状态栏
-     */
-    protected abstract fun initImmersionBar()
     /**
      * 封装toast方法
      *
@@ -71,5 +61,4 @@ abstract class BaseActivity : AppCompatActivity() {
     fun showToast(@StringRes str: Int) {
         toast(str)
     }
-
 }

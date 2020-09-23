@@ -28,6 +28,7 @@ ext {
             permissionx        : "1.4.0",
             koin               : "2.0.1",
             autosize           : "1.2.1",
+            immersionbar       : "3.0.0",
             PersistentCookieJar: "v1.0.1"
     ]
 
@@ -76,6 +77,10 @@ ext {
             //屏幕适配方案
             androidAutoSize        : "me.jessyan:autosize:${version.autosize}",
             //Cookie持久化
-            PersistentCookieJar    : "com.github.franmontiel:PersistentCookieJar:${version.PersistentCookieJar}"
+            PersistentCookieJar    : "com.github.franmontiel:PersistentCookieJar:${version.PersistentCookieJar}",
+            // 沉浸状态栏
+            immersionbar           : "com.gyf.immersionbar:immersionbar:${version.immersionbar}",
+            immersionbar_components: "com.gyf.immersionbar:immersionbar-components:${version.immersionbar}",
+            immersionbar_ktx       : "com.gyf.immersionbar:immersionbar-ktx:${version.immersionbar}"
     ]
 }

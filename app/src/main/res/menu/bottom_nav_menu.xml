@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_bbs"
+        android:icon="@drawable/icon_bbs"
+        android:title="@string/bbs" />
+
+    <item
+        android:id="@+id/navigation_tools"
+        android:icon="@drawable/icon_tools"
+        android:title="@string/tools" />
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@drawable/icon_mine"
+        android:title="@string/mine" />
+</menu>

@@ -17,13 +17,11 @@
 package com.jx3box.ui.login
 
 import android.app.ProgressDialog
-import androidx.appcompat.app.AlertDialog
+import android.view.View.GONE
 import com.jx3box.R
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.databinding.ActivityLoginBinding
 import com.jx3box.mvvm.base.BaseVMActivity
-import com.jx3box.utils.createLicence
-import com.jx3box.utils.getSpValue
 import com.jx3box.utils.putSpValue
 import kotlinx.android.synthetic.main.layout_title_back_text.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,11 +43,10 @@ class LoginActivity : BaseVMActivity() {
         }
         binding.mTitle.mTvTitle.text = getString(R.string.login)
         binding.mTitle.mTvRightText.text = getString(R.string.register)
+        //注册功能暂时关闭
+        binding.mTitle.mTvRightText.visibility = GONE
         binding.mTitle.mImgBack.setOnClickListener { finish() }
         binding.mTitle.mTvRightText.setOnClickListener { showToast(R.string.register) }
-        val isFirst = getSpValue("firstRun", true)
-        if (isFirst)
-            AlertDialog.Builder(this).create().createLicence()
     }
 
     override fun initImmersionBar() {

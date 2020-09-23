@@ -55,17 +55,19 @@ class LoginRepository() : BaseRepository() {
     }
 
     suspend fun isUserExists(
-        email: String
+        email: String,
+        params: Map<String, String>
     ): Result<String> {
         return safeApiCall(
-            call = { requestUserExists(email) },
+            call = { requestUserExists(email, params) },
             errorMessage = App.CONTEXT.getString(R.string.net_error)
         )
     }
 
     private suspend fun requestUserExists(
-        email: String
+        email: String,
+        params: Map<String, String>
     ): Result<String> =
-        executeResponse(RetrofitClient.scalarsService.isUserExists(email)) { register(HashMap()) }
+        executeResponse(RetrofitClient.scalarsService.isUserExists(email)) { register(params) }
 
 }

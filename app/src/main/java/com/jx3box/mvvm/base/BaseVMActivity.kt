@@ -17,12 +17,12 @@
 package com.jx3box.mvvm.base
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.jx3box.utils.toast
 
 /**
  * 绑定ViewModel的activity基类
@@ -67,11 +67,11 @@ abstract class BaseVMActivity : AppCompatActivity() {
      * @param str
      */
     fun showToast(str: String) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+        toast(str)
     }
 
     fun showToast(@StringRes str: Int) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+        toast(str)
     }
 
     abstract fun startObserve()

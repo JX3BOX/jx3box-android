@@ -46,4 +46,11 @@
     <string name="disagree">不同意</string>
     <string name="agree">同意并继续</string>
     <string name="licence_privacy">用户协议与隐私政策</string>
+    <string name="tools">工具</string>
+    <string name="bbs">茶馆</string>
+    <string name="mine">我</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
