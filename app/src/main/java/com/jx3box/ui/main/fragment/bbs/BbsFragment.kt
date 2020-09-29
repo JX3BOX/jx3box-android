@@ -16,8 +16,10 @@
 
 package com.jx3box.ui.main.fragment.bbs
 
+import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.mvvm.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_bbs.*
 
 /**
  * 茶馆
@@ -35,6 +37,6 @@ class BbsFragment : BaseFragment() {
     }
 
     override fun initImmersionBar() {
-
+        ImmersionBar.with(this).titleBar(toolBar).init()
     }
 }

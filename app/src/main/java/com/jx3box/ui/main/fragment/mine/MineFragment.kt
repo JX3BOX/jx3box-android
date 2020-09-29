@@ -16,8 +16,11 @@
 
 package com.jx3box.ui.main.fragment.mine
 
+import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.mvvm.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_mine.*
+
 
 /**
  * 我的
@@ -35,5 +38,9 @@ class MineFragment : BaseFragment() {
     }
 
     override fun initImmersionBar() {
+        ImmersionBar.with(this)
+            .titleBar(tool_bar)
+            .statusBarDarkFont(true)
+            .init()
     }
 }

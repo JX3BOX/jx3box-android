@@ -29,6 +29,7 @@ ext {
             koin               : "2.0.1",
             autosize           : "1.2.1",
             immersionbar       : "3.0.0",
+            liveDataBus        : "1.7.2",
             PersistentCookieJar: "v1.0.1"
     ]
 
@@ -81,6 +82,8 @@ ext {
             // 沉浸状态栏
             immersionbar           : "com.gyf.immersionbar:immersionbar:${version.immersionbar}",
             immersionbar_components: "com.gyf.immersionbar:immersionbar-components:${version.immersionbar}",
-            immersionbar_ktx       : "com.gyf.immersionbar:immersionbar-ktx:${version.immersionbar}"
+            immersionbar_ktx       : "com.gyf.immersionbar:immersionbar-ktx:${version.immersionbar}",
+            //消息总线
+            liveDataBus            : "com.jeremyliao:live-event-bus-x:${version.liveDataBus}"
     ]
 }

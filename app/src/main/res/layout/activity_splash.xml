@@ -43,7 +43,7 @@
                 android:id="@+id/img"
                 android:layout_width="@dimen/dp_50"
                 android:layout_height="@dimen/dp_50"
-                android:src="@drawable/icon_app" />
+                android:src="@drawable/icon_app_black" />
 
             <TextView
                 android:id="@+id/name"

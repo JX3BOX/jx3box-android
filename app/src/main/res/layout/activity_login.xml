@@ -38,12 +38,12 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
             android:layout_below="@+id/mTitle"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_50"
-            android:src="@drawable/icon_app" />
+            android:src="@drawable/icon_app_black" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userNameLayout"

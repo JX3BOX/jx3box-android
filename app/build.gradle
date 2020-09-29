@@ -79,6 +79,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["immersionbar"]
     implementation rootProject.ext.thirdPack["immersionbar_components"]
     implementation rootProject.ext.thirdPack["immersionbar_ktx"]
+    implementation rootProject.ext.thirdPack["liveDataBus"]
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]
