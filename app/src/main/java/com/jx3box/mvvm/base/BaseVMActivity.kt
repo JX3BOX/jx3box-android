@@ -23,13 +23,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.jx3box.utils.toast
+import com.jx3box.view.LoadingDialog
+import com.jx3box.view.LoadingDialogManager
 
 /**
  * 绑定ViewModel的activity基类
  * @author Carey
  * @date 2020/9/18
  */
-abstract class BaseVMActivity : AppCompatActivity() {
+abstract class BaseVMActivity : AppCompatActivity(), LoadingDialogManager {
+    override val loadingDialog by lazy { LoadingDialog(this) }
     protected inline fun <reified T : ViewDataBinding> binding(
         @LayoutRes resId: Int
     ): Lazy<T> = lazy {

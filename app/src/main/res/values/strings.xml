@@ -20,6 +20,7 @@
     <string name="skip_intro">跳过</string>
     <string name="net_error">网络错误</string>
     <string name="register_error">注册失败</string>
+    <string name="register_success">注册成功,请去邮箱验证</string>
     <string name="login_error">登录失败</string>
     <string name="login_success">登录成功</string>
     <string name="password">密码</string>
@@ -54,4 +55,14 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="home_search_hint">搜索你想要的内容</string>
+    <string name="token_illegal">令牌不合法</string>
+    <string name="column_license">开源协议</string>
+    <string name="column_feedback">意见反馈</string>
+    <string name="column_favorites">我的收藏</string>
+    <string name="column_topic">题库贡献</string>
+    <string name="column_entry">词条贡献</string>
+    <string name="column_wiki">百科贡献</string>
+    <string name="column_works">我的作品</string>
+    <string name="sendto">mailto:admin@jx3box.com</string>
+    <string name="mail_topic">剑三魔盒App反馈</string>
 </resources>

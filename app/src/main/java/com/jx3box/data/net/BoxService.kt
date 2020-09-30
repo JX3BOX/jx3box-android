@@ -18,6 +18,8 @@ package com.jx3box.data.net
 
 import com.jx3box.BuildConfig
 import com.jx3box.data.net.model.BoxResponse
+import com.jx3box.data.net.model.LoginInfoResult
+import com.jx3box.data.net.model.RegisterResult
 import com.jx3box.data.net.model.UserInfoResult
 import okhttp3.RequestBody
 import retrofit2.http.Body
@@ -44,17 +46,23 @@ interface BoxService {
      * 登录
      */
     @POST(NetConfig.login_url)
-    suspend fun login(@Body params: RequestBody): BoxResponse<UserInfoResult>
+    suspend fun login(@Body params: RequestBody): BoxResponse<LoginInfoResult>
 
     /**
      * 注册
      */
     @POST(NetConfig.register_url)
-    suspend fun register(@Body params: RequestBody): BoxResponse<String>
+    suspend fun register(@Body params: RequestBody): BoxResponse<RegisterResult>
 
     /**
      * 验证用户名是否存在
      */
     @GET(NetConfig.is_user_exists)
-    suspend fun isUserExists(@Query("user_login") email: String): String
+    suspend fun isUserExists(@Query("user_email") email: String): BoxResponse<Boolean>
+
+    /**
+     * 获取当前用户信息
+     */
+    @GET(NetConfig.personal_info_url)
+    suspend fun getPersonalInfo(): BoxResponse<UserInfoResult>
 }

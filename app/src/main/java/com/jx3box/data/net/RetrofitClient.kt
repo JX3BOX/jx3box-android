@@ -34,7 +34,7 @@ import okhttp3.Response
  */
 object RetrofitClient : BaseRetrofitClient() {
     val jsonService by lazy { getJsonService(BoxService::class.java, BoxService.BASE_URL) }
-    val scalarsService by lazy { getScalarsService(BoxService::class.java, BoxService.BASE_URL) }
+//    val scalarsService by lazy { getScalarsService(BoxService::class.java, BoxService.BASE_URL) }
 
     private val cookieJar by lazy {
         PersistentCookieJar(

@@ -22,6 +22,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.RegexUtils
+import com.jx3box.data.db.BoxDatabase
 import com.jx3box.data.net.checkResult
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.data.net.repository.LoginRepository
@@ -57,18 +58,27 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     fun login() {
         viewModelScope.launch(Dispatchers.Main) {
             _uiState.value = LoginUiState(isLoading = true)
-
-            val result = withContext(Dispatchers.IO) {
+            val login = withContext(Dispatchers.IO) {
                 val params: MutableMap<String, String> = HashMap()
-                params["user_login"] = userName.get() ?: ""
+                params["user_email"] = userName.get() ?: ""
                 params["user_pass"] = passWord.get() ?: ""
                 params["device_id"] = DeviceUtils.getUniqueDeviceId()
                 repository.login(params)
             }
+            val result = withContext(Dispatchers.IO) { repository.getPersonalInfo() }
 
-            result.checkResult(
+            login.checkResult(
                 onSuccess = {
-                    _uiState.value = LoginUiState(isSuccess = it, enableLoginButton = true)
+                    BoxDatabase.instance.loginInfoDao().insert(it)
+                    result.checkResult(
+                        onSuccess = { user ->
+                            _uiState.value =
+                                LoginUiState(isSuccess = user, enableLoginButton = true)
+                        },
+                        onError = { err ->
+                            _uiState.value = LoginUiState(isError = err, enableLoginButton = true)
+                        }
+                    )
                 },
                 onError = {
                     _uiState.value = LoginUiState(isError = it, enableLoginButton = true)

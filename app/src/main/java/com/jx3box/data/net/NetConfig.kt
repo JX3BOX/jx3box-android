@@ -32,4 +32,7 @@ object NetConfig {
 
     /**获取启动页广告*/
     const val advert_url = ""
+
+    /**获取当前用户基本信息*/
+    const val personal_info_url = "/user/me"
 }

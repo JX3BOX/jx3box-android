@@ -19,6 +19,8 @@ package com.jx3box
 import com.jx3box.data.net.repository.AdvertRepository
 import com.jx3box.data.net.repository.LoginRepository
 import com.jx3box.ui.login.LoginViewModel
+import com.jx3box.ui.main.fragment.mine.MineViewModel
+import com.jx3box.ui.register.RegisterViewModel
 import com.jx3box.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -31,6 +33,8 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { RegisterViewModel(get()) }
+    viewModel { MineViewModel() }
 }
 
 

@@ -30,6 +30,8 @@ import androidx.fragment.app.Fragment
 import com.gyf.immersionbar.components.SimpleImmersionOwner
 import com.gyf.immersionbar.components.SimpleImmersionProxy
 import com.jx3box.utils.toast
+import com.jx3box.view.LoadingDialog
+import com.jx3box.view.LoadingDialogManager
 
 /**
  * @author Carey
@@ -37,7 +39,8 @@ import com.jx3box.utils.toast
  */
 abstract class BaseVMFragment<T : ViewDataBinding>(@LayoutRes val layoutId: Int) :
     Fragment(layoutId),
-    SimpleImmersionOwner {
+    SimpleImmersionOwner, LoadingDialogManager {
+    override val loadingDialog by lazy { LoadingDialog(requireContext()) }
 
     lateinit var binding: T
 

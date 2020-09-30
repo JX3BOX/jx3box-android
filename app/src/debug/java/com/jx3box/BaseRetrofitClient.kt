@@ -29,7 +29,6 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 
@@ -76,17 +75,17 @@ abstract class BaseRetrofitClient {
             .baseUrl(baseUrl)
             .build().create(serviceClass)
     }
-
-    /**
-     * Scalars数据解析
-     */
-    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
-        return Retrofit.Builder()
-            .client(client)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .baseUrl(baseUrl)
-            .build().create(serviceClass)
-    }
+//
+//    /**
+//     * Scalars数据解析
+//     */
+//    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
+//        return Retrofit.Builder()
+//            .client(client)
+//            .addConverterFactory(ScalarsConverterFactory.create())
+//            .baseUrl(baseUrl)
+//            .build().create(serviceClass)
+//    }
 
     /**
      * 增加后台返回""和"null"的处理,如果后台返回格式正常

@@ -22,14 +22,14 @@ import com.jx3box.data.net.model.UserInfoResult
 
 /**
  * @author Carey
- * @date 2020/9/21
+ * @date 2020/9/30
  */
 @Dao
 interface UserInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: UserInfoResult)
 
-    @Query("SELECT * FROM UserInfo WHERE uid=:uid")
+    @Query("SELECT * FROM UserInfo WHERE id=:uid")
     fun getCurrentUser(uid: Int): LiveData<UserInfoResult>
 
     @Delete

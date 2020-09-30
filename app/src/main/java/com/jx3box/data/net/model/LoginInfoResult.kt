@@ -14,22 +14,28 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.repository
+package com.jx3box.data.net.model
 
-import com.jx3box.data.net.Result
-import com.jx3box.data.net.RetrofitClient
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * @author Carey
- * @date 2020/9/18
+ * @date 2020/9/21
  */
-class AdvertRepository() : BaseRepository() {
-    suspend fun getAdvert(): Result<String> {
-        return safeApiCall(
-            call = { requestAdvert() }
-        )
-    }
-
-    private suspend fun requestAdvert(): Result<String> =
-        executeResponse(RetrofitClient.jsonService.getAdvert())
-}
+@Entity(tableName = "LoginInfo")
+data class LoginInfoResult(
+    @PrimaryKey
+    val uid: Int,
+    @ColumnInfo(name = "token")
+    val token: String,
+    @ColumnInfo(name = "group")
+    val group: String,
+    @ColumnInfo(name = "name")
+    val name: String,
+    @ColumnInfo(name = "avatar")
+    val avatar: String,
+    @ColumnInfo(name = "bio")
+    val bio: String,
+)

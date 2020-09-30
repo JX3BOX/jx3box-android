@@ -16,10 +16,14 @@
 
 package com.jx3box.ui.main.fragment.mine
 
+import android.content.Intent
+import android.net.Uri
 import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
-import com.jx3box.mvvm.base.BaseFragment
+import com.jx3box.databinding.FragmentMineBinding
+import com.jx3box.mvvm.base.BaseVMFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
@@ -27,11 +31,23 @@ import kotlinx.android.synthetic.main.fragment_mine.*
  * @author Carey
  * @date 2020/9/23
  */
-class MineFragment : BaseFragment() {
-    override val layoutId: Int
-        get() = R.layout.fragment_mine
+class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine) {
+    private val mineViewModel by viewModel<MineViewModel>()
+
+    override fun startObserve() {
+
+    }
 
     override fun initView() {
+        binding.run {
+            viewModel = mineViewModel
+        }
+        tvFeedBack.setOnClickListener {
+            val uri = Uri.parse(getString(R.string.sendto))
+            val intent = Intent(Intent.ACTION_SENDTO, uri)
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic))
+            startActivity(intent)
+        }
     }
 
     override fun initData() {

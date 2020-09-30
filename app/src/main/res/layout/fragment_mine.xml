@@ -15,159 +15,155 @@
   -->
 
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f5f5f5">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <data>
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:collapsedTitleGravity="center_horizontal"
-            app:contentScrim="@color/white"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="true"
-            app:toolbarId="@+id/tool_bar">
+        <import
+            alias="appR"
+            type="com.jx3box.R" />
 
-            <ImageView
-                android:id="@+id/imgBg"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_200"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_mine_default" />
+        <variable
+            name="viewModel"
+            type="com.jx3box.ui.main.fragment.mine.MineViewModel" />
+    </data>
 
-            <ImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="@dimen/dp_70"
-                android:layout_height="@dimen/dp_70"
-                android:layout_gravity="center"
-                tools:src="@drawable/icon_default_avatar" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/tool_bar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/dp_10">
-
-                    <ImageView
-                        android:id="@+id/img_download"
-                        android:layout_width="@dimen/dp_24"
-                        android:layout_height="@dimen/dp_24"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/icon_setting" />
-                </RelativeLayout>
-            </androidx.appcompat.widget.Toolbar>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:background="#f5f5f5">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+                android:fitsSystemWindows="true"
+                app:collapsedTitleGravity="center_horizontal"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleEnabled="true"
+                app:toolbarId="@+id/tool_bar">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1" />
+                <ImageView
+                    android:id="@+id/imgBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_200"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg_mine_default" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+                <ImageView
+                    android:id="@+id/imgAvatar"
+                    placeholder="@{appR.drawable.icon_default_avatar}"
+                    android:layout_width="@dimen/dp_70"
+                    android:layout_height="@dimen/dp_70"
+                    android:layout_gravity="center"
+                    app:circleImgUrl="@{viewModel.currentUser.userAvatar}" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dp_10">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1" />
+                        <ImageView
+                            android:id="@+id/img_download"
+                            android:layout_width="@dimen/dp_24"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_setting" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_8" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvWorks"
+                    style="@style/MineColumn"
+                    android:text="@string/column_works"
+                    app:drawableStartCompat="@drawable/icon_works" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:drawableStart="@drawable/icon_setting"
-                android:padding="@dimen/dp_16"
-                android:text="我的收藏" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvWiki"
+                    style="@style/MineColumn"
+                    android:text="@string/column_wiki"
+                    app:drawableStartCompat="@drawable/icon_wiki" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvEntry"
+                    style="@style/MineColumn"
+                    android:text="@string/column_entry"
+                    app:drawableStartCompat="@drawable/icon_entry" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTopic"
+                    style="@style/MineColumn"
+                    android:text="@string/column_topic"
+                    app:drawableStartCompat="@drawable/icon_topic" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvFavorites"
+                    style="@style/MineColumn"
+                    android:text="@string/column_favorites"
+                    app:drawableStartCompat="@drawable/icon_favorites" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_10" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvFeedBack"
+                    style="@style/MineColumn"
+                    android:text="@string/column_feedback"
+                    app:drawableStartCompat="@drawable/icon_feedback" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvLicense"
+                    style="@style/MineColumn"
+                    android:text="@string/column_license"
+                    app:drawableStartCompat="@drawable/icon_license" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

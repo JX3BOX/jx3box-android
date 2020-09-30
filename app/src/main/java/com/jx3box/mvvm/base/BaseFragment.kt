@@ -23,12 +23,15 @@ import android.view.ViewGroup
 import androidx.annotation.StringRes
 import com.gyf.immersionbar.components.SimpleImmersionFragment
 import com.jx3box.utils.toast
+import com.jx3box.view.LoadingDialog
+import com.jx3box.view.LoadingDialogManager
 
 /**
  * @author Carey
  * @date 2020/9/23
  */
-abstract class BaseFragment : SimpleImmersionFragment() {
+abstract class BaseFragment : SimpleImmersionFragment(), LoadingDialogManager {
+    override val loadingDialog by lazy { LoadingDialog(requireContext()) }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

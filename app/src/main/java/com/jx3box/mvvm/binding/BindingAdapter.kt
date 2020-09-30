@@ -18,6 +18,7 @@ package com.jx3box.mvvm.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.carey.module_glidelib.EasyGlide.loadCircleImage
 import com.carey.module_glidelib.EasyGlide.loadImage
 import com.carey.module_glidelib.R
 
@@ -32,4 +33,13 @@ fun bindImage(
     placeholder: Int = R.color.transparent
 ) {
     imageView.loadImage(imageView.context, url, placeholder)
+}
+
+@BindingAdapter("circleImgUrl", "placeholder", requireAll = false)
+fun bindCircleImage(
+    imageView: ImageView,
+    url: String?,
+    placeholder: Int = R.color.transparent
+) {
+    imageView.loadCircleImage(imageView.context, url, placeholder)
 }

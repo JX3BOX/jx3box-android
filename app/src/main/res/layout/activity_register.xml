@@ -23,7 +23,7 @@
 
         <variable
             name="viewModel"
-            type="com.jx3box.ui.login.LoginViewModel" />
+            type="com.jx3box.ui.register.RegisterViewModel" />
 
     </data>
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:text="@={viewModel.userName}"
+                android:text="@={viewModel.mail}"
                 binding:afterTextChanged="@{viewModel.verifyInput}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:text="@={viewModel.passWord}"
+                android:text="@={viewModel.pwd}"
                 binding:afterTextChanged="@{viewModel.verifyInput}" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,85 +90,13 @@
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
             android:layout_marginRight="@dimen/dp_20"
-            android:enabled="@{viewModel.uiState.enableLoginButton}"
+            android:background="@color/colorPrimary"
+            android:enabled="@{viewModel.enable}"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:onClick="@{() -> viewModel.login()}"
-            android:text="@string/login"
+            android:onClick="@{() -> viewModel.register()}"
+            android:text="@string/register"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
-            android:background="@color/colorPrimary" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/dp_10"
-            android:orientation="horizontal"
-            android:padding="@dimen/dp_16">
-
-            <LinearLayout
-                android:id="@+id/mQQLogin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_qq" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="@string/qq" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mWbLogin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_weibo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="@string/weibo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mGithubLogin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_github" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="@string/github" />
-            </LinearLayout>
-        </LinearLayout>
+            android:textSize="@dimen/sp_16" />
     </RelativeLayout>
 </layout>

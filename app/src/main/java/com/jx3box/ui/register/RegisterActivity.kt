@@ -14,39 +14,31 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.login
+package com.jx3box.ui.register
 
 import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
-import com.jx3box.data.db.BoxDatabase
-import com.jx3box.databinding.ActivityLoginBinding
+import com.jx3box.databinding.ActivityRegisterBinding
 import com.jx3box.mvvm.base.BaseVMActivity
-import com.jx3box.ui.main.MainActivity
-import com.jx3box.ui.register.RegisterActivity
-import com.jx3box.utils.putSpValue
-import com.jx3box.utils.startKtxActivity
 import kotlinx.android.synthetic.main.layout_title_back_text.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Carey
- * @date 2020/9/21
+ * @date 2020/9/30
  */
-class LoginActivity : BaseVMActivity() {
-    private val loginViewModel by viewModel<LoginViewModel>()
-    private val binding by binding<ActivityLoginBinding>(R.layout.activity_login)
-
+class RegisterActivity : BaseVMActivity() {
+    private val registerViewModel by viewModel<RegisterViewModel>()
+    private val binding by binding<ActivityRegisterBinding>(R.layout.activity_register)
     override fun initData() {
     }
 
     override fun initView() {
         binding.run {
-            viewModel = loginViewModel
+            viewModel = registerViewModel
         }
-        binding.mTitle.mTvTitle.text = getString(R.string.login)
-        binding.mTitle.mTvRightText.text = getString(R.string.register)
+        binding.mTitle.mTvTitle.text = getString(R.string.register)
         binding.mTitle.mImgBack.setOnClickListener { finish() }
-        binding.mTitle.mTvRightText.setOnClickListener { startKtxActivity<RegisterActivity>() }
     }
 
     override fun initImmersionBar() {
@@ -58,20 +50,15 @@ class LoginActivity : BaseVMActivity() {
     }
 
     override fun startObserve() {
-        loginViewModel.apply {
-            uiState.observe(this@LoginActivity, {
-                if (it.isLoading) showLoadingDialog(this@LoginActivity)
+        registerViewModel.apply {
+            uiState.observe(this@RegisterActivity, {
+                if (it.isLoading) showLoadingDialog(this@RegisterActivity)
 
-                it.isSuccess?.let { userInfo ->
+                it.isSuccess?.let {
                     hideLoadingDialog()
-                    BoxDatabase.instance.userInfoDao().insert(userInfo)
-                    putSpValue("current_user", userInfo.id)
-                    putSpValue("isLogin", true)
-                    showToast(R.string.login_success)
-                    startKtxActivity<MainActivity>()
+                    showToast(R.string.register_success)
                     finish()
                 }
-
                 it.isError?.let { err ->
                     hideLoadingDialog()
                     showToast(err)

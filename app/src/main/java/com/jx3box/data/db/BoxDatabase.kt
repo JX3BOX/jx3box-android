@@ -20,7 +20,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.jx3box.App
+import com.jx3box.data.db.dao.LoginInfoDao
 import com.jx3box.data.db.dao.UserInfoDao
+import com.jx3box.data.net.model.LoginInfoResult
 import com.jx3box.data.net.model.UserInfoResult
 
 /**
@@ -28,10 +30,15 @@ import com.jx3box.data.net.model.UserInfoResult
  * @author Carey
  * @date 2020/9/21
  */
-@Database(entities = [UserInfoResult::class], version = 1, exportSchema = false)
+@Database(
+    entities = [LoginInfoResult::class, UserInfoResult::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class BoxDatabase : RoomDatabase() {
 
-    abstract fun getUserInfoDao(): UserInfoDao
+    abstract fun loginInfoDao(): LoginInfoDao
+    abstract fun userInfoDao(): UserInfoDao
 
     companion object {
         private const val DB_NAME = "jx3_room.db"
@@ -44,6 +51,5 @@ abstract class BoxDatabase : RoomDatabase() {
                 .allowMainThreadQueries()
                 .build()
         }
-
     }
 }

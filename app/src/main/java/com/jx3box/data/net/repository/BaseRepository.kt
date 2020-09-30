@@ -16,6 +16,8 @@
 
 package com.jx3box.data.net.repository
 
+import com.jx3box.App
+import com.jx3box.R
 import com.jx3box.data.net.Result
 import com.jx3box.data.net.model.BoxResponse
 import kotlinx.coroutines.CoroutineScope
@@ -33,7 +35,7 @@ open class BaseRepository {
 
     suspend fun <T : Any> safeApiCall(
         call: suspend () -> Result<T>,
-        errorMessage: String
+        errorMessage: String? = App.CONTEXT.getString(R.string.net_error)
     ): Result<T> {
         return try {
             call()
@@ -53,7 +55,7 @@ open class BaseRepository {
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
     ): Result<T> {
         return coroutineScope {
-            if (response.code != 10004) {
+            if (response.code != 0) {
                 errorBlock?.let { it() }
                 Result.Error(IOException(response.msg))
             } else {
@@ -62,26 +64,26 @@ open class BaseRepository {
             }
         }
     }
-
-    /**
-     * @param response 请求结果 非Json格式
-     * @param successBlock 请求成功之后的请求
-     * @param errorBlock 请求失败之后的请求
-     */
-    suspend fun <T : Any> executeResponse(
-        response: T, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
-        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
-    ): Result<T> {
-        return coroutineScope {
-            if (response == "true") {
-                errorBlock?.let { it() }
-                Result.Error(IOException("邮箱已存在"))
-            } else {
-                successBlock?.let { it() }
-                Result.Success(response)
-            }
-        }
-    }
+//
+//    /**
+//     * @param response 请求结果 非Json格式
+//     * @param successBlock 请求成功之后的请求
+//     * @param errorBlock 请求失败之后的请求
+//     */
+//    suspend fun <T : Any> executeResponse(
+//        response: T, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+//        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
+//    ): Result<T> {
+//        return coroutineScope {
+//            if (response == "true") {
+//                errorBlock?.let { it() }
+//                Result.Error(IOException("邮箱已存在"))
+//            } else {
+//                successBlock?.let { it() }
+//                Result.Success(response)
+//            }
+//        }
+//    }
 
 
 }

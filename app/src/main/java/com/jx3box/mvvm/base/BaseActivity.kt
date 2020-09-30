@@ -21,13 +21,16 @@ import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.jx3box.utils.toast
+import com.jx3box.view.LoadingDialog
+import com.jx3box.view.LoadingDialogManager
 
 /**
  * activity 基类
  * @author Carey
  * @date 2020/9/17
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), LoadingDialogManager {
+    override val loadingDialog by lazy { LoadingDialog(this) }
     var mContext: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

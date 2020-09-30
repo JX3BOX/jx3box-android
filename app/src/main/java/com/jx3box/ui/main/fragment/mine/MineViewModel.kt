@@ -14,22 +14,19 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.repository
+package com.jx3box.ui.main.fragment.mine
 
-import com.jx3box.data.net.Result
-import com.jx3box.data.net.RetrofitClient
+import com.jx3box.App
+import com.jx3box.data.db.BoxDatabase
+import com.jx3box.mvvm.base.BaseViewModel
+import com.jx3box.utils.getSpValue
 
 /**
  * @author Carey
- * @date 2020/9/18
+ * @date 2020/9/30
  */
-class AdvertRepository() : BaseRepository() {
-    suspend fun getAdvert(): Result<String> {
-        return safeApiCall(
-            call = { requestAdvert() }
-        )
-    }
+class MineViewModel : BaseViewModel() {
+    val currentUser = BoxDatabase.instance.userInfoDao()
+        .getCurrentUser(App.CONTEXT.getSpValue("current_user", 0))
 
-    private suspend fun requestAdvert(): Result<String> =
-        executeResponse(RetrofitClient.jsonService.getAdvert())
 }

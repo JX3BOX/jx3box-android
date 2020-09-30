@@ -21,6 +21,8 @@ import com.jx3box.App
 import com.jx3box.R
 import com.jx3box.data.net.Result
 import com.jx3box.data.net.RetrofitClient
+import com.jx3box.data.net.model.LoginInfoResult
+import com.jx3box.data.net.model.RegisterResult
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.utils.getJsonRequestBody
 
@@ -30,44 +32,50 @@ import com.jx3box.utils.getJsonRequestBody
  */
 class LoginRepository() : BaseRepository() {
 
-    suspend fun login(params: Map<String, String>): Result<UserInfoResult> {
+    suspend fun login(params: Map<String, String>): Result<LoginInfoResult> {
         return safeApiCall(
-            call = { requestLogin(params) },
-            errorMessage = App.CONTEXT.getString(R.string.login_error)
+            call = { requestLogin(params) }
         )
     }
 
-    private suspend fun requestLogin(params: Map<String, String>): Result<UserInfoResult> {
+    private suspend fun requestLogin(params: Map<String, String>): Result<LoginInfoResult> {
         val json = Gson().getJsonRequestBody(params)
         return executeResponse(RetrofitClient.jsonService.login(json))
     }
 
-    suspend fun register(params: Map<String, String>): Result<String> {
+    suspend fun register(params: Map<String, String>): Result<RegisterResult> {
         return safeApiCall(
-            call = { requestRegister(params) },
-            errorMessage = App.CONTEXT.getString(R.string.register_error)
+            call = { requestRegister(params) }
         )
     }
 
-    private suspend fun requestRegister(params: Map<String, String>): Result<String> {
+    private suspend fun requestRegister(params: Map<String, String>): Result<RegisterResult> {
         val json = Gson().getJsonRequestBody(params)
         return executeResponse(RetrofitClient.jsonService.register(json))
     }
 
-    suspend fun isUserExists(
-        email: String,
-        params: Map<String, String>
-    ): Result<String> {
-        return safeApiCall(
-            call = { requestUserExists(email, params) },
-            errorMessage = App.CONTEXT.getString(R.string.net_error)
+    suspend fun getPersonalInfo(): Result<UserInfoResult> =
+        safeApiCall(
+            call = { requestPersonalInfo() },
+            errorMessage = App.CONTEXT.getString(R.string.token_illegal)
         )
-    }
 
-    private suspend fun requestUserExists(
-        email: String,
-        params: Map<String, String>
-    ): Result<String> =
-        executeResponse(RetrofitClient.scalarsService.isUserExists(email)) { register(params) }
+    private suspend fun requestPersonalInfo(): Result<UserInfoResult> =
+        executeResponse(RetrofitClient.jsonService.getPersonalInfo())
+
+//    suspend fun isUserExists(
+//        email: String,
+//        params: Map<String, String>
+//    ): Result<Boolean> {
+//        return safeApiCall(
+//            call = { requestUserExists(email, params) }
+//        )
+//    }
+//
+//    private suspend fun requestUserExists(
+//        email: String,
+//        params: Map<String, String>
+//    ): Result<Boolean> =
+//        executeResponse(RetrofitClient.jsonService.isUserExists(email)) { register(params) }
 
 }

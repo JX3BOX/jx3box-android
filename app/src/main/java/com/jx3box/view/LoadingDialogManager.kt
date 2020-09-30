@@ -14,22 +14,22 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.repository
+package com.jx3box.view
 
-import com.jx3box.data.net.Result
-import com.jx3box.data.net.RetrofitClient
+import android.content.Context
 
 /**
  * @author Carey
- * @date 2020/9/18
+ * @date 2020/9/30
  */
-class AdvertRepository() : BaseRepository() {
-    suspend fun getAdvert(): Result<String> {
-        return safeApiCall(
-            call = { requestAdvert() }
-        )
+interface LoadingDialogManager {
+    val loadingDialog: LoadingDialog
+
+    fun showLoadingDialog(context: Context) {
+        loadingDialog.showDialog(context, false, null)
     }
 
-    private suspend fun requestAdvert(): Result<String> =
-        executeResponse(RetrofitClient.jsonService.getAdvert())
+    fun hideLoadingDialog() {
+        loadingDialog.dismissDialog()
+    }
 }
