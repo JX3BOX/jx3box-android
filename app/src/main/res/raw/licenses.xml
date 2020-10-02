@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<notices>
+    <notice>
+        <name>JX3BOX</name>
+        <copyright>Copyright (C) 2020. jx3box.com</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>JetPack</name>
+        <copyright>Copyright (C) 2019 The Android Open Source Project</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>kotlinx.coroutines</name>
+        <copyright>Copyright 2000-2020 JetBrains s.r.o. and Kotlin Programming Language
+            contributors.
+        </copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Retrofit</name>
+        <copyright>Copyright 2013 Square, Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>OkHttp</name>
+        <copyright>Square, Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Glide</name>
+        <copyright>Copyright 2014 Google, Inc.</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>BaseRecyclerViewAdapterHelper</name>
+        <copyright>Copyright 2016 陈宇明</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>AndroidUtilCode</name>
+        <copyright>Copyright 2017 Blankj</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>PermissionX</name>
+        <copyright>Copyright guolin</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>PersistentCookieJar</name>
+        <copyright>Copyright 2016 Francisco José Montiel Navarro</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>LicensesDialog</name>
+        <copyright>Copyright 2013 Philip Schiffer</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Koin</name>
+        <copyright>Copyright 2017 Arnaud GIULIANI</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>AndroidAutoSize</name>
+        <copyright>Copyright 2018 JessYan</copyright>
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Immersionbar</name>
+        <copyright />
+        <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>LiveEventBus</name>
+        <copyright />
+        <license>Apache Software License 2.0</license>
+    </notice>
+</notices>

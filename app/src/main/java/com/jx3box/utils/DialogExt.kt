@@ -18,6 +18,7 @@ package com.jx3box.utils
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
@@ -27,6 +28,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.jx3box.R
+import com.jx3box.data.net.AppConfig
+import com.jx3box.ui.NormalWebActivity
 import kotlinx.android.synthetic.main.view_dialog.*
 import kotlin.system.exitProcess
 
@@ -55,7 +58,10 @@ fun AlertDialog.createLicence() {
         val startIndex = str.indexOf("《")
         sb.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                context.toast("隐私政策")
+                val bundle = Bundle()
+                bundle.putString("url", AppConfig.privacy)
+                bundle.putString("title", "隐私政策")
+                context.startKtxActivity<NormalWebActivity>(extra = bundle)
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -69,7 +75,9 @@ fun AlertDialog.createLicence() {
         val lastIndex = str.lastIndexOf("《")
         sb.setSpan(object : ClickableSpan() {
             override fun onClick(widget: View) {
-                context.toast("用户协议")
+                val bundle = Bundle()
+                bundle.putString("url", AppConfig.licence)
+                context.startKtxActivity<NormalWebActivity>(extra = bundle)
             }
 
             override fun updateDrawState(ds: TextPaint) {

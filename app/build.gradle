@@ -55,6 +55,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':Module-GlideLib')
     implementation project(':Module-Log')
+    implementation project(':Module-WebView')
     //jetPack相关库
     implementation rootProject.ext.jetpack["constraintlayout"]
     implementation rootProject.ext.jetpack["room"]
@@ -80,6 +81,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["immersionbar_components"]
     implementation rootProject.ext.thirdPack["immersionbar_ktx"]
     implementation rootProject.ext.thirdPack["liveDataBus"]
+    implementation rootProject.ext.thirdPack["licensesDialog"]
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]

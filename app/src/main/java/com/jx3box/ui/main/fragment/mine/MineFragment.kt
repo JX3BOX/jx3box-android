@@ -18,11 +18,12 @@ package com.jx3box.ui.main.fragment.mine
 
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.databinding.FragmentMineBinding
 import com.jx3box.mvvm.base.BaseVMFragment
-import kotlinx.android.synthetic.main.fragment_mine.*
+import de.psdev.licensesdialog.LicensesDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -31,7 +32,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @author Carey
  * @date 2020/9/23
  */
-class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine) {
+class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine),
+    View.OnClickListener {
     private val mineViewModel by viewModel<MineViewModel>()
 
     override fun startObserve() {
@@ -42,12 +44,8 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
         binding.run {
             viewModel = mineViewModel
         }
-        tvFeedBack.setOnClickListener {
-            val uri = Uri.parse(getString(R.string.sendto))
-            val intent = Intent(Intent.ACTION_SENDTO, uri)
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic))
-            startActivity(intent)
-        }
+        binding.tvFeedBack.setOnClickListener(this)
+        binding.tvLicense.setOnClickListener(this)
     }
 
     override fun initData() {
@@ -55,8 +53,26 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
 
     override fun initImmersionBar() {
         ImmersionBar.with(this)
-            .titleBar(tool_bar)
+            .titleBar(binding.toolBar)
             .statusBarDarkFont(true)
             .init()
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            binding.tvFeedBack -> {
+                val uri = Uri.parse(getString(R.string.sendto))
+                val intent = Intent(Intent.ACTION_SENDTO, uri)
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic))
+                startActivity(intent)
+            }
+            binding.tvLicense -> {
+                LicensesDialog.Builder(activity)
+                    .setTitle(R.string.column_license)
+                    .setNotices(R.raw.licenses)
+                    .build()
+                    .show()
+            }
+        }
     }
 }

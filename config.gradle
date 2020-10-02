@@ -30,6 +30,7 @@ ext {
             autosize           : "1.2.1",
             immersionbar       : "3.0.0",
             liveDataBus        : "1.7.2",
+            licensesDialog     : "2.1.0",
             PersistentCookieJar: "v1.0.1"
     ]
 
@@ -84,6 +85,8 @@ ext {
             immersionbar_components: "com.gyf.immersionbar:immersionbar-components:${version.immersionbar}",
             immersionbar_ktx       : "com.gyf.immersionbar:immersionbar-ktx:${version.immersionbar}",
             //消息总线
-            liveDataBus            : "com.jeremyliao:live-event-bus-x:${version.liveDataBus}"
+            liveDataBus            : "com.jeremyliao:live-event-bus-x:${version.liveDataBus}",
+            //显示应用中第三方库的许可证
+            licensesDialog         : "de.psdev.licensesdialog:licensesdialog:${version.licensesDialog}"
     ]
 }
