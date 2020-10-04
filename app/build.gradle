@@ -13,12 +13,11 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -33,10 +32,23 @@ android {
         buildConfigField "String", "BASE_URL", "\"https://server.jx3box.com\""
     }
 
+    signingConfigs {
+        config {
+            keyAlias ALIAS
+            keyPassword PASSWORD
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.config
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     compileOptions {
@@ -56,6 +68,7 @@ dependencies {
     implementation project(':Module-GlideLib')
     implementation project(':Module-Log')
     implementation project(':Module-WebView')
+    implementation project(':Module-Banner')
     //jetPack相关库
     implementation rootProject.ext.jetpack["constraintlayout"]
     implementation rootProject.ext.jetpack["room"]
@@ -82,6 +95,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["immersionbar_ktx"]
     implementation rootProject.ext.thirdPack["liveDataBus"]
     implementation rootProject.ext.thirdPack["licensesDialog"]
+    implementation rootProject.ext.thirdPack["recyclerViewAdapter"]
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]

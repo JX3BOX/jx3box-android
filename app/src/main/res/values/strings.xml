@@ -65,4 +65,26 @@
     <string name="column_works">我的作品</string>
     <string name="sendto">mailto:admin@jx3box.com</string>
     <string name="mail_topic">剑三魔盒App反馈</string>
+    <string name="cms_error">文章不存在</string>
+    <string name="macro">云端宏</string>
+    <string name="jx3dat">插件数据</string>
+    <string name="dungeon">副本数据</string>
+    <string name="bps">职业攻略</string>
+    <string name="diy_face">捏脸数据</string>
+    <string name="home">家园数据</string>
+    <string name="tools_tutorials">工具教程</string>
+    <string name="a_few_seconds_ago">%1$s秒前</string>
+    <string name="a_few_minutes_ago">%1$s分钟前</string>
+    <string name="a_few_hours_ago">%1$s小时前</string>
+    <string name="a_few_days_ago">%1$s天前</string>
+
+    <string-array name="article_type">
+        <item>@string/bbs</item>
+        <item>@string/dungeon</item>
+        <item>@string/jx3dat</item>
+        <item>@string/bps</item>
+        <item>@string/home</item>
+        <item>@string/tools_tutorials</item>
+    </string-array>
+
 </resources>

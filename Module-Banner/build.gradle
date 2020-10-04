@@ -27,6 +27,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -42,4 +43,5 @@ dependencies {
     implementation rootProject.ext.jetpack["kotlin"]
     implementation rootProject.ext.jetpack["androidCore"]
     implementation rootProject.ext.jetpack["appcompat"]
+    api rootProject.ext.jetpack["viewPager2"]
 }

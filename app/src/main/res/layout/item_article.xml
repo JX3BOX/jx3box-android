@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~    Copyright (c) 2020. jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import
+            alias="appR"
+            type="com.jx3box.R" />
+
+        <variable
+            name="data"
+            type="com.jx3box.data.net.model.ArticleDetailResult" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/dp_8"
+        app:cardElevation="@dimen/dp_2"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dp_10">
+
+            <ImageView
+                android:id="@+id/imgArticle"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_60"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                imageUrl="@{data.post.post_banner}"
+                placeholder="@{appR.drawable.icon_article_placeholder}"
+                tools:src="@drawable/icon_bbs_experience" />
+
+            <TextView
+                android:id="@+id/tvArticleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imgArticle"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_toEndOf="@+id/imgArticle"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14"
+                text="@{data.post.post_title}"
+                labels="@{data.post.mark}"
+                tools:text="茗伊插件，团队监控相关，建议调整地图优先级，以及取消头顶气泡的自动开启。" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tvArticleTitle"
+                android:layout_alignBottom="@+id/imgArticle"
+                android:text="@{data.author.name}"
+                android:textColor="@color/color_5c606f"
+                android:textSize="@dimen/sp_10"
+                tools:text="茗伊" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgArticle"
+                android:layout_alignParentEnd="true"
+                android:textColor="@color/color_5c606f"
+                android:textSize="@dimen/sp_10"
+                date="@{data.post.post_modified}"
+                tools:text="1天前" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

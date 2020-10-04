@@ -33,7 +33,7 @@ public class ByWebViewClient extends WebViewClient {
     private OnByWebClientCallback onByWebClientCallback;
 
     ByWebViewClient(Activity activity, ByWebView byWebView) {
-        mActivityWeakReference = new WeakReference<Activity>(activity);
+        mActivityWeakReference = new WeakReference<>(activity);
         this.mByWebView = byWebView;
     }
 

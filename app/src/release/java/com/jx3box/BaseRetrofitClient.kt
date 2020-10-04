@@ -43,24 +43,24 @@ abstract class BaseRetrofitClient {
     /**
      * Json数据解析
      */
-    fun <S> getService(serviceClass: Class<S>, baseUrl: String): S {
+    fun <S> getJsonService(serviceClass: Class<S>, baseUrl: String): S {
         return Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(buildGson()))
             .baseUrl(baseUrl)
             .build().create(serviceClass)
     }
-
-    /**
-     * Scalars数据解析
-     */
-    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
-        return Retrofit.Builder()
-            .client(client)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .baseUrl(baseUrl)
-            .build().create(serviceClass)
-    }
+//
+//    /**
+//     * Scalars数据解析
+//     */
+//    fun <S> getScalarsService(serviceClass: Class<S>, baseUrl: String): S {
+//        return Retrofit.Builder()
+//            .client(client)
+//            .addConverterFactory(ScalarsConverterFactory.create())
+//            .baseUrl(baseUrl)
+//            .build().create(serviceClass)
+//    }
 
     /**
      * 增加后台返回""和"null"的处理,如果后台返回格式正常

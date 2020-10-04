@@ -35,4 +35,16 @@ object NetConfig {
 
     /**获取当前用户基本信息*/
     const val personal_info_url = "/user/me"
+
+    /**获取文章列表*/
+    const val get_article_list = "/post/list"
+
+    /**获取banner*/
+    const val get_banner = "/index/list"
+
+    /**获取文章详情*/
+    const val get_article_detail = "/post/find"
+
+    /**我的文章列表*/
+    const val get_mine_article_list = "/post/mywork"
 }

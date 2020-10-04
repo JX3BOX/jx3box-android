@@ -13,6 +13,7 @@ ext {
             androidCore        : "1.3.1",
             appcompat          : "1.2.0",
             material           : "1.2.0",
+            viewPager2         : "1.0.0",
             constraintlayout   : "2.0.1",
             swipeRefreshLayout : "1.1.0",
             glide              : "4.11.0",
@@ -31,7 +32,8 @@ ext {
             immersionbar       : "3.0.0",
             liveDataBus        : "1.7.2",
             licensesDialog     : "2.1.0",
-            PersistentCookieJar: "v1.0.1"
+            PersistentCookieJar: "v1.0.1",
+            recyclerViewAdapter: "3.0.4"
     ]
 
     jetpack = [
@@ -48,6 +50,7 @@ ext {
             viewModel          : "androidx.lifecycle:lifecycle-viewmodel-ktx:${version.lifecycle}",
             lifecycle          : "androidx.lifecycle:lifecycle-extensions:${version.lifecycle}",
             material           : "com.google.android.material:material:${version.material}",
+            viewPager2         : "androidx.viewpager2:viewpager2:${version.viewPager2}",
             swipeRefreshLayout : "androidx.swiperefreshlayout:swiperefreshlayout:${version.swipeRefreshLayout}"
     ]
 
@@ -87,6 +90,8 @@ ext {
             //消息总线
             liveDataBus            : "com.jeremyliao:live-event-bus-x:${version.liveDataBus}",
             //显示应用中第三方库的许可证
-            licensesDialog         : "de.psdev.licensesdialog:licensesdialog:${version.licensesDialog}"
+            licensesDialog         : "de.psdev.licensesdialog:licensesdialog:${version.licensesDialog}",
+            //BaseRecyclerViewAdapterHelper
+            recyclerViewAdapter    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.recyclerViewAdapter}"
     ]
 }

@@ -48,4 +48,7 @@
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_6">6dp</dimen>
     <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_46">46dp</dimen>
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="dp_2">2dp</dimen>
 </resources>

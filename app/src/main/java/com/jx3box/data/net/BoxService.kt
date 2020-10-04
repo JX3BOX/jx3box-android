@@ -17,15 +17,9 @@
 package com.jx3box.data.net
 
 import com.jx3box.BuildConfig
-import com.jx3box.data.net.model.BoxResponse
-import com.jx3box.data.net.model.LoginInfoResult
-import com.jx3box.data.net.model.RegisterResult
-import com.jx3box.data.net.model.UserInfoResult
+import com.jx3box.data.net.model.*
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * @author Carey
@@ -65,4 +59,17 @@ interface BoxService {
      */
     @GET(NetConfig.personal_info_url)
     suspend fun getPersonalInfo(): BoxResponse<UserInfoResult>
+
+    /**
+     * 获取文章列表
+     */
+    @GET(NetConfig.get_article_list)
+    suspend fun getArticleList(@QueryMap params: HashMap<String, String>): BoxResponse<ArticleListResult>
+
+    /**
+     * 获取文章详情
+     */
+    @GET(NetConfig.get_article_detail)
+    suspend fun getArticleDetail(@Query("id") id: String): BoxResponse<ArticleDetailResult>
+
 }
