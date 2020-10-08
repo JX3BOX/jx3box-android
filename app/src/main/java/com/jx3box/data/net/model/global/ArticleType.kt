@@ -21,28 +21,28 @@ package com.jx3box.data.net.model.global
  *@author Carey
  *@date  2020/10/4
  */
-enum class ArticleType(val type: String) {
+enum class ArticleType(val type: String, val value: String) {
 //    /**宏库*/
 //    MACRO("macro"),
 
     /**茶馆*/
-    BBS("bbs"),
+    BBS("bbs", "茶馆"),
 
     /**副本*/
-    FB("fb"),
+    FB("fb", "副本数据"),
 
     /**插件*/
-    JX3DAT("jx3dat"),
+    JX3DAT("jx3dat", "插件数据"),
 
     /**职业攻略*/
-    BPS("bps"),
+    BPS("bps", "职业攻略"),
 //
 //    /**捏脸分享*/
 //    SHARE("share"),
 
     /**家园分享*/
-    HOUSE("house"),
+    HOUSE("house", "家园数据"),
 
     /**教程工具*/
-    TOOL("tool")
+    TOOL("tool", "工具教程")
 }

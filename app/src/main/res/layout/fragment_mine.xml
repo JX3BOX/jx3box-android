@@ -59,11 +59,11 @@
 
                 <ImageView
                     android:id="@+id/imgAvatar"
-                    placeholder="@{appR.drawable.icon_default_avatar}"
                     android:layout_width="@dimen/dp_70"
                     android:layout_height="@dimen/dp_70"
                     android:layout_gravity="center"
-                    app:circleImgUrl="@{viewModel.currentUser.userAvatar}" />
+                    circleImgUrl="@{viewModel.currentUser.userAvatar}"
+                    placeholder="@{appR.drawable.icon_default_avatar}" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/tool_bar"
@@ -98,51 +98,58 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvWorks"
-                    style="@style/MineColumn"
-                    android:text="@string/column_works"
-                    app:drawableStartCompat="@drawable/icon_works" />
-
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    isVisible="@{viewModel.isLogin()}">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvWiki"
-                    style="@style/MineColumn"
-                    android:text="@string/column_wiki"
-                    app:drawableStartCompat="@drawable/icon_wiki" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvWorks"
+                        style="@style/MineColumn"
+                        android:text="@string/column_works"
+                        app:drawableStartCompat="@drawable/icon_works" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvEntry"
-                    style="@style/MineColumn"
-                    android:text="@string/column_entry"
-                    app:drawableStartCompat="@drawable/icon_entry" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvWiki"
+                        style="@style/MineColumn"
+                        android:text="@string/column_wiki"
+                        app:drawableStartCompat="@drawable/icon_wiki" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvTopic"
-                    style="@style/MineColumn"
-                    android:text="@string/column_topic"
-                    app:drawableStartCompat="@drawable/icon_topic" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvEntry"
+                        style="@style/MineColumn"
+                        android:text="@string/column_entry"
+                        app:drawableStartCompat="@drawable/icon_entry" />
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvFavorites"
-                    style="@style/MineColumn"
-                    android:text="@string/column_favorites"
-                    app:drawableStartCompat="@drawable/icon_favorites" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTopic"
+                        style="@style/MineColumn"
+                        android:text="@string/column_topic"
+                        app:drawableStartCompat="@drawable/icon_topic" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvFavorites"
+                        style="@style/MineColumn"
+                        android:text="@string/column_favorites"
+                        app:drawableStartCompat="@drawable/icon_favorites" />
+                </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"

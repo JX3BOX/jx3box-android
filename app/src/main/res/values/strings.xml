@@ -47,7 +47,7 @@
     <string name="disagree">不同意</string>
     <string name="agree">同意并继续</string>
     <string name="licence_privacy">用户协议与隐私政策</string>
-    <string name="tools">工具</string>
+    <string name="tools">魔盒</string>
     <string name="bbs">茶馆</string>
     <string name="mine">我</string>
     <string name="title_activity_main2">MainActivity</string>
@@ -77,6 +77,8 @@
     <string name="a_few_minutes_ago">%1$s分钟前</string>
     <string name="a_few_hours_ago">%1$s小时前</string>
     <string name="a_few_days_ago">%1$s天前</string>
+    <string name="no_title">无标题</string>
+    <string name="see_more">查看更多＞＞</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

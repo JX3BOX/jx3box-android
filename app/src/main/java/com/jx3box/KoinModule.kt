@@ -18,9 +18,11 @@ package com.jx3box
 
 import com.jx3box.data.net.repository.AdvertRepository
 import com.jx3box.data.net.repository.ArticleRepository
+import com.jx3box.data.net.repository.IndexRepository
 import com.jx3box.data.net.repository.LoginRepository
+import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.ui.login.LoginViewModel
-import com.jx3box.ui.main.fragment.bbs.ArticleViewModel
+import com.jx3box.ui.main.article.ArticleViewModel
 import com.jx3box.ui.main.fragment.mine.MineViewModel
 import com.jx3box.ui.register.RegisterViewModel
 import com.jx3box.ui.splash.SplashViewModel
@@ -38,6 +40,7 @@ val viewModelModule = module {
     viewModel { RegisterViewModel(get()) }
     viewModel { MineViewModel() }
     viewModel { ArticleViewModel(get()) }
+    viewModel { IndexViewModel(get()) }
 }
 
 
@@ -45,6 +48,7 @@ val repositoryModule = module {
     single { AdvertRepository() }
     single { LoginRepository() }
     single { ArticleRepository() }
+    single { IndexRepository() }
 }
 
 val appModule = listOf(viewModelModule, repositoryModule)

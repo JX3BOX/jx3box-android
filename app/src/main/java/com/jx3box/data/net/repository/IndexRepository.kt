@@ -14,22 +14,24 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.data.net.repository
+
+import com.jx3box.data.net.Result
+import com.jx3box.data.net.RetrofitClient
+import com.jx3box.data.net.model.IndexResult
 
 /**
  *@author Carey
- *@date  2020/10/1
+ *@date  2020/10/5
  */
-object AppConfig {
-    /**隐私政策*/
-    const val privacy = "https://www.jx3box.com/about/privacy"
+class IndexRepository : BaseRepository() {
+    private suspend fun requestIndex(type: String): Result<List<IndexResult>> {
+        return executeResponse(RetrofitClient.jsonService.getIndex(type))
+    }
 
-    /**用户协议*/
-    const val licence = "https://www.jx3box.com/about/licence"
-
-    /**创作公约*/
-    const val treaty = "https://www.jx3box.com/about/treaty"
-
-    /**文章模板*/
-    const val article_html = "https://android.jx3box.com/article/article.html?type=cms&id="
+    suspend fun getIndex(type: String): Result<List<IndexResult>> {
+        return safeApiCall(
+            call = { requestIndex(type) }
+        )
+    }
 }

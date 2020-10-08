@@ -17,33 +17,34 @@
 package com.jx3box.ui.main.fragment.bbs
 
 import android.graphics.Color
+import android.os.Bundle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.carey.module_banner.IndicatorView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.data.net.model.global.ArticleType
-import com.jx3box.mvvm.base.BaseFragment
+import com.jx3box.databinding.FragmentBbsBinding
+import com.jx3box.mvvm.IndexViewModel
+import com.jx3box.mvvm.base.BaseVMFragment
+import com.jx3box.ui.NormalWebActivity
+import com.jx3box.ui.main.article.ArticleFragment
+import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_bbs.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * 茶馆
  * @author Carey
  * @date 2020/9/23
  */
-class BbsFragment : BaseFragment() {
+class BbsFragment : BaseVMFragment<FragmentBbsBinding>(R.layout.fragment_bbs) {
+    private val indexViewModel by viewModel<IndexViewModel>()
+    private val imageAdapter by lazy { BannerAdapter() }
 
-    private val imgStr = listOf(
-        "https://oss.jx3box.com/upload/post/2020/9/28/4679584.png",
-        "https://oss.jx3box.com/upload/post/2020/9/25/3102215.png",
-        "https://oss.jx3box.com/upload/post/2020/9/25/8989395.png",
-        "https://oss.jx3box.com/upload/post/2020/9/23/6653566.png",
-        "https://oss.jx3box.com/upload/post/2020/9/23/1537595.png",
-    )
-    override val layoutId: Int
-        get() = R.layout.fragment_bbs
-
+    /**banner*/
+    private val indexType = "slider"
     override fun initView() {
         initBanner()
         initViewPager()
@@ -54,7 +55,7 @@ class BbsFragment : BaseFragment() {
             override fun getItemCount() = ArticleType.values().size
 
             override fun createFragment(position: Int) =
-                ArticleFragment.newInstance(ArticleType.values()[position].type)
+                ArticleFragment.newInstance(ArticleType.values()[position])
         }
 
         val tabStr = resources.getStringArray(R.array.article_type)
@@ -69,14 +70,26 @@ class BbsFragment : BaseFragment() {
                 Color.WHITE
             )
         )
-        val imageAdapter = BannerAdapter()
-        imageAdapter.setOnItemClickListener { _, _, _ -> showToast(banner.currentPager.toString()) }
-        imageAdapter.setList(imgStr)
+        imageAdapter.setOnItemClickListener { _, _, position ->
+            val bundle = Bundle()
+            bundle.putString("url", imageAdapter.getItem(position).link)
+            startKtxActivity<NormalWebActivity>(extra = bundle)
+        }
         banner.adapter = imageAdapter
     }
 
-    override fun initData() {
+    override fun startObserve() {
+        indexViewModel.uiState.observe(viewLifecycleOwner, {
+            it.isSuccess?.let { result ->
+                imageAdapter.run {
+                    setList(result)
+                }
+            }
+        })
+    }
 
+    override fun initData() {
+        indexViewModel.getIndex(indexType)
     }
 
     override fun initImmersionBar() {

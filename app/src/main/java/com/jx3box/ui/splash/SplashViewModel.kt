@@ -38,8 +38,7 @@ class SplashViewModel(private val repository: AdvertRepository) : BaseViewModel(
             if (result is Result.Success) {
                 advertUrl.value = result.data
             } else {
-                advertUrl.value =
-                    "https://vignette.wikia.nocookie.net/theclonewiki/images/c/cf/Tup2.png/revision/latest/scale-to-width-down/308?cb=20120726013115"
+                advertUrl.value = ""
             }
         }
     }

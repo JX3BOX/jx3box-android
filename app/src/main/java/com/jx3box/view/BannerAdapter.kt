@@ -22,12 +22,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.jx3box.App
 import com.jx3box.R
+import com.jx3box.data.net.model.IndexResult
 
 /**
  *@author Carey
  *@date  2020/10/4
  */
-class BannerAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_banner_image) {
+class BannerAdapter : BaseQuickAdapter<IndexResult, BaseViewHolder>(R.layout.item_banner_image) {
 
     //回调出正确的position
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -35,7 +36,7 @@ class BannerAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_ban
         holder.itemView.setOnClickListener { setOnItemClick(holder.itemView, position) }
     }
 
-    override fun convert(holder: BaseViewHolder, item: String) {
-        holder.getView<ImageView>(R.id.bannerImg).loadImage(App.CONTEXT, item)
+    override fun convert(holder: BaseViewHolder, item: IndexResult) {
+        holder.getView<ImageView>(R.id.bannerImg).loadImage(App.CONTEXT, item.img)
     }
 }

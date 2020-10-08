@@ -14,22 +14,24 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net
+package com.jx3box.data.net.model
 
-/**
- *@author Carey
- *@date  2020/10/1
+/***
+ * @author Carey
+ * @date 2020/10/5
  */
-object AppConfig {
-    /**隐私政策*/
-    const val privacy = "https://www.jx3box.com/about/privacy"
-
-    /**用户协议*/
-    const val licence = "https://www.jx3box.com/about/licence"
-
-    /**创作公约*/
-    const val treaty = "https://www.jx3box.com/about/treaty"
-
-    /**文章模板*/
-    const val article_html = "https://android.jx3box.com/article/article.html?type=cms&id="
-}
+data class IndexResult(
+    var ID: Int,
+    var author: String,
+    var bgcolor: String,
+    var color: String,
+    var created_at: String,
+    var desc: String,
+    var img: String,
+    var link: String,
+    var power: String,
+    var status: String,
+    var title: String,
+    var type: String,
+    var updated_at: String
+)

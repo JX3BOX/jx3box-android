@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.main.fragment.bbs
+package com.jx3box.ui.main.article
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder

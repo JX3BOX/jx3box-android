@@ -13,23 +13,21 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+package com.jx3box.view.webview
 
-package com.jx3box.data.net
+import android.content.Context
+import android.webkit.JavascriptInterface
+import com.jx3box.module_log.LogUtils
+import com.jx3box.utils.toast
 
 /**
- *@author Carey
- *@date  2020/10/1
+ * @author Carey
+ * @date 2020/10/7
  */
-object AppConfig {
-    /**隐私政策*/
-    const val privacy = "https://www.jx3box.com/about/privacy"
-
-    /**用户协议*/
-    const val licence = "https://www.jx3box.com/about/licence"
-
-    /**创作公约*/
-    const val treaty = "https://www.jx3box.com/about/treaty"
-
-    /**文章模板*/
-    const val article_html = "https://android.jx3box.com/article/article.html?type=cms&id="
+class HybridInterface(private val context: Context) {
+    @JavascriptInterface
+    fun getToken(token: String) {
+        LogUtils.logD("token>>>>>>>>>>>>>>>>>>>>>>>>$token")
+        context.toast(token)
+    }
 }

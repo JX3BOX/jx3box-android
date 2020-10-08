@@ -20,9 +20,13 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import com.gyf.immersionbar.ImmersionBar
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.jx3box.R
 import com.jx3box.databinding.FragmentMineBinding
 import com.jx3box.mvvm.base.BaseVMFragment
+import com.jx3box.ui.login.LoginActivity
+import com.jx3box.utils.getSpValue
+import com.jx3box.utils.startKtxActivity
 import de.psdev.licensesdialog.LicensesDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,9 +40,7 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
     View.OnClickListener {
     private val mineViewModel by viewModel<MineViewModel>()
 
-    override fun startObserve() {
-
-    }
+    override fun startObserve() {}
 
     override fun initView() {
         binding.run {
@@ -46,9 +48,21 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
         }
         binding.tvFeedBack.setOnClickListener(this)
         binding.tvLicense.setOnClickListener(this)
+        binding.imgAvatar.setOnClickListener(this)
     }
 
     override fun initData() {
+        onEvent()
+        mineViewModel.getUserInfo()
+    }
+
+    /**
+     * 消息订阅事件
+     */
+    private fun onEvent() {
+        LiveEventBus
+            .get("login_succeed", String::class.java)
+            .observe(this, { mineViewModel.getUserInfo() })
     }
 
     override fun initImmersionBar() {
@@ -72,6 +86,12 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
                     .setNotices(R.raw.licenses)
                     .build()
                     .show()
+            }
+            binding.imgAvatar -> {
+                val isLogin = requireContext().getSpValue("isLogin", false)
+                if (!isLogin) {
+                    startKtxActivity<LoginActivity>()
+                }
             }
         }
     }

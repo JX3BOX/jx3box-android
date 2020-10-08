@@ -70,7 +70,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/app"
             app:imageUrl="@{viewModel.advertUrl}"
-            placeholder="@{appR.drawable.bg_advertising}" />
+            placeholder="@{appR.drawable.bg_activity}" />
 
         <TextView
             android:id="@+id/mTvSkip"
@@ -84,7 +84,6 @@
             android:gravity="center"
             android:text="@string/skip_intro"
             android:textColor="@color/white"
-            android:textSize="@dimen/sp_12"
-            android:visibility="gone" />
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
 </layout>

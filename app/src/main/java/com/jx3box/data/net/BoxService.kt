@@ -72,4 +72,10 @@ interface BoxService {
     @GET(NetConfig.get_article_detail)
     suspend fun getArticleDetail(@Query("id") id: String): BoxResponse<ArticleDetailResult>
 
+    /***
+     * 获取站内相关信息
+     */
+    @GET(NetConfig.get_index)
+    suspend fun getIndex(@Query("type") type: String): BoxResponse<List<IndexResult>>
+
 }

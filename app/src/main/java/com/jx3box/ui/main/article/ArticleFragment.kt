@@ -14,12 +14,17 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.main.fragment.bbs
+package com.jx3box.ui.main.article
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
 import com.jx3box.R
+import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentArticleBinding
 import com.jx3box.mvvm.base.BaseVMFragment
+import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -29,14 +34,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment_article) {
     private val articleViewModel by viewModel<ArticleViewModel>()
     private val articleAdapter by lazy { ArticleAdapter() }
-    private val articleType by lazy { arguments?.getString(ARTICLE_TYPE) }
+    private val articleType by lazy { arguments?.getSerializable(ARTICLE_TYPE) as ArticleType }
 
     companion object {
         private const val ARTICLE_TYPE = "articleType"
-        fun newInstance(articleType: String): ArticleFragment {
+        fun newInstance(articleType: ArticleType): ArticleFragment {
             val fragment = ArticleFragment()
             val bundle = Bundle()
-            bundle.putString(ARTICLE_TYPE, articleType)
+            bundle.putSerializable(ARTICLE_TYPE, articleType)
             fragment.arguments = bundle
             return fragment
         }
@@ -46,6 +51,13 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
         binding.run {
             adapter = articleAdapter
         }
+
+        articleAdapter.setOnItemClickListener { _, _, position ->
+            val bundle = Bundle()
+            bundle.putInt("article_id", articleAdapter.getItem(position).post.ID)
+            bundle.putString("article_type", articleType.value)
+            startKtxActivity<ArticleDetailActivity>(extra = bundle)
+        }
     }
 
     override fun initData() {
@@ -53,26 +65,34 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
     }
 
     override fun startObserve() {
-        articleViewModel.uiState.observe(viewLifecycleOwner, {
-//            if (it.isLoading) showLoadingDialog(requireContext())
+        articleViewModel.articleListState.observe(viewLifecycleOwner, {
             it.isSuccess?.let { result ->
                 articleAdapter.run {
                     setList(result.list)
+                    articleAdapter.setFooterView(footView())
                 }
             }
             it.isError?.let { msg ->
-//                hideLoadingDialog()
                 showToast(msg)
             }
         })
     }
 
+    private fun footView(): View {
+        val view: View = LayoutInflater.from(requireContext())
+            .inflate(R.layout.view_see_more, binding.recyclerview, false)
+        view.findViewById<TextView>(R.id.tvSeeMore).setOnClickListener {
+            showToast(articleType.value)
+        }
+        return view
+    }
+
     override fun initImmersionBar() {}
 
     private fun loadData() {
-        articleType?.run {
+        articleType.run {
             val params = HashMap<String, String>()
-            params["type"] = this
+            params["type"] = this.type
             articleViewModel.getArticleList(params = params)
         }
     }

@@ -110,40 +110,45 @@ fun TextView.article(text: String, labels: List<String>?) {
         }
     }
     str.append(text)
+    if (str.isEmpty()) str.append(context.resources.getString(R.string.no_title))
     setText(str)
 }
 
 @BindingAdapter("date")
-fun TextView.showTime(date: String) {
-    try {
-        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z", Locale.getDefault())
-        val d = format.parse(date.replace("Z", " UTC"))
-        val now = System.currentTimeMillis()
-        val abs = abs(now - d!!.time)
-        val seconds: Long
-        when {
-            abs < 60000 -> { // 一分钟内
-                seconds = abs / 1000
-                text = context.resources.getString(R.string.a_few_seconds_ago, seconds.toString())
+fun TextView.showTime(date: String?) {
+    date?.run {
+        try {
+            val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z", Locale.getDefault())
+            val d = format.parse(replace("Z", " UTC"))
+            val now = System.currentTimeMillis()
+            val abs = abs(now - d!!.time)
+            val seconds: Long
+            when {
+                abs < 60000 -> { // 一分钟内
+                    seconds = abs / 1000
+                    text =
+                        context.resources.getString(R.string.a_few_seconds_ago, seconds.toString())
+                }
+                abs < 3600000 -> { // 一小时内
+                    seconds = abs / 60000
+                    text =
+                        context.resources.getString(R.string.a_few_minutes_ago, seconds.toString())
+                }
+                abs < 86400000 -> { // 一天内
+                    seconds = abs / 3600000
+                    text = context.resources.getString(R.string.a_few_hours_ago, seconds.toString())
+                }
+                abs < 1702967296 -> { // 三十天内
+                    seconds = abs / 86400000
+                    text = context.resources.getString(R.string.a_few_days_ago, seconds.toString())
+                }
+                else -> { // 日期格式
+                    val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    text = df.format(d)
+                }
             }
-            abs < 3600000 -> { // 一小时内
-                seconds = abs / 60000
-                text = context.resources.getString(R.string.a_few_minutes_ago, seconds.toString())
-            }
-            abs < 86400000 -> { // 一天内
-                seconds = abs / 3600000
-                text = context.resources.getString(R.string.a_few_hours_ago, seconds.toString())
-            }
-            abs < 1702967296 -> { // 三十天内
-                seconds = abs / 86400000
-                text = context.resources.getString(R.string.a_few_days_ago, seconds.toString())
-            }
-            else -> { // 日期格式
-                val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                text = df.format(d)
-            }
+        } catch (e: Exception) {
+            text = ""
         }
-    } catch (e: Exception) {
-        text = ""
     }
 }

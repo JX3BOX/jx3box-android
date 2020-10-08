@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -16,6 +17,8 @@ import android.widget.FrameLayout;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import java.util.List;
 
 /**
  * 网页可以处理:
@@ -62,6 +65,8 @@ public class ByWebView {
         }
         // 配置
         handleSetting();
+
+        syncCookie(builder.cookies);
         // 视频、照片、进度条
         mWebChromeClient = new ByWebChromeClient(activity, this);
         mWebChromeClient.setOnByWebChromeCallback(builder.mOnTitleProgressCallback);
@@ -98,6 +103,24 @@ public class ByWebView {
             byLoadJsHolder = new ByLoadJsHolder(mWebView);
         }
         return byLoadJsHolder;
+    }
+
+    private void syncCookie(List<String> cookies) {
+        CookieManager.setAcceptFileSchemeCookies(true);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+        cookieManager.removeSessionCookie();// 移除
+        cookieManager.removeAllCookie();
+        if (cookies != null) {
+            for (String cookie : cookies) {
+                StringBuilder sbCookie = new StringBuilder();//创建一个拼接cookie的容器,
+                sbCookie.append(cookie);
+                sbCookie.append(";domain=.jx3box.com");
+                sbCookie.append(";path=/;httponly");
+                cookieManager.setCookie(".jx3box.com", sbCookie.toString());//为url设置cookie
+            }
+        }
+        CookieManager.getInstance().flush();
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -331,6 +354,7 @@ public class ByWebView {
         private String mErrorTitle;
         private WebView mCustomWebView;
         private String mInterfaceName;
+        private List<String> cookies;
         private Object mInterfaceObj;
         private ViewGroup mWebContainer;
         private ViewGroup.LayoutParams mLayoutParams;
@@ -366,6 +390,16 @@ public class ByWebView {
             this.mWebContainer = webContainer;
             this.mIndex = index;
             this.mLayoutParams = layoutParams;
+            return this;
+        }
+
+        /**
+         * 设置WebView cookie
+         *
+         * @param cookies
+         */
+        public Builder setCookie(List<String> cookies) {
+            this.cookies = cookies;
             return this;
         }
 
@@ -469,7 +503,12 @@ public class ByWebView {
 
         public ByWebView loadUrl(String url) {
             ByWebView byWebView = new ByWebView(this);
-            byWebView.loadUrl(url);
+            if (url.contains("?")) {
+                byWebView.loadUrl(url + "&mode=app_web");
+            } else {
+                byWebView.loadUrl(url + "?mode=app_web");
+            }
+
             return byWebView;
         }
 

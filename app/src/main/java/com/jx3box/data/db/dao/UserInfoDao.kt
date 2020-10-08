@@ -30,7 +30,7 @@ interface UserInfoDao {
     fun insert(user: UserInfoResult)
 
     @Query("SELECT * FROM UserInfo WHERE id=:uid")
-    fun getCurrentUser(uid: Int): LiveData<UserInfoResult>
+    fun getCurrentUserLiveData(uid: Int): LiveData<UserInfoResult>
 
     @Delete
     fun deleteUser(user: UserInfoResult)

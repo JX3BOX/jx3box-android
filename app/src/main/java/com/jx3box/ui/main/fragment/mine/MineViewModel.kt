@@ -16,8 +16,11 @@
 
 package com.jx3box.ui.main.fragment.mine
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.jx3box.App
 import com.jx3box.data.db.BoxDatabase
+import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.mvvm.base.BaseViewModel
 import com.jx3box.utils.getSpValue
 
@@ -26,7 +29,17 @@ import com.jx3box.utils.getSpValue
  * @date 2020/9/30
  */
 class MineViewModel : BaseViewModel() {
-    val currentUser = BoxDatabase.instance.userInfoDao()
-        .getCurrentUser(App.CONTEXT.getSpValue("current_user", 0))
+    private val _currentUser = MutableLiveData<LiveData<UserInfoResult>>()
+    val currentUser: LiveData<UserInfoResult>?
+        get() = _currentUser.value
+    val isLogin = MutableLiveData<Boolean>()
+
+    fun getUserInfo() {
+        isLogin.value = App.CONTEXT.getSpValue("isLogin", false)
+        if (isLogin.value!!) {
+            _currentUser.value = BoxDatabase.instance.userInfoDao()
+                .getCurrentUserLiveData(App.CONTEXT.getSpValue("current_user", 0))
+        }
+    }
 
 }

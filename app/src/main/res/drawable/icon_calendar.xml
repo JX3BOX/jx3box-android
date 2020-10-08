@@ -1,0 +1,25 @@
+<!--
+  ~    Copyright (c) 2020. jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M896,345L896,233a8,8 0,0 0,-8 -8L738,225v45c0,17.67 -14.33,32 -32,32 -17.67,0 -32,-14.33 -32,-32v-45L350,225v45c0,17.67 -14.33,32 -32,32 -17.67,0 -32,-14.33 -32,-32v-45L136,225a8,8 0,0 0,-8 8v112h768zM896,409L128,409v479a8,8 0,0 0,8 8h752a8,8 0,0 0,8 -8L896,409zM738,161h190c17.67,0 32,14.33 32,32v735c0,17.67 -14.33,32 -32,32L96,960c-17.67,0 -32,-14.33 -32,-32L64,193c0,-17.67 14.33,-32 32,-32h190L286,96c0,-17.67 14.33,-32 32,-32 17.67,0 32,14.33 32,32v65h324L674,96c0,-17.67 14.33,-32 32,-32 17.67,0 32,14.33 32,32v65zM289,473h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM289,601h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM289,729h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM483,473h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM483,601h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM483,729h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM677,473h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM677,601h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32zM677,729h58c17.67,0 32,14.33 32,32 0,17.67 -14.33,32 -32,32h-58c-17.67,0 -32,-14.33 -32,-32 0,-17.67 14.33,-32 32,-32z" />
+</vector>

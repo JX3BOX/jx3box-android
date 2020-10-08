@@ -1,0 +1,34 @@
+<!--
+  ~    Copyright (c) 2020. jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:pathData="M882.8,891.2L152.5,891.2c-17.5,0 -31.7,-14.2 -31.7,-31.7L120.8,129.3c0,-17.5 14.2,-31.7 31.7,-31.7h730.3c17.5,0 31.7,14.2 31.7,31.7v730.3c0,17.5 -14.2,31.6 -31.7,31.6zM184.2,827.9h666.9L851.1,161L184.2,161v666.9z"
+        android:fillColor="#333333" />
+    <path
+        android:pathData="M517.7,776c-5.5,0 -10.9,-1.4 -15.8,-4.2l-216.5,-125c-9.8,-5.7 -15.8,-16.1 -15.8,-27.4V369.5c0,-11.3 6,-21.8 15.8,-27.4l216.4,-124.9c9.8,-5.7 21.9,-5.7 31.7,0l216.4,124.9c9.8,5.7 15.8,16.1 15.8,27.4v249.8c0,11.3 -6,21.8 -15.8,27.4l-216.4,125c-4.9,2.9 -10.4,4.3 -15.8,4.3zM333,601.1l184.7,106.6 184.7,-106.6V387.8L517.7,281.1 333,387.8v213.3z"
+        android:fillColor="#333333" />
+    <path
+        android:pathData="M517.9,530.2c-5.5,0 -10.9,-1.4 -15.8,-4.2L285.7,401c-15.2,-8.8 -20.3,-28.1 -11.6,-43.3 8.7,-15.2 28.1,-20.4 43.3,-11.6L517.9,462l200.6,-115.8c15.2,-8.8 34.5,-3.6 43.3,11.6 8.7,15.2 3.5,34.5 -11.6,43.3L533.7,526c-4.9,2.8 -10.3,4.2 -15.8,4.2z"
+        android:fillColor="#333333" />
+    <path
+        android:pathData="M517.9,766.1c-17.5,0 -31.7,-14.2 -31.7,-31.7V498.5c0,-17.5 14.2,-31.7 31.7,-31.7s31.7,14.2 31.7,31.7v235.9c0,17.6 -14.2,31.7 -31.7,31.7zM240.1,236.3c-8.7,0 -17.3,-3.5 -23.5,-10.5l-54.3,-60.2c-11.7,-13 -10.7,-33 2.3,-44.7 13,-11.7 33,-10.7 44.7,2.3l54.3,60.2c11.7,13 10.7,33 -2.3,44.7 -6.1,5.5 -13.7,8.2 -21.2,8.2zM863.7,866.4c-8.7,0 -17.3,-3.5 -23.5,-10.5l-54.3,-60.2c-11.7,-13 -10.7,-33 2.3,-44.7 13,-11.7 33,-10.7 44.7,2.3l54.3,60.2c11.7,13 10.7,33 -2.3,44.7 -6,5.5 -13.6,8.2 -21.2,8.2zM171.7,868.2c-8.7,0 -17.3,-3.5 -23.5,-10.5 -11.7,-13 -10.7,-33 2.3,-44.7l60.2,-54.3c13,-11.7 33,-10.7 44.7,2.3 11.7,13 10.7,33 -2.3,44.7L192.9,860c-6.1,5.5 -13.7,8.2 -21.2,8.2zM801.7,244.6c-8.7,0 -17.3,-3.5 -23.5,-10.5 -11.7,-13 -10.7,-33 2.3,-44.7l60.2,-54.3c13,-11.7 33,-10.7 44.7,2.3 11.7,13 10.7,33 -2.3,44.7l-60.2,54.3c-6.1,5.5 -13.7,8.2 -21.2,8.2z"
+        android:fillColor="#333333" />
+</vector>

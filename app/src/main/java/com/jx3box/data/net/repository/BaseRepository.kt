@@ -52,10 +52,11 @@ open class BaseRepository {
      */
     suspend fun <T : Any> executeResponse(
         response: BoxResponse<T>, successBlock: (suspend CoroutineScope.() -> Unit)? = null,
-        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
+        errorBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        successCode: Int = 0
     ): Result<T> {
         return coroutineScope {
-            if (response.code != 10066) {
+            if (response.code != successCode) {
                 errorBlock?.let { it() }
                 Result.Error(IOException(response.msg))
             } else {

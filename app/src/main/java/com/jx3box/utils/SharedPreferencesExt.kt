@@ -21,6 +21,7 @@ package com.jx3box.utils
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import com.franmontiel.persistentcookiejar.persistence.SerializableCookie
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -152,4 +153,28 @@ private fun <T> deSerialization(str: String?): T {
     objectInputStream.close()
     byteArrayInputStream.close()
     return obj
+}
+
+fun Context.getCookies(): List<String>? {
+    val isLogin = getSpValue("isLogin", false)
+    if (isLogin) {
+        val token = getSpValue(
+            key = "http://jx3box.com/|token",
+            default = "",
+            name = "CookiePersistence"
+        )
+        val tokenSig = getSpValue(
+            key = "http://jx3box.com/|token.sig",
+            default = "",
+            name = "CookiePersistence"
+        )
+        val cookies: MutableList<String> = ArrayList()
+        val cookieToken = SerializableCookie().decode(token)
+        val cookieSig = SerializableCookie().decode(tokenSig)
+        cookies.add("token=${cookieToken.value}")
+        cookies.add("token.sig=${cookieSig.value}")
+        return cookies
+    } else {
+        return null
+    }
 }

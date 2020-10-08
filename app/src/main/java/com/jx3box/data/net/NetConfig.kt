@@ -39,8 +39,13 @@ object NetConfig {
     /**获取文章列表*/
     const val get_article_list = "/post/list"
 
-    /**获取banner*/
-    const val get_banner = "/index/list"
+    /**
+     * 获取网站首页相关
+     * banner  type=slider
+     * 站内推广 type=activity
+     * 最新消息 type=news
+     */
+    const val get_index = "/index/list"
 
     /**获取文章详情*/
     const val get_article_detail = "/post/find"

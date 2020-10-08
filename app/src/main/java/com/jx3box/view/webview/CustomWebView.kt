@@ -14,20 +14,19 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.model
+package com.jx3box.view.webview
 
-data class BannerResult(
-    var ID: Int,
-    var author: String,
-    var bgcolor: String,
-    var color: String,
-    var created_at: String,
-    var desc: String,
-    var img: String,
-    var link: String,
-    var power: String,
-    var status: String,
-    var title: String,
-    var type: String,
-    var updated_at: String
-)
+import android.content.Context
+import android.webkit.WebView
+
+/**
+ * 自适应高度的webview
+ * @author Carey
+ * @date 2020/10/06
+ */
+class CustomWebView(context: Context) : WebView(context) {
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val mExpandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE shr 2, MeasureSpec.AT_MOST)
+        super.onMeasure(widthMeasureSpec, mExpandSpec)
+    }
+}

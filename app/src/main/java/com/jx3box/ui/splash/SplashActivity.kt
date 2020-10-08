@@ -16,9 +16,13 @@
 
 package com.jx3box.ui.splash
 
+import com.gyf.immersionbar.BarHide
+import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.databinding.ActivitySplashBinding
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.ui.main.MainActivity
+import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -36,10 +40,17 @@ class SplashActivity : BaseVMActivity() {
         binding.run {
             viewModel = splashViewModel
         }
+        binding.mTvSkip.setOnClickListener {
+            startKtxActivity<MainActivity>()
+            finish()
+        }
     }
 
     override fun initImmersionBar() {
-
+        ImmersionBar.with(this)
+            .hideBar(BarHide.FLAG_HIDE_BAR)
+            .transparentBar()
+            .init()
     }
 
     override fun startObserve() {

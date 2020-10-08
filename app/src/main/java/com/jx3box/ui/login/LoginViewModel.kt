@@ -22,11 +22,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.RegexUtils
+import com.jx3box.App
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.data.net.checkResult
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.data.net.repository.LoginRepository
 import com.jx3box.mvvm.base.BaseViewModel
+import com.jx3box.utils.putSpValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -70,6 +72,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
             login.checkResult(
                 onSuccess = {
                     BoxDatabase.instance.loginInfoDao().insert(it)
+                    App.CONTEXT.putSpValue("token", it.token)
                     result.checkResult(
                         onSuccess = { user ->
                             _uiState.value =
