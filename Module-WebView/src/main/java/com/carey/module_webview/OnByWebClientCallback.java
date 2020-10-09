@@ -28,4 +28,13 @@ public abstract class OnByWebClientCallback {
     public boolean onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         return false;
     }
+
+    /**
+     * 是否文章详情嵌套网页
+     *
+     * @return true 表示是自己处理的
+     */
+    public boolean isArticleDetail(WebView view, String url) {
+        return false;
+    }
 }

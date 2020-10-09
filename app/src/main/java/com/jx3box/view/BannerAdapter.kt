@@ -37,6 +37,11 @@ class BannerAdapter : BaseQuickAdapter<IndexResult, BaseViewHolder>(R.layout.ite
     }
 
     override fun convert(holder: BaseViewHolder, item: IndexResult) {
-        holder.getView<ImageView>(R.id.bannerImg).loadImage(App.CONTEXT, item.img)
+        holder.getView<ImageView>(R.id.bannerImg).loadImage(
+            App.CONTEXT,
+            item.img,
+            isCrossFade = false,
+            placeHolder = R.drawable.bg_placeholder
+        )
     }
 }

@@ -45,7 +45,7 @@ fun bindImage(
     url: String?,
     placeholder: Int = R.color.transparent
 ) {
-    imageView.loadImage(imageView.context, url, placeholder)
+    imageView.loadImage(imageView.context, url, isCrossFade = false, placeHolder = placeholder)
 }
 
 @BindingAdapter("imageUrl", "subtype", requireAll = false)
@@ -62,7 +62,7 @@ fun bindImage(
         "4" -> placeholder = R.drawable.icon_bbs_discuz
         "5" -> placeholder = R.drawable.icon_bbs_idea
     }
-    imageView.loadImage(imageView.context, url, placeholder)
+    imageView.loadImage(imageView.context, url, isCrossFade = false, placeHolder = placeholder)
 }
 
 @BindingAdapter("circleImgUrl", "placeholder", requireAll = false)

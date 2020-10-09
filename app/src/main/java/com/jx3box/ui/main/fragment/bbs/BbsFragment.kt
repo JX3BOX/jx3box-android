@@ -28,7 +28,7 @@ import com.jx3box.databinding.FragmentBbsBinding
 import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
-import com.jx3box.ui.main.article.ArticleFragment
+import com.jx3box.ui.article.ArticleFragment
 import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_bbs.*

@@ -21,7 +21,7 @@
 
         <variable
             name="viewModel"
-            type="com.jx3box.ui.main.article.ArticleViewModel" />
+            type="com.jx3box.ui.article.ArticleViewModel" />
     </data>
 
     <LinearLayout

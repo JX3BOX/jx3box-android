@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.main.article
+package com.jx3box.ui.article
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

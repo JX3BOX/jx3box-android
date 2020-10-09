@@ -69,6 +69,7 @@ dependencies {
     implementation project(':Module-Log')
     implementation project(':Module-WebView')
     implementation project(':Module-Banner')
+    implementation project(':Module-ImageBrowser')
     //jetPack相关库
     implementation rootProject.ext.jetpack["constraintlayout"]
     implementation rootProject.ext.jetpack["room"]

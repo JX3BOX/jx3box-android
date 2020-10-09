@@ -51,6 +51,7 @@ object EasyGlide {
     fun ImageView.loadImage(
         context: Context,
         url: String?,
+        isCrossFade: Boolean = true,
         @DrawableRes placeHolder: Int = placeHolderImageView,
         onProgressListener: OnProgressListener? = null,
         requestListener: RequestListener<Drawable?>? = null
@@ -61,7 +62,29 @@ object EasyGlide {
                 .Builder()
                 .url(url)
                 .isCropCenter(true)
-                .isCrossFade(true)
+                .isCrossFade(isCrossFade)
+                .errorPic(placeHolder)
+                .placeholder(placeHolder)
+                .imageView(this)
+                .progressListener(onProgressListener)
+                .requestListener(requestListener)
+                .build()
+        )
+    }
+
+    fun ImageView.loadFitImage(
+        context: Context,
+        url: String?,
+        @DrawableRes placeHolder: Int = placeHolderImageView,
+        onProgressListener: OnProgressListener? = null,
+        requestListener: RequestListener<Drawable?>? = null
+    ) {
+        loadImage(
+            context,
+            GlideConfigImpl
+                .Builder()
+                .url(url)
+                .isFitCenter(true)
                 .errorPic(placeHolder)
                 .placeholder(placeHolder)
                 .imageView(this)
@@ -283,13 +306,6 @@ object EasyGlide {
                 3 -> diskCacheStrategy(DiskCacheStrategy.DATA)
                 4 -> diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 else -> diskCacheStrategy(DiskCacheStrategy.ALL)
-            }
-            if (config.isCrossFade) {
-                val factory = DrawableCrossFadeFactory
-                    .Builder()
-                    .setCrossFadeEnabled(true)
-                    .build()
-                transition(DrawableTransitionOptions.withCrossFade(factory))
             }
             if (config.isCrossFade) {
                 val factory = DrawableCrossFadeFactory

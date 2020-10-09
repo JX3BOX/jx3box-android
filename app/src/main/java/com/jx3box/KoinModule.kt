@@ -21,8 +21,8 @@ import com.jx3box.data.net.repository.ArticleRepository
 import com.jx3box.data.net.repository.IndexRepository
 import com.jx3box.data.net.repository.LoginRepository
 import com.jx3box.mvvm.IndexViewModel
+import com.jx3box.ui.article.ArticleViewModel
 import com.jx3box.ui.login.LoginViewModel
-import com.jx3box.ui.main.article.ArticleViewModel
 import com.jx3box.ui.main.fragment.mine.MineViewModel
 import com.jx3box.ui.register.RegisterViewModel
 import com.jx3box.ui.splash.SplashViewModel

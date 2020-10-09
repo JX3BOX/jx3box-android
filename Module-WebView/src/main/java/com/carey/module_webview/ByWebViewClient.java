@@ -45,35 +45,44 @@ public class ByWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         String url = request.getUrl().toString();
-        if (TextUtils.isEmpty(url)) {
-            return false;
-        }
-        if (onByWebClientCallback != null) {
-            return onByWebClientCallback.isOpenThirdApp(url);
-        } else {
-            Activity mActivity = this.mActivityWeakReference.get();
-            if (mActivity != null && !mActivity.isFinishing()) {
-                return ByWebTools.handleThirdApp(mActivity, url);
-            } else {
-                return !url.startsWith("http:") && !url.startsWith("https:");
+        if (!onByWebClientCallback.isArticleDetail(view, url)) {
+            if (TextUtils.isEmpty(url)) {
+                return false;
             }
+            if (onByWebClientCallback != null) {
+                return onByWebClientCallback.isOpenThirdApp(url);
+            } else {
+                Activity mActivity = this.mActivityWeakReference.get();
+                if (mActivity != null && !mActivity.isFinishing()) {
+                    return ByWebTools.handleThirdApp(mActivity, url);
+                } else {
+                    return !url.startsWith("http:") && !url.startsWith("https:");
+                }
+            }
+        } else {
+            return true;
         }
+
     }
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (TextUtils.isEmpty(url)) {
-            return false;
-        }
-        if (onByWebClientCallback != null) {
-            return onByWebClientCallback.isOpenThirdApp(url);
-        } else {
-            Activity mActivity = this.mActivityWeakReference.get();
-            if (mActivity != null && !mActivity.isFinishing()) {
-                return ByWebTools.handleThirdApp(mActivity, url);
-            } else {
-                return !url.startsWith("http:") && !url.startsWith("https:");
+        if (!onByWebClientCallback.isArticleDetail(view, url)) {
+            if (TextUtils.isEmpty(url)) {
+                return false;
             }
+            if (onByWebClientCallback != null) {
+                return onByWebClientCallback.isOpenThirdApp(url);
+            } else {
+                Activity mActivity = this.mActivityWeakReference.get();
+                if (mActivity != null && !mActivity.isFinishing()) {
+                    return ByWebTools.handleThirdApp(mActivity, url);
+                } else {
+                    return !url.startsWith("http:") && !url.startsWith("https:");
+                }
+            }
+        } else {
+            return true;
         }
     }
 
@@ -88,6 +97,7 @@ public class ByWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         // html加载完成之后，添加监听图片的点击js函数
+        loadImageClickJs();
         Activity mActivity = this.mActivityWeakReference.get();
         if (mActivity != null && !mActivity.isFinishing()
                 && !ByWebTools.isNetworkConnected(mActivity) && mByWebView.getProgressBar() != null) {
@@ -168,6 +178,22 @@ public class ByWebViewClient extends WebViewClient {
             //异常放大，缩回去。
             view.setInitialScale((int) (oldScale / newScale * 100));
         }
+    }
+
+
+    /**
+     * 前端注入JS：
+     * 这段js函数的功能就是，遍历所有的img节点，并添加onclick函数，函数的功能是在图片点击的时候调用本地java接口并传递url过去
+     */
+    private void loadImageClickJs() {
+        mByWebView.getLoadJsHolder()
+                .loadJs("javascript:(function(){" +
+                        "var objs = document.getElementsByTagName(\"img\");" +
+                        "for(var i=0;i<objs.length;i++)" +
+                        "{" +
+                        "objs[i].onclick=function(){window.hybridInject.showImage(this.getAttribute(\"src\"));}" +
+                        "}" +
+                        "})()");
     }
 
 }

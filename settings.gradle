@@ -1,3 +1,4 @@
+include ':Module-ImageBrowser'
 include ':Module-Banner'
 include ':Module-WebView'
 include ':Module-Log'

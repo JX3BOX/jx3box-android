@@ -14,8 +14,9 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.main.article
+package com.jx3box.ui.article
 
+import android.os.Bundle
 import android.webkit.WebView
 import android.widget.FrameLayout
 import com.carey.module_webview.ByWebView
@@ -25,8 +26,11 @@ import com.jx3box.R
 import com.jx3box.data.net.AppConfig
 import com.jx3box.databinding.ActivityArticleDetailBinding
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.ui.NormalWebActivity
 import com.jx3box.utils.getCookies
+import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.webview.CustomWebView
+import com.jx3box.view.webview.HybridInterface
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.layout_title_back_text.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,6 +68,7 @@ class ArticleDetailActivity : BaseVMActivity() {
             .setWebParent(flContent, FrameLayout.LayoutParams(-1, -1))
             .useWebProgress(false)
             .setOnByWebClientCallback(onByWebClientCallback)
+            .addJavascriptInterface("hybridInject", HybridInterface(this))
             .loadUrl(AppConfig.article_html + articleId)
     }
 
@@ -71,6 +76,13 @@ class ArticleDetailActivity : BaseVMActivity() {
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
             hideLoadingDialog()
+        }
+
+        override fun isArticleDetail(view: WebView?, url: String?): Boolean {
+            val bundle = Bundle()
+            bundle.putString("url", url)
+            startKtxActivity<NormalWebActivity>(extra = bundle)
+            return true
         }
     }
 

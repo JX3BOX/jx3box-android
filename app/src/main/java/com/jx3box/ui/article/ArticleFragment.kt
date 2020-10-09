@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.main.article
+package com.jx3box.ui.article
 
 import android.os.Bundle
 import android.view.LayoutInflater
