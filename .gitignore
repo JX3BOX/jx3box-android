@@ -3,6 +3,8 @@
 *.ap_
 *.aab
 *.jks
+/app/release/
+/app/debug/
 
 # Files for the ART/Dalvik VM
 *.dex
