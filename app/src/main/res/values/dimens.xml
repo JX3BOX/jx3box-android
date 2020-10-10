@@ -51,4 +51,5 @@
     <dimen name="dp_46">46dp</dimen>
     <dimen name="sp_10">10sp</dimen>
     <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
 </resources>

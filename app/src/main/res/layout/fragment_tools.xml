@@ -14,14 +14,318 @@
   ~    limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="工具" />
-</RelativeLayout>
+    <include layout="@layout/layout_title_back" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <com.carey.module_banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100"
+                android:background="@color/white"
+                app:layout_collapseMode="parallax"
+                tools:background="@color/colorPrimaryDark" />
+
+            <com.carey.module_banner.IndicatorView
+                android:id="@+id/indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_6" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                app:cardCornerRadius="@dimen/dp_8"
+                app:cardElevation="@dimen/dp_4"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tools_sort_data_of_study"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_macro"
+                            app:drawableTopCompat="@drawable/icon_macro" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_jx3dat"
+                            app:drawableTopCompat="@drawable/icon_jx3dat" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_tutorials"
+                            app:drawableTopCompat="@drawable/icon_tool" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_bps"
+                            app:drawableTopCompat="@drawable/icon_bps" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp_8"
+                app:cardElevation="@dimen/dp_4"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tools_sort_fb"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_fb"
+                            app:drawableTopCompat="@drawable/icon_fb" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_cj"
+                            app:drawableTopCompat="@drawable/icon_cj" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_npc_data"
+                            app:drawableTopCompat="@drawable/icon_npc_data" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_skill_data"
+                            app:drawableTopCompat="@drawable/icon_skill_data" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_fb_drop"
+                            app:drawableTopCompat="@drawable/icon_drop" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_gem"
+                            app:drawableTopCompat="@drawable/icon_gem" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_team"
+                            app:drawableTopCompat="@drawable/icon_team" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp_8"
+                app:cardElevation="@dimen/dp_4"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tools_sort_tool"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_servers"
+                            app:drawableTopCompat="@drawable/icon_servers" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_price"
+                            app:drawableTopCompat="@drawable/icon_price" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_furniture"
+                            app:drawableTopCompat="@drawable/icon_furniture" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_flower"
+                            app:drawableTopCompat="@drawable/icon_flower" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_house_share"
+                            app:drawableTopCompat="@drawable/icon_house" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_face_share"
+                            app:drawableTopCompat="@drawable/icon_face" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dp_8"
+                app:cardElevation="@dimen/dp_4"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tools_sort_tripartite"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_j3pz"
+                            app:drawableTopCompat="@drawable/icon_j3pz" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_speed"
+                            app:drawableTopCompat="@drawable/icon_speed" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_dps"
+                            app:drawableTopCompat="@drawable/icon_minami" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_keju"
+                            app:drawableTopCompat="@drawable/icon_keju" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/ToolsSortColumnText"
+                            android:text="@string/tools_qiyu"
+                            app:drawableTopCompat="@drawable/icon_qiyu" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

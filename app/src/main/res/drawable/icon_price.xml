@@ -1,0 +1,46 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M29.6,172h32.4v58.1h-32.4z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M85.3,143.2h32.4v86.8h-32.4z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M140.9,153.2h32.4v76.8h-32.4z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M196.5,112.1h32.4v117.9h-32.4z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M47.9,166.8l-18.3,-18.9l70.7,-73.1l18.2,19z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M135.5,146.5l-18.3,-18.9l70.6,-73.1l18.3,18.9z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M153.8,127.6l-18.3,19l-52.2,-54.2l18.3,-19z" />
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M228.9,30.8l-68,18.9l49.8,51.6z" />
+</vector>

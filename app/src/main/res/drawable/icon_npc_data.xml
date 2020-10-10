@@ -1,0 +1,25 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#000000"
+        android:pathData="M956.77,528.61l-226.92,381.41c-7.65,13.26 -33.39,32.95 -46.65,25.29 -13.26,-7.65 -9.04,-39.77 -1.39,-53.03l216.83,-387.23c7.66,-13.26 29.68,-14.87 42.93,-7.21C954.83,495.49 964.42,515.35 956.77,528.61L956.77,528.61zM644.31,604.76c-45.04,53.08 -101.23,99.35 -194.92,99.35 -95.8,0 -154.09,-47.7 -197.75,-98.01 -30.62,2.77 -55.14,14.81 -74.61,36.61 -46.48,52.14 -57.97,150.93 -57.97,198.8l504.82,0c-2.66,18.25 -5.6,36.44 -5.6,55.47l0,0L68.6,896.98l-2.77,-29.45c-0.61,-7.1 -14.92,-174.89 67.89,-266.03 34.61,-38.11 80.32,-57.41 135.79,-57.41l15.09,0 9.65,11.59c42.21,50.48 86.37,85.42 158.03,85.42 69.78,0 107.72,-32.5 152.15,-86.37l9.65,-11.76 15.14,0c56.91,0 102.73,17.64 137.95,50.42 -16.2,12.81 -31.51,26.35 -45.43,41.49C701.61,617.24 676.26,607.04 644.31,604.76L644.31,604.76zM458.38,572.87c-113.44,0 -192.98,-176.11 -192.98,-271.47 0,-99.79 86.53,-181 192.98,-181 106.33,0 192.87,81.21 192.87,181C651.24,396.76 571.7,572.87 458.38,572.87L458.38,572.87zM456.82,178.48c-74.16,0 -134.57,54.75 -134.57,122.03 0,75.82 69.17,216.83 134.57,216.83 65.4,0 134.51,-141 134.51,-216.83C591.34,233.23 530.99,178.48 456.82,178.48L456.82,178.48z" />
+</vector>

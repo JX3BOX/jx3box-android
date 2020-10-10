@@ -50,10 +50,6 @@
     <string name="tools">魔盒</string>
     <string name="bbs">茶馆</string>
     <string name="mine">我</string>
-    <string name="title_activity_main2">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="home_search_hint">搜索你想要的内容</string>
     <string name="token_illegal">令牌不合法</string>
     <string name="column_license">开源协议</string>
@@ -79,6 +75,32 @@
     <string name="a_few_days_ago">%1$s天前</string>
     <string name="no_title">无标题</string>
     <string name="see_more">查看更多＞＞</string>
+    <string name="tools_macro">云端宏</string>
+    <string name="tools_jx3dat">插件数据</string>
+    <string name="tools_bps">职业攻略</string>
+    <string name="tools_sort_data_of_study">数据攻略</string>
+    <string name="tools_sort_fb">副本专栏</string>
+    <string name="tools_fb">副本攻略</string>
+    <string name="tools_cj">副本成就</string>
+    <string name="tools_npc_data">NPC数据</string>
+    <string name="tools_skill_data">技能数据</string>
+    <string name="tools_fb_drop">副本掉落</string>
+    <string name="tools_gem">瑰石列表</string>
+    <string name="tools_sort_tool">实用工具</string>
+    <string name="tools_servers">开服监控</string>
+    <string name="tools_price">金价走势</string>
+    <string name="tools_furniture">家具大全</string>
+    <string name="tools_flower">实时花价</string>
+    <string name="tools_house_share">家园分享</string>
+    <string name="tools_face_share">捏脸分享</string>
+    <string name="tools_sort_tripartite">三方工具</string>
+    <string name="tools_j3pz">配装器</string>
+    <string name="tools_speed">急速阈值</string>
+    <string name="tools_dps">DPS模拟</string>
+    <string name="tools_keju">科举题库</string>
+    <string name="tools_qiyu">奇遇查询</string>
+    <string name="tools_team">团队大厅</string>
+    <string name="tools_title">魔盒矩阵</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

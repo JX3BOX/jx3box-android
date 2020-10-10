@@ -17,7 +17,9 @@
 package com.jx3box.view.webview
 
 import android.content.Context
+import android.view.MotionEvent
 import android.webkit.WebView
+import kotlin.math.abs
 
 /**
  * 自适应高度的webview
@@ -25,8 +27,32 @@ import android.webkit.WebView
  * @date 2020/10/06
  */
 class CustomWebView(context: Context) : WebView(context) {
+    private var startx = 0F
+    private var starty = 0F
+    private var offsetx = 0F
+    private var offsety = 0F
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val mExpandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE shr 2, MeasureSpec.AT_MOST)
         super.onMeasure(widthMeasureSpec, mExpandSpec)
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                parent.requestDisallowInterceptTouchEvent(true)
+                startx = event.x
+                starty = event.y
+            }
+            MotionEvent.ACTION_MOVE -> {
+                offsetx = abs(event.x - startx)
+                offsety = abs(event.y - starty)
+                if (offsetx > offsety) {
+                    parent.requestDisallowInterceptTouchEvent(true)
+                } else {
+                    parent.requestDisallowInterceptTouchEvent(false)
+                }
+            }
+        }
+        return super.onTouchEvent(event)
     }
 }
