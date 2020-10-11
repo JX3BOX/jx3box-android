@@ -29,6 +29,7 @@
     <string name="qq">QQ</string>
     <string name="weibo">微博</string>
     <string name="github">github</string>
+    <string name="wechat">微信</string>
     <string name="register">注册</string>
     <string name="email_format_error">邮箱格式错误</string>
     <string name="launch_dialog">

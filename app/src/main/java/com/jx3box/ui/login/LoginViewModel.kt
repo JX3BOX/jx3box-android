@@ -24,6 +24,7 @@ import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.RegexUtils
 import com.jx3box.App
 import com.jx3box.data.db.BoxDatabase
+import com.jx3box.data.net.Result
 import com.jx3box.data.net.checkResult
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.data.net.repository.LoginRepository
@@ -67,7 +68,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                 params["device_id"] = DeviceUtils.getUniqueDeviceId()
                 repository.login(params)
             }
-            val result = withContext(Dispatchers.IO) { repository.getPersonalInfo() }
+            val result = getUserInfo()
 
             login.checkResult(
                 onSuccess = {
@@ -79,7 +80,8 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                                 LoginUiState(isSuccess = user, enableLoginButton = true)
                         },
                         onError = { err ->
-                            _uiState.value = LoginUiState(isError = err, enableLoginButton = true)
+                            _uiState.value =
+                                LoginUiState(isError = err, enableLoginButton = true)
                         }
                     )
                 },
@@ -88,6 +90,25 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                 }
             )
         }
+    }
+
+    fun qqOAuth() {
+
+    }
+
+    fun wxOAuth() {
+
+    }
+
+    fun wbOAuth() {
+
+    }
+
+    /**
+     * 获取用户数据
+     */
+    private suspend fun getUserInfo(): Result<UserInfoResult> {
+        return withContext(Dispatchers.IO) { repository.getPersonalInfo() }
     }
 
     val verifyInput: (String) -> Unit = { loginDataChanged() }

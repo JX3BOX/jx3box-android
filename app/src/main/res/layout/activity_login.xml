@@ -111,7 +111,9 @@
                 android:id="@+id/mQQLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
                 android:layout_weight="1"
+                android:onClick="@{() -> viewModel.qqOAuth()}"
                 android:orientation="vertical">
 
                 <ImageView
@@ -129,10 +131,34 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/mWbLogin"
+                android:id="@+id/mWxLogin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="@{() -> viewModel.wxOAuth()}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_36"
+                    android:layout_height="@dimen/dp_36"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_wechat" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:text="@string/wechat" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mWbLogin"
+                android:layout_width="0dp"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="@{() -> viewModel.wbOAuth()}"
                 android:orientation="vertical">
 
                 <ImageView
@@ -147,27 +173,6 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/dp_4"
                     android:text="@string/weibo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/mGithubLogin"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_36"
-                    android:layout_height="@dimen/dp_36"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_github" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_4"
-                    android:text="@string/github" />
             </LinearLayout>
 
             <!--隐式给webview注入localStorage数据-->
