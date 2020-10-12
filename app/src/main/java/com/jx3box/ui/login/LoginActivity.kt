@@ -16,15 +16,23 @@
 
 package com.jx3box.ui.login
 
+import android.content.Intent
+import android.view.View
 import android.webkit.WebView
 import android.widget.LinearLayout
+import com.blankj.utilcode.util.NetworkUtils
 import com.carey.module_webview.ByWebView
 import com.carey.module_webview.OnByWebClientCallback
 import com.gyf.immersionbar.ImmersionBar
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.jx3box.App
+import com.jx3box.BuildConfig
 import com.jx3box.R
+import com.jx3box.TencentUiListener
 import com.jx3box.data.db.BoxDatabase
+import com.jx3box.data.net.model.BoxEvent
 import com.jx3box.data.net.model.UserInfoResult
+import com.jx3box.data.net.model.global.ThirdLoginType
 import com.jx3box.databinding.ActivityLoginBinding
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.main.MainActivity
@@ -32,6 +40,10 @@ import com.jx3box.ui.register.RegisterActivity
 import com.jx3box.utils.getSpValue
 import com.jx3box.utils.putSpValue
 import com.jx3box.utils.startKtxActivity
+import com.jx3box.utils.toast
+import com.tencent.connect.common.Constants
+import com.tencent.mm.opensdk.modelmsg.SendAuth
+import com.tencent.tauth.Tencent
 import kotlinx.android.synthetic.main.activity_normal_webview.*
 import kotlinx.android.synthetic.main.layout_title_back_text.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -41,12 +53,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @author Carey
  * @date 2020/9/21
  */
-class LoginActivity : BaseVMActivity() {
+class LoginActivity : BaseVMActivity(), View.OnClickListener {
+    private lateinit var mUiListener: TencentUiListener
     private var mWebView: ByWebView? = null
     private val loginViewModel by viewModel<LoginViewModel>()
     private val binding by binding<ActivityLoginBinding>(R.layout.activity_login)
 
     override fun initData() {
+        onEvent()
     }
 
     override fun initView() {
@@ -55,8 +69,11 @@ class LoginActivity : BaseVMActivity() {
         }
         binding.mTitle.mTvTitle.text = getString(R.string.login)
         binding.mTitle.mTvRightText.text = getString(R.string.register)
-        binding.mTitle.mImgBack.setOnClickListener { finish() }
-        binding.mTitle.mTvRightText.setOnClickListener { startKtxActivity<RegisterActivity>() }
+        binding.mTitle.mImgBack.setOnClickListener(this)
+        binding.mTitle.mTvRightText.setOnClickListener(this)
+        binding.mQQLogin.setOnClickListener(this)
+        binding.mWxLogin.setOnClickListener(this)
+        binding.mWbLogin.setOnClickListener(this)
     }
 
     override fun initImmersionBar() {
@@ -84,6 +101,102 @@ class LoginActivity : BaseVMActivity() {
         }
     }
 
+    /**
+     * qq授权
+     */
+    private fun qqOAuth() {
+        if (NetworkUtils.isConnected()) {
+            val tencent = Tencent.createInstance(BuildConfig.QQ_KEY, App.CONTEXT)
+            if (tencent.isQQInstalled(this)) {
+                mUiListener = TencentUiListener()
+                tencent.login(this, "all", mUiListener)
+            } else {
+                toast(resources.getString(R.string.qq_uninstall))
+            }
+        } else {
+            toast(resources.getString(R.string.network_error))
+        }
+
+    }
+
+    /**
+     * 微信授权
+     */
+    private fun wxOAuth() {
+        if (NetworkUtils.isConnected()) {
+            if (App.WXAPI.isWXAppInstalled) {
+                val req = SendAuth.Req()
+                req.scope = "snsapi_userinfo"
+                req.state = "none"
+                App.WXAPI.sendReq(req)
+            } else {
+                toast(resources.getString(R.string.wechat_uninstall))
+            }
+        } else {
+            toast(resources.getString(R.string.network_error))
+        }
+    }
+
+    /**
+     * 微博授权
+     */
+    private fun wbOAuth() {
+
+    }
+
+    override fun onClick(v: View?) {
+        when (v) {
+            binding.mQQLogin -> qqOAuth()
+            binding.mWxLogin -> wxOAuth()
+            binding.mWbLogin -> wbOAuth()
+            binding.mTitle.mImgBack -> finish()
+            binding.mTitle.mTvRightText -> startKtxActivity<RegisterActivity>()
+        }
+    }
+
+    override fun onDestroy() {
+        mWebView?.onDestroy()
+        super.onDestroy()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //腾讯QQ回调
+        Tencent.onActivityResultData(requestCode, resultCode, data, mUiListener)
+        if (requestCode == Constants.REQUEST_API) {
+            if (resultCode == Constants.REQUEST_LOGIN) {
+                Tencent.handleResultData(data, mUiListener)
+            }
+        }
+    }
+
+    /**
+     * 消息订阅事件
+     */
+    private fun onEvent() {
+        LiveEventBus
+            .get(BoxEvent::class.java)
+            .observe(this, {
+                it?.run {
+                    when (key) {
+                        BoxEvent.WX_AUTH_SUCCESS -> loginViewModel.thirdLogin(
+                            ThirdLoginType.WECHAT.type,
+                            value
+                        )
+
+                        BoxEvent.QQ_AUTH_SUCCESS -> loginViewModel.thirdLogin(
+                            ThirdLoginType.QQ.type,
+                            value
+                        )
+
+                    }
+                }
+            })
+    }
+
+    /**
+     * 设置webview缓存数据
+     */
     private fun setWebViewLocalStorage(userInfo: UserInfoResult) {
         mWebView = ByWebView
             .with(this@LoginActivity)
@@ -142,10 +255,5 @@ class LoginActivity : BaseVMActivity() {
                 }
             })
             .loadUrl("https://www.jx3box.com/index/")
-    }
-
-    override fun onDestroy() {
-        mWebView?.onDestroy()
-        super.onDestroy()
     }
 }

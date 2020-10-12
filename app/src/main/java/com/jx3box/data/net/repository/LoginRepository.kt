@@ -38,9 +38,11 @@ class LoginRepository() : BaseRepository() {
         )
     }
 
-    private suspend fun requestLogin(params: Map<String, String>): Result<LoginInfoResult> {
-        val json = Gson().getJsonRequestBody(params)
-        return executeResponse(RetrofitClient.jsonService.login(json))
+    suspend fun thirdLogin(type: String, params: Map<String, String>): Result<LoginInfoResult> {
+        return safeApiCall(
+            call = { requestThirdLogin(type, params) },
+            errorMessage = App.CONTEXT.getString(R.string.login_error)
+        )
     }
 
     suspend fun register(params: Map<String, String>): Result<RegisterResult> {
@@ -49,33 +51,28 @@ class LoginRepository() : BaseRepository() {
         )
     }
 
-    private suspend fun requestRegister(params: Map<String, String>): Result<RegisterResult> {
-        val json = Gson().getJsonRequestBody(params)
-        return executeResponse(RetrofitClient.jsonService.register(json))
-    }
-
     suspend fun getPersonalInfo(): Result<UserInfoResult> =
         safeApiCall(
             call = { requestPersonalInfo() },
             errorMessage = App.CONTEXT.getString(R.string.token_illegal)
         )
 
+    private suspend fun requestRegister(params: Map<String, String>): Result<RegisterResult> {
+        val json = Gson().getJsonRequestBody(params)
+        return executeResponse(RetrofitClient.jsonService.register(json))
+    }
+
+    private suspend fun requestThirdLogin(
+        type: String,
+        params: Map<String, String>
+    ): Result<LoginInfoResult> =
+        executeResponse(RetrofitClient.jsonService.thirdLogin(type, params))
+
+    private suspend fun requestLogin(params: Map<String, String>): Result<LoginInfoResult> {
+        val json = Gson().getJsonRequestBody(params)
+        return executeResponse(RetrofitClient.jsonService.login(json))
+    }
+
     private suspend fun requestPersonalInfo(): Result<UserInfoResult> =
         executeResponse(RetrofitClient.jsonService.getPersonalInfo())
-
-//    suspend fun isUserExists(
-//        email: String,
-//        params: Map<String, String>
-//    ): Result<Boolean> {
-//        return safeApiCall(
-//            call = { requestUserExists(email, params) }
-//        )
-//    }
-//
-//    private suspend fun requestUserExists(
-//        email: String,
-//        params: Map<String, String>
-//    ): Result<Boolean> =
-//        executeResponse(RetrofitClient.jsonService.isUserExists(email)) { register(params) }
-
 }

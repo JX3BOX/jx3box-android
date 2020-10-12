@@ -102,6 +102,15 @@
     <string name="tools_qiyu">奇遇查询</string>
     <string name="tools_team">团队大厅</string>
     <string name="tools_title">魔盒矩阵</string>
+    <string name="share_succeed">分享成功</string>
+    <string name="wx_result_error_undefined">未识别微信返回类型%1$s</string>
+    <string name="user_cancel">用户取消</string>
+    <string name="oauth_refuse">授权被拒绝</string>
+    <string name="undefined_error">未知错误</string>
+    <string name="wechat_uninstall">您手机尚未安装微信或者版本过低</string>
+    <string name="qq_uninstall">您手机尚未安装QQ或者版本过低</string>
+    <string name="network_error">没有网络连接</string>
+
 
     <string-array name="article_type">
         <item>@string/bbs</item>

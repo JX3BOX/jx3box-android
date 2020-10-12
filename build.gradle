@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
+apply from: "union.gradle"
 buildscript {
     ext.kotlin_version = "1.4.10"
     ext.nav_version = "2.3.0-alpha01"
@@ -22,6 +23,7 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     }
 }
 

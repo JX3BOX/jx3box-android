@@ -40,6 +40,8 @@ package com.jx3box
 import android.app.Application
 import android.content.Context
 import com.jx3box.module_log.LogUtils
+import com.tencent.mm.opensdk.openapi.IWXAPI
+import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import me.jessyan.autosize.AutoSizeConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -52,6 +54,7 @@ import java.util.*
 class App : Application() {
     companion object {
         lateinit var CONTEXT: Context
+        lateinit var WXAPI: IWXAPI
     }
 
     override fun onCreate() {
@@ -65,6 +68,8 @@ class App : Application() {
             modules(appModule)
         }
         Flipper.initFlipper()
+        WXAPI = WXAPIFactory.createWXAPI(this, BuildConfig.WX_KEY, true)
+        WXAPI.registerApp(BuildConfig.WX_KEY)
     }
 
     /**

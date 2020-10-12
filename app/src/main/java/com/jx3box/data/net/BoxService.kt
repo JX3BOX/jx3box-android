@@ -43,6 +43,15 @@ interface BoxService {
     suspend fun login(@Body params: RequestBody): BoxResponse<LoginInfoResult>
 
     /**
+     * 三方登录
+     */
+    @GET(NetConfig.third_login_url)
+    suspend fun thirdLogin(
+        @Path("type") type: String,
+        @QueryMap params: Map<String, String>
+    ): BoxResponse<LoginInfoResult>
+
+    /**
      * 注册
      */
     @POST(NetConfig.register_url)

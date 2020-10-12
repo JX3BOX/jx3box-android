@@ -24,6 +24,9 @@ object NetConfig {
     /**登录*/
     const val login_url = "/account/login/email"
 
+    /**三方登录*/
+    const val third_login_url = "/oauth/{type}/callback"
+
     /**注册*/
     const val register_url = "/account/register/email"
 

@@ -33,7 +33,9 @@ ext {
             liveDataBus        : "1.7.2",
             licensesDialog     : "2.1.0",
             PersistentCookieJar: "v1.0.1",
-            recyclerViewAdapter: "3.0.4"
+            recyclerViewAdapter: "3.0.4",
+            wechat             : "6.6.4",
+            weibo              : "10.9.0"
     ]
 
     jetpack = [
@@ -92,6 +94,10 @@ ext {
             //显示应用中第三方库的许可证
             licensesDialog         : "de.psdev.licensesdialog:licensesdialog:${version.licensesDialog}",
             //BaseRecyclerViewAdapterHelper
-            recyclerViewAdapter    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.recyclerViewAdapter}"
+            recyclerViewAdapter    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${version.recyclerViewAdapter}",
+            //微信SDK
+            wechat                 : "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${version.wechat}",
+            //微博SDK
+            weibo                  : "com.sina.weibo.sdk:core:${version.weibo}:openDefaultRelease@aar"
     ]
 }

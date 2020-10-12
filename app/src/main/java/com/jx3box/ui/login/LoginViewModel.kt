@@ -92,16 +92,55 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
         }
     }
 
-    fun qqOAuth() {
+    /**
+     * 三方登录
+     */
+    fun thirdLogin(type: String, code: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _uiState.value = LoginUiState(isLoading = true)
+            val login = withContext(Dispatchers.IO) {
+                val params: MutableMap<String, String> = HashMap()
+                params["code"] = code
+                params["client"] = "android"
+                repository.thirdLogin(type, params)
+            }
+            val result = getUserInfo()
 
-    }
-
-    fun wxOAuth() {
-
-    }
-
-    fun wbOAuth() {
-
+            login.checkResult(
+                onSuccess = {
+                    BoxDatabase.instance.loginInfoDao().insert(it)
+                    App.CONTEXT.putSpValue("token", it.token)
+                    result.checkResult(
+                        onSuccess = { user ->
+                            _uiState.value =
+                                LoginUiState(
+                                    isSuccess = user, enableLoginButton = isInputValid(
+                                        userName.get() ?: "",
+                                        passWord.get() ?: ""
+                                    )
+                                )
+                        },
+                        onError = { err ->
+                            _uiState.value =
+                                LoginUiState(
+                                    isError = err, enableLoginButton = isInputValid(
+                                        userName.get() ?: "",
+                                        passWord.get() ?: ""
+                                    )
+                                )
+                        }
+                    )
+                },
+                onError = {
+                    _uiState.value = LoginUiState(
+                        isError = it, enableLoginButton = isInputValid(
+                            userName.get() ?: "",
+                            passWord.get() ?: ""
+                        )
+                    )
+                }
+            )
+        }
     }
 
     /**
@@ -117,7 +156,6 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
         isLoading: Boolean = false,
         isSuccess: T? = null,
         isError: String? = null,
-        val enableLoginButton: Boolean = false,
-        val needLogin: Boolean = false
+        val enableLoginButton: Boolean = false
     ) : BaseViewModel.UiState<T>(isLoading, false, isSuccess, isError)
 }
