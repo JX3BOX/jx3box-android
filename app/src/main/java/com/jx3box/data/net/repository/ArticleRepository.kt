@@ -30,14 +30,14 @@ import com.jx3box.data.net.model.ArticleListResult
 class ArticleRepository : BaseRepository() {
     private suspend fun requestArticleList(params: HashMap<String, String>): Result<ArticleListResult> {
         return executeResponse(
-            RetrofitClient.jsonService.getArticleList(params = params),
+            RetrofitClient.boxService.getArticleList(params = params),
             successCode = 10066
         )
     }
 
     private suspend fun requestArticleDetail(id: String): Result<ArticleDetailResult> {
         return executeResponse(
-            RetrofitClient.jsonService.getArticleDetail(id = id),
+            RetrofitClient.boxService.getArticleDetail(id = id),
             successCode = 10064
         )
     }

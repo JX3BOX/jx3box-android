@@ -14,9 +14,11 @@
  *    limitations under the License.
  */
 
-package com.jx3box
+package com.jx3box.third.listener
 
 import com.jeremyliao.liveeventbus.LiveEventBus
+import com.jx3box.App
+import com.jx3box.R
 import com.jx3box.data.net.model.BoxEvent
 import com.jx3box.module_log.LogUtils
 import com.jx3box.utils.toast
@@ -32,13 +34,14 @@ import org.json.JSONObject
 class TencentUiListener : IUiListener {
     override fun onComplete(p0: Any?) {
         val openId = (p0 as JSONObject).getString(Constants.PARAM_OPEN_ID)
+        val token = p0.getString(Constants.PARAM_ACCESS_TOKEN)
         LogUtils.logE(openId)
         LiveEventBus
             .get(BoxEvent::class.java)
             .post(
                 BoxEvent(
                     BoxEvent.QQ_AUTH_SUCCESS,
-                    openId
+                    token
                 )
             )
     }

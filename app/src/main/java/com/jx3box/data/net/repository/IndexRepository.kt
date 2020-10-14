@@ -26,7 +26,7 @@ import com.jx3box.data.net.model.IndexResult
  */
 class IndexRepository : BaseRepository() {
     private suspend fun requestIndex(type: String): Result<List<IndexResult>> {
-        return executeResponse(RetrofitClient.jsonService.getIndex(type))
+        return executeResponse(RetrofitClient.boxService.getIndex(type))
     }
 
     suspend fun getIndex(type: String): Result<List<IndexResult>> {

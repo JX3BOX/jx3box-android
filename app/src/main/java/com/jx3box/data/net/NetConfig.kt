@@ -25,7 +25,7 @@ object NetConfig {
     const val login_url = "/account/login/email"
 
     /**三方登录*/
-    const val third_login_url = "/oauth/{type}/callback"
+    const val third_login_url = "/oauth/{type}/android"
 
     /**注册*/
     const val register_url = "/account/register/email"
@@ -55,4 +55,7 @@ object NetConfig {
 
     /**我的文章列表*/
     const val get_mine_article_list = "/post/mywork"
+
+    /**获取微信授权token*/
+    const val get_wx_token = "/sns/oauth2/access_token"
 }

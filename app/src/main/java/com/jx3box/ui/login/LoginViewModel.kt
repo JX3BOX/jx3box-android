@@ -23,16 +23,20 @@ import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.DeviceUtils
 import com.blankj.utilcode.util.RegexUtils
 import com.jx3box.App
+import com.jx3box.BuildConfig
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.data.net.Result
 import com.jx3box.data.net.checkResult
+import com.jx3box.data.net.checkSuccess
 import com.jx3box.data.net.model.UserInfoResult
+import com.jx3box.data.net.model.WeChatResponse
 import com.jx3box.data.net.repository.LoginRepository
 import com.jx3box.mvvm.base.BaseViewModel
 import com.jx3box.utils.putSpValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 /**
  * @author Carey
@@ -43,8 +47,11 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     val passWord = ObservableField("")
 
     private val _uiState = MutableLiveData<LoginUiState<UserInfoResult>>()
+    private val _wxState = MutableLiveData<UiState<WeChatResponse>>()
     val uiState: LiveData<LoginUiState<UserInfoResult>>
         get() = _uiState
+    val wxState: LiveData<UiState<WeChatResponse>>
+        get() = _wxState
 
     private fun isInputValid(userName: String, passWord: String) =
         userName.isNotBlank() && RegexUtils.isEmail(userName) && passWord.isNotBlank() && passWord.length >= 6
@@ -95,13 +102,13 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     /**
      * 三方登录
      */
-    fun thirdLogin(type: String, code: String) {
+    fun thirdLogin(type: String, params: Map<String, String>) {
         viewModelScope.launch(Dispatchers.Main) {
             _uiState.value = LoginUiState(isLoading = true)
             val login = withContext(Dispatchers.IO) {
-                val params: MutableMap<String, String> = HashMap()
-                params["code"] = code
-                params["client"] = "android"
+//                val params: MutableMap<String, String> = HashMap()
+//                params["access_token"] = code
+////                params["client"] = "android"
                 repository.thirdLogin(type, params)
             }
             val result = getUserInfo()
@@ -140,6 +147,27 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                     )
                 }
             )
+        }
+    }
+
+    /**
+     * 获取微信授权token
+     */
+    fun getWxToken(code: String) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _wxState.value = UiState(isLoading = true)
+            val token = withContext(Dispatchers.IO) {
+                val params: MutableMap<String, String> = HashMap()
+                params["appid"] = BuildConfig.WX_KEY
+                params["secret"] = BuildConfig.WX_SECRET
+                params["code"] = code
+                params["grant_type"] = "authorization_code"
+                repository.getWxToken(params)
+            }
+
+            token.checkSuccess {
+                _wxState.value = UiState(isSuccess = it)
+            }
         }
     }
 

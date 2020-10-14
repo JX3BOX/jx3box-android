@@ -24,6 +24,7 @@ import com.jx3box.data.net.RetrofitClient
 import com.jx3box.data.net.model.LoginInfoResult
 import com.jx3box.data.net.model.RegisterResult
 import com.jx3box.data.net.model.UserInfoResult
+import com.jx3box.data.net.model.WeChatResponse
 import com.jx3box.utils.getJsonRequestBody
 
 /**
@@ -45,6 +46,12 @@ class LoginRepository() : BaseRepository() {
         )
     }
 
+    suspend fun getWxToken(params: Map<String, String>): Result<WeChatResponse> {
+        return safeApiCall(
+            call = { requestWxToken(params) }
+        )
+    }
+
     suspend fun register(params: Map<String, String>): Result<RegisterResult> {
         return safeApiCall(
             call = { requestRegister(params) }
@@ -59,20 +66,23 @@ class LoginRepository() : BaseRepository() {
 
     private suspend fun requestRegister(params: Map<String, String>): Result<RegisterResult> {
         val json = Gson().getJsonRequestBody(params)
-        return executeResponse(RetrofitClient.jsonService.register(json))
+        return executeResponse(RetrofitClient.boxService.register(json))
     }
 
     private suspend fun requestThirdLogin(
         type: String,
         params: Map<String, String>
     ): Result<LoginInfoResult> =
-        executeResponse(RetrofitClient.jsonService.thirdLogin(type, params))
+        executeResponse(RetrofitClient.boxService.thirdLogin(type, params))
+
+    private suspend fun requestWxToken(params: Map<String, String>): Result<WeChatResponse> =
+        executeResponse(RetrofitClient.wxService.getWxToken(params))
 
     private suspend fun requestLogin(params: Map<String, String>): Result<LoginInfoResult> {
         val json = Gson().getJsonRequestBody(params)
-        return executeResponse(RetrofitClient.jsonService.login(json))
+        return executeResponse(RetrofitClient.boxService.login(json))
     }
 
     private suspend fun requestPersonalInfo(): Result<UserInfoResult> =
-        executeResponse(RetrofitClient.jsonService.getPersonalInfo())
+        executeResponse(RetrofitClient.boxService.getPersonalInfo())
 }

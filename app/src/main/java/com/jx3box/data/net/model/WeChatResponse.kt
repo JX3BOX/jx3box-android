@@ -16,26 +16,13 @@
 
 package com.jx3box.data.net.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-/**
- * @author Carey
- * @date 2020/9/21
- */
-@Entity(tableName = "LoginInfo")
-data class LoginInfoResult(
-    @PrimaryKey
-    val uid: Int,
-    @ColumnInfo(name = "token")
-    val token: String,
-    @ColumnInfo(name = "group")
-    val group: String?,
-    @ColumnInfo(name = "name")
-    val name: String?,
-    @ColumnInfo(name = "avatar")
-    val avatar: String?,
-    @ColumnInfo(name = "bio")
-    val bio: String?,
+data class WeChatResponse(
+    val errcode: String?,
+    val errmsg: String?,
+    val access_token: String,
+    val expires_in: Int,
+    val openid: String,
+    val refresh_token: String,
+    val scope: String,
+    val unionid: String?
 )

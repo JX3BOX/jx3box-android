@@ -17,6 +17,7 @@
 package com.jx3box.ui.login
 
 import android.content.Intent
+import android.text.TextUtils
 import android.view.View
 import android.webkit.WebView
 import android.widget.LinearLayout
@@ -28,13 +29,13 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.jx3box.App
 import com.jx3box.BuildConfig
 import com.jx3box.R
-import com.jx3box.TencentUiListener
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.data.net.model.BoxEvent
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.data.net.model.global.ThirdLoginType
 import com.jx3box.databinding.ActivityLoginBinding
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.third.listener.TencentUiListener
 import com.jx3box.ui.main.MainActivity
 import com.jx3box.ui.register.RegisterActivity
 import com.jx3box.utils.getSpValue
@@ -54,6 +55,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @date 2020/9/21
  */
 class LoginActivity : BaseVMActivity(), View.OnClickListener {
+    private lateinit var tencent: Tencent
     private lateinit var mUiListener: TencentUiListener
     private var mWebView: ByWebView? = null
     private val loginViewModel by viewModel<LoginViewModel>()
@@ -98,6 +100,19 @@ class LoginActivity : BaseVMActivity(), View.OnClickListener {
                     showToast(err)
                 }
             })
+
+            wxState.observe(this@LoginActivity, {
+                if (it.isLoading) showLoadingDialog(this@LoginActivity)
+                it.isSuccess?.let { data ->
+                    if (TextUtils.isEmpty(data.errcode)) {
+                        val params: MutableMap<String, String> = HashMap()
+                        params["access_token"] = data.access_token
+                        params["openid"] = data.openid
+                        loginViewModel.thirdLogin(ThirdLoginType.WECHAT.type, params)
+                    } else
+                        data.errmsg?.run { toast(this) }
+                }
+            })
         }
     }
 
@@ -106,7 +121,7 @@ class LoginActivity : BaseVMActivity(), View.OnClickListener {
      */
     private fun qqOAuth() {
         if (NetworkUtils.isConnected()) {
-            val tencent = Tencent.createInstance(BuildConfig.QQ_KEY, App.CONTEXT)
+            tencent = Tencent.createInstance(BuildConfig.QQ_KEY, App.CONTEXT)
             if (tencent.isQQInstalled(this)) {
                 mUiListener = TencentUiListener()
                 tencent.login(this, "all", mUiListener)
@@ -179,16 +194,13 @@ class LoginActivity : BaseVMActivity(), View.OnClickListener {
             .observe(this, {
                 it?.run {
                     when (key) {
-                        BoxEvent.WX_AUTH_SUCCESS -> loginViewModel.thirdLogin(
-                            ThirdLoginType.WECHAT.type,
-                            value
-                        )
+                        BoxEvent.WX_AUTH_SUCCESS -> loginViewModel.getWxToken(value)
 
-                        BoxEvent.QQ_AUTH_SUCCESS -> loginViewModel.thirdLogin(
-                            ThirdLoginType.QQ.type,
-                            value
-                        )
-
+                        BoxEvent.QQ_AUTH_SUCCESS -> {
+                            val params: MutableMap<String, String> = HashMap()
+                            params["access_token"] = value
+                            loginViewModel.thirdLogin(ThirdLoginType.QQ.type, params)
+                        }
                     }
                 }
             })
@@ -256,4 +268,6 @@ class LoginActivity : BaseVMActivity(), View.OnClickListener {
             })
             .loadUrl("https://www.jx3box.com/index/")
     }
+
+
 }

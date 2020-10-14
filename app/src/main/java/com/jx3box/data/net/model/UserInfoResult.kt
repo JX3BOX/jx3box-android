@@ -35,15 +35,15 @@ data class UserInfoResult(
     /** 快递地址 */
     @ColumnInfo(name = "address")
     @SerializedName("address")
-    val address: String,
+    val address: String?,
     /** 设备编码 */
     @ColumnInfo(name = "device_id")
     @SerializedName("device_id")
-    val deviceId: String,
+    val deviceId: String?,
     /** 昵称 */
     @ColumnInfo(name = "display_name")
     @SerializedName("display_name")
-    val displayName: String,
+    val displayName: String?,
     /** github id */
     @ColumnInfo(name = "github_id")
     @SerializedName("github_id")
@@ -51,43 +51,43 @@ data class UserInfoResult(
     /** github 昵称 */
     @ColumnInfo(name = "github_name")
     @SerializedName("github_name")
-    val githubName: String,
+    val githubName: String?,
     /** 服务器 */
     @ColumnInfo(name = "jx3_server")
     @SerializedName("jx3_server")
-    val server: String,
+    val server: String?,
     /** 快递号码 */
     @ColumnInfo(name = "phone")
     @SerializedName("phone")
-    val phone: String,
+    val phone: String?,
     /** qq昵称 */
     @ColumnInfo(name = "qq_name")
     @SerializedName("qq_name")
-    val qqName: String,
+    val qqName: String?,
     /** qq号 */
     @ColumnInfo(name = "qq_number")
     @SerializedName("qq_number")
-    val qqNumber: String,
+    val qqNumber: String?,
     /** qq openid */
     @ColumnInfo(name = "qq_openid")
     @SerializedName("qq_openid")
-    val qqOpenid: String,
+    val qqOpenid: String?,
     /** qq unionid */
     @ColumnInfo(name = "qq_unionid")
     @SerializedName("qq_unionid")
-    val qqUnionid: String,
+    val qqUnionid: String?,
     /** 头像地址 */
     @ColumnInfo(name = "user_avatar")
     @SerializedName("user_avatar")
-    val userAvatar: String,
+    val userAvatar: String?,
     /** 签名 */
     @ColumnInfo(name = "user_bio")
     @SerializedName("user_bio")
-    val userBio: String,
+    val userBio: String?,
     /** 邮箱 */
     @ColumnInfo(name = "user_email")
     @SerializedName("user_email")
-    val userEmail: String,
+    val userEmail: String?,
     /** 用户组 */
     @ColumnInfo(name = "user_group")
     @SerializedName("user_group")
@@ -99,11 +99,11 @@ data class UserInfoResult(
     /** 用户绑定的手机号 */
     @ColumnInfo(name = "user_phone")
     @SerializedName("user_phone")
-    val userPhone: String,
+    val userPhone: String?,
     /** 注册时间 */
     @ColumnInfo(name = "user_registered")
     @SerializedName("user_registered")
-    val userRegistered: String,
+    val userRegistered: String?,
     /** 0正常,1禁言 */
     @ColumnInfo(name = "user_status")
     @SerializedName("user_status")
@@ -111,7 +111,7 @@ data class UserInfoResult(
     /** 资料更新时间 */
     @ColumnInfo(name = "user_updated")
     @SerializedName("user_updated")
-    val userUpdated: String,
+    val userUpdated: String?,
     /** 邮箱验证状态 0未验证,1已验证 */
     @ColumnInfo(name = "verify_email")
     @SerializedName("verify_email")
@@ -119,21 +119,21 @@ data class UserInfoResult(
     /** 微信 昵称 */
     @ColumnInfo(name = "wechat_name")
     @SerializedName("wechat_name")
-    val wechatName: String,
+    val wechatName: String?,
     /** 微信 openid */
     @ColumnInfo(name = "wechat_openid")
     @SerializedName("wechat_openid")
-    val wechatOpenid: String,
+    val wechatOpenid: String?,
     /** 微信unionid */
     @ColumnInfo(name = "wechat_unionid")
     @SerializedName("wechat_unionid")
-    val wechatUnionid: String,
+    val wechatUnionid: String?,
     /** 微博id */
     @ColumnInfo(name = "weibo_id")
     @SerializedName("weibo_id")
-    val weiboId: Long,
+    val weiboId: Long?,
     /** 微博昵称 */
     @ColumnInfo(name = "weibo_name")
     @SerializedName("weibo_name")
-    val weiboName: String
+    val weiboName: String?
 )

@@ -31,5 +31,5 @@ class AdvertRepository() : BaseRepository() {
     }
 
     private suspend fun requestAdvert(): Result<String> =
-        executeResponse(RetrofitClient.jsonService.getAdvert())
+        executeResponse(RetrofitClient.boxService.getAdvert())
 }

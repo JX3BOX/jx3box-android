@@ -28,6 +28,7 @@ import retrofit2.http.*
 interface BoxService {
     companion object {
         const val BASE_URL = BuildConfig.BASE_URL
+        const val WX_URL = BuildConfig.WX_URL
     }
 
     /**
@@ -50,6 +51,12 @@ interface BoxService {
         @Path("type") type: String,
         @QueryMap params: Map<String, String>
     ): BoxResponse<LoginInfoResult>
+
+    /**
+     * 获取微信授权token
+     */
+    @GET(NetConfig.get_wx_token)
+    suspend fun getWxToken(@QueryMap params: Map<String, String>): WeChatResponse
 
     /**
      * 注册
