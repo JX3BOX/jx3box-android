@@ -27,6 +27,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.jx3box.R
 import com.jx3box.data.net.AppConfig
 import com.jx3box.ui.NormalWebActivity
@@ -66,7 +67,7 @@ fun AlertDialog.createLicence() {
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = context.resources.getColor(R.color.color_bf2c2c)
+                ds.color = ContextCompat.getColor(context, R.color.color_bf2c2c)
                 ds.isUnderlineText = false;
 
             }
@@ -82,7 +83,7 @@ fun AlertDialog.createLicence() {
 
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = context.resources.getColor(R.color.color_bf2c2c)
+                ds.color = ContextCompat.getColor(context, R.color.color_bf2c2c)
                 ds.isUnderlineText = false
 
             }

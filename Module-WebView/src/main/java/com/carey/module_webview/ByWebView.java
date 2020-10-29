@@ -105,6 +105,7 @@ public class ByWebView {
         return byLoadJsHolder;
     }
 
+    @SuppressWarnings("StringBufferReplaceableByString")
     private void syncCookie(List<String> cookies) {
         CookieManager.setAcceptFileSchemeCookies(true);
         CookieManager cookieManager = CookieManager.getInstance();
@@ -147,16 +148,16 @@ public class ByWebView {
         // 使用localStorage则必须打开
         ws.setDomStorageEnabled(true);
         // 排版适应屏幕
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        } else {
-            ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
-        }
+        ws.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        //  自定义设置UAZ
+        ws.setUserAgentString(ws.getUserAgentString() + "jx3boxApp");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // WebView从5.0开始默认不允许混合模式,https中不能加载http资源,需要设置开启。
             ws.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
+
+
     }
 
     /**
@@ -503,12 +504,13 @@ public class ByWebView {
 
         public ByWebView loadUrl(String url) {
             ByWebView byWebView = new ByWebView(this);
-            if (url.contains("?")) {
-                byWebView.loadUrl(url + "&mode=app_web");
-            } else {
-                byWebView.loadUrl(url + "?mode=app_web");
-            }
+//            if (url.contains("?")) {
+//                byWebView.loadUrl(url + "&mode=app_web");
+//            } else {
+//                byWebView.loadUrl(url + "?mode=app_web");
+//            }
 
+            byWebView.loadUrl(url);
             return byWebView;
         }
 

@@ -24,7 +24,6 @@ import android.widget.LinearLayout
 import com.blankj.utilcode.util.NetworkUtils
 import com.carey.module_webview.ByWebView
 import com.carey.module_webview.OnByWebClientCallback
-import com.gyf.immersionbar.ImmersionBar
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.jx3box.App
 import com.jx3box.BuildConfig
@@ -34,6 +33,7 @@ import com.jx3box.data.net.model.BoxEvent
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.data.net.model.global.ThirdLoginType
 import com.jx3box.databinding.ActivityLoginBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.third.listener.TencentUiListener
 import com.jx3box.ui.main.MainActivity

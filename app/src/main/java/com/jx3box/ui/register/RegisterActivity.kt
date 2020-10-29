@@ -16,9 +16,9 @@
 
 package com.jx3box.ui.register
 
-import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.databinding.ActivityRegisterBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import kotlinx.android.synthetic.main.layout_title_back_text.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -21,10 +21,10 @@ import android.os.Bundle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.carey.module_banner.IndicatorView
 import com.google.android.material.tabs.TabLayoutMediator
-import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentBbsBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
@@ -95,7 +95,7 @@ class BbsFragment : BaseVMFragment<FragmentBbsBinding>(R.layout.fragment_bbs) {
     override fun initImmersionBar() {
         ImmersionBar.with(this)
             .fitsSystemWindows(true)
-            .statusBarColor(R.color.black)
+            .statusBarColor(R.color.colorTheme)
             .init()
     }
 }

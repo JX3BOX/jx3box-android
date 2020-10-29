@@ -21,10 +21,10 @@ import android.webkit.WebView
 import android.widget.FrameLayout
 import com.carey.module_webview.ByWebView
 import com.carey.module_webview.OnByWebClientCallback
-import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.data.net.AppConfig
 import com.jx3box.databinding.ActivityArticleDetailBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.NormalWebActivity
 import com.jx3box.utils.getCookies
@@ -39,6 +39,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *@author Carey
  *@date  2020/10/7
  */
+@Deprecated("文章详情使用webView显示")
 class ArticleDetailActivity : BaseVMActivity() {
     private lateinit var mWebView: ByWebView
     private val articleViewModel by viewModel<ArticleViewModel>()

@@ -19,10 +19,10 @@ package com.jx3box.ui.main.fragment.mine
 import android.content.Intent
 import android.net.Uri
 import android.view.View
-import com.gyf.immersionbar.ImmersionBar
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.jx3box.R
 import com.jx3box.databinding.FragmentMineBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.login.LoginActivity
 import com.jx3box.utils.getSpValue

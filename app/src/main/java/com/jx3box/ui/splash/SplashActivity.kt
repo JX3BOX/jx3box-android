@@ -16,10 +16,10 @@
 
 package com.jx3box.ui.splash
 
-import com.gyf.immersionbar.BarHide
-import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
 import com.jx3box.databinding.ActivitySplashBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.BarHide
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.main.MainActivity
 import com.jx3box.utils.startKtxActivity

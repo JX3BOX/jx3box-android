@@ -16,7 +16,6 @@
 
 package com.jx3box.mvvm.base
 
-import android.content.Context
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -31,10 +30,8 @@ import com.jx3box.view.LoadingDialogManager
  */
 abstract class BaseActivity : AppCompatActivity(), LoadingDialogManager {
     override val loadingDialog by lazy { LoadingDialog(this) }
-    var mContext: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mContext = this
         setContentView(layoutId)
         initImmersionBar()
         initView()
@@ -62,6 +59,7 @@ abstract class BaseActivity : AppCompatActivity(), LoadingDialogManager {
      * 初始化沉浸状态栏
      */
     protected abstract fun initImmersionBar()
+
     /**
      * 封装toast方法
      *

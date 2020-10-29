@@ -108,7 +108,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["koin_androidx_viewmodel"]
     implementation rootProject.ext.thirdPack["androidAutoSize"]
     implementation rootProject.ext.thirdPack["PersistentCookieJar"]
-    implementation rootProject.ext.thirdPack["immersionbar"]
+//    implementation rootProject.ext.thirdPack["immersionbar"]
     implementation rootProject.ext.thirdPack["immersionbar_components"]
     implementation rootProject.ext.thirdPack["immersionbar_ktx"]
     implementation rootProject.ext.thirdPack["liveDataBus"]

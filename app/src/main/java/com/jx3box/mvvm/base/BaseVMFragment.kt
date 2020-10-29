@@ -91,6 +91,7 @@ abstract class BaseVMFragment<T : ViewDataBinding>(@LayoutRes val layoutId: Int)
      */
     private val mSimpleImmersionProxy = SimpleImmersionProxy(this)
 
+    @Suppress("DEPRECATION")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         mSimpleImmersionProxy.isUserVisibleHint = isVisibleToUser

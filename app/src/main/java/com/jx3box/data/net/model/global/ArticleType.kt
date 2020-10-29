@@ -40,8 +40,8 @@ enum class ArticleType(val type: String, val value: String) {
 //    /**捏脸分享*/
 //    SHARE("share"),
 
-    /**家园分享*/
-    HOUSE("house", "家园数据"),
+//    /**家园分享*/
+//    HOUSE("house", "家园数据"),
 
     /**教程工具*/
     TOOL("tool", "工具教程")

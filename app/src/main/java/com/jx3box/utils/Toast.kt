@@ -61,6 +61,7 @@ fun Fragment.toast(msg: CharSequence) {
 /**
  * 在函数[ToastConfig.onToast]通过参数[level]来判断返回不同的View
  */
+@Suppress("DEPRECATION")
 @SuppressLint("ShowToast")
 fun Context.toast(msg: CharSequence, level: Int) {
 
@@ -148,6 +149,7 @@ fun Fragment.longToast(msg: CharSequence) {
  * @param msg 吐司内容
  * @param short 消息停留时间间隔
  */
+@Suppress("DEPRECATION")
 @SuppressLint("ShowToast")
 private fun Context?.showDefault(msg: CharSequence, short: Boolean = true) {
     this ?: return

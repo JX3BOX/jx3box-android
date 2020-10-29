@@ -82,7 +82,7 @@
     <string name="tools_sort_data_of_study">数据攻略</string>
     <string name="tools_sort_fb">副本专栏</string>
     <string name="tools_fb">副本攻略</string>
-    <string name="tools_cj">副本成就</string>
+    <string name="tools_cj">成就百科</string>
     <string name="tools_npc_data">NPC数据</string>
     <string name="tools_skill_data">技能数据</string>
     <string name="tools_fb_drop">副本掉落</string>
@@ -110,6 +110,7 @@
     <string name="wechat_uninstall">您手机尚未安装微信或者版本过低</string>
     <string name="qq_uninstall">您手机尚未安装QQ或者版本过低</string>
     <string name="network_error">没有网络连接</string>
+    <string name="article_url">%1$s?pid=%2$s</string>
 
 
     <string-array name="article_type">
@@ -117,7 +118,6 @@
         <item>@string/dungeon</item>
         <item>@string/jx3dat</item>
         <item>@string/bps</item>
-        <item>@string/home</item>
         <item>@string/tools_tutorials</item>
     </string-array>
 

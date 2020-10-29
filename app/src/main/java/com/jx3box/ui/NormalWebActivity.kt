@@ -17,15 +17,17 @@
 package com.jx3box.ui
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.view.KeyEvent
+import android.webkit.WebView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.carey.module_webview.ByWebTools
 import com.carey.module_webview.ByWebView
 import com.carey.module_webview.OnByWebClientCallback
 import com.carey.module_webview.OnTitleProgressCallback
-import com.gyf.immersionbar.ImmersionBar
 import com.jx3box.R
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.module_log.LogUtils
 import com.jx3box.mvvm.base.BaseActivity
 import com.jx3box.utils.getCookies
@@ -53,6 +55,7 @@ class NormalWebActivity : BaseActivity() {
         mWebView = ByWebView
             .with(this)
             .setCookie(getCookies())
+            .useWebProgress(false)
             .setWebParent(ll_container, LinearLayout.LayoutParams(-1, -1))
             .useWebProgress(ContextCompat.getColor(this, R.color.colorPrimary))
             .setOnTitleProgressCallback(onTitleProgressCallback)
@@ -90,7 +93,18 @@ class NormalWebActivity : BaseActivity() {
         override fun isOpenThirdApp(url: String?): Boolean {
             // 处理三方链接
             LogUtils.logD("---url$url")
+            hideLoadingDialog()
             return ByWebTools.handleThirdApp(this@NormalWebActivity, url)
+        }
+
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+            hideLoadingDialog()
+        }
+
+        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+            super.onPageStarted(view, url, favicon)
+            showLoadingDialog(this@NormalWebActivity)
         }
     }
 

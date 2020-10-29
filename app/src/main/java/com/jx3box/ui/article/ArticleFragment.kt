@@ -21,9 +21,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.jx3box.R
+import com.jx3box.data.net.AppConfig
 import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentArticleBinding
 import com.jx3box.mvvm.base.BaseVMFragment
+import com.jx3box.ui.NormalWebActivity
+import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -54,9 +57,42 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
 
         articleAdapter.setOnItemClickListener { _, _, position ->
             val bundle = Bundle()
-            bundle.putInt("article_id", articleAdapter.getItem(position).post.ID)
-            bundle.putString("article_type", articleType.value)
-            startKtxActivity<ArticleDetailActivity>(extra = bundle)
+            var url = ""
+            val id = articleAdapter.getItem(position).post.ID
+            when (articleType.type) {
+                ArticleType.BBS.type ->
+                    url = requireContext().getCompatString(
+                        R.string.article_url,
+                        AppConfig.article_bbs,
+                        id
+                    )
+                ArticleType.BPS.type ->
+                    url = requireContext().getCompatString(
+                        R.string.article_url,
+                        AppConfig.article_bps,
+                        id
+                    )
+                ArticleType.FB.type ->
+                    url = requireContext().getCompatString(
+                        R.string.article_url,
+                        AppConfig.article_fb,
+                        id
+                    )
+                ArticleType.JX3DAT.type ->
+                    url = requireContext().getCompatString(
+                        R.string.article_url,
+                        AppConfig.article_jx3dat,
+                        id
+                    )
+                ArticleType.TOOL.type ->
+                    url = requireContext().getCompatString(
+                        R.string.article_url,
+                        AppConfig.article_tools,
+                        id
+                    )
+            }
+            bundle.putString("url", url)
+            startKtxActivity<NormalWebActivity>(extra = bundle)
         }
     }
 
@@ -82,7 +118,17 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
         val view: View = LayoutInflater.from(requireContext())
             .inflate(R.layout.view_see_more, binding.recyclerview, false)
         view.findViewById<TextView>(R.id.tvSeeMore).setOnClickListener {
-            showToast(articleType.value)
+            val bundle = Bundle()
+            var url = ""
+            when (articleType.type) {
+                ArticleType.BBS.type -> url = AppConfig.article_bbs
+                ArticleType.BPS.type -> url = AppConfig.article_bps
+                ArticleType.FB.type -> url = AppConfig.article_fb
+                ArticleType.JX3DAT.type -> url = AppConfig.article_jx3dat
+                ArticleType.TOOL.type -> url = AppConfig.article_tools
+            }
+            bundle.putString("url", url)
+            startKtxActivity<NormalWebActivity>(extra = bundle)
         }
         return view
     }

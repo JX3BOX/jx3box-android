@@ -97,7 +97,7 @@ public class ByWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         // html加载完成之后，添加监听图片的点击js函数
-        loadImageClickJs();
+//        loadImageClickJs();
         Activity mActivity = this.mActivityWeakReference.get();
         if (mActivity != null && !mActivity.isFinishing()
                 && !ByWebTools.isNetworkConnected(mActivity) && mByWebView.getProgressBar() != null) {
