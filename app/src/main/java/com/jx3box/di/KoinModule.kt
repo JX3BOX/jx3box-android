@@ -14,17 +14,15 @@
  *    limitations under the License.
  */
 
-package com.jx3box
+package com.jx3box.di
 
-import com.jx3box.data.net.repository.AdvertRepository
-import com.jx3box.data.net.repository.ArticleRepository
-import com.jx3box.data.net.repository.IndexRepository
-import com.jx3box.data.net.repository.LoginRepository
+import com.jx3box.data.net.repository.*
 import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.ui.article.ArticleViewModel
 import com.jx3box.ui.login.LoginViewModel
 import com.jx3box.ui.main.fragment.mine.MineViewModel
 import com.jx3box.ui.register.RegisterViewModel
+import com.jx3box.ui.search.SearchViewModel
 import com.jx3box.ui.splash.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -41,6 +39,7 @@ val viewModelModule = module {
     viewModel { MineViewModel() }
     viewModel { ArticleViewModel(get()) }
     viewModel { IndexViewModel(get()) }
+    viewModel { SearchViewModel(get(), get()) }
 }
 
 
@@ -49,6 +48,8 @@ val repositoryModule = module {
     single { LoginRepository() }
     single { ArticleRepository() }
     single { IndexRepository() }
+    single { SearchRepository() }
+    single { RankRepository() }
 }
 
 val appModule = listOf(viewModelModule, repositoryModule)

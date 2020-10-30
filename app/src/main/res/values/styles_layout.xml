@@ -35,4 +35,14 @@
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:drawablePadding">@dimen/dp_4</item>
     </style>
+
+    <style name="SearchMenuText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dp_10</item>
+        <item name="android:textColor">@color/colorTheme</item>
+        <item name="android:textSize">@dimen/sp_14</item>
+    </style>
+
 </resources>

@@ -39,7 +39,10 @@ object NetConfig {
     /**获取当前用户基本信息*/
     const val personal_info_url = "/user/me"
 
-    /**获取文章列表*/
+    /**
+     * 获取文章列表
+     * 关键词搜索 title
+     */
     const val get_article_list = "/post/list"
 
     /**
@@ -58,4 +61,34 @@ object NetConfig {
 
     /**获取微信授权token*/
     const val get_wx_token = "/sns/oauth2/access_token"
+
+    /**
+     * 作者搜索
+     * 用户搜索 name
+     */
+    const val get_user_list = "/user/list"
+
+    /**
+     * 成就搜索
+     * keyword
+     */
+    const val get_cj_list = "/api/achievement/search"
+
+    /**
+     * 物品搜索
+     * keyword
+     */
+    const val get_goods_list = "/api/item/search"
+
+    /**
+     * 百科搜索
+     * keyword
+     */
+    const val get_wiki_list = "/api/wiki/search/"
+
+    /**热门宏*/
+    const val get_hot_macro = "/api/macro/overview"
+
+    /**热门插件*/
+    const val get_hot_dat = "/api/plugins/jx3dat/rank"
 }

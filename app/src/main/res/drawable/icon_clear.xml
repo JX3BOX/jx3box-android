@@ -1,0 +1,34 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:pathData="M630.78,831.49c12.29,0 20.48,-8.19 20.48,-16.38l28.67,-450.56c0,-12.29 -8.19,-20.48 -16.38,-20.48 -12.29,0 -20.48,8.19 -20.48,16.38l-28.67,450.56C614.4,823.3 622.59,831.49 630.78,831.49z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M409.6,831.49c12.29,0 20.48,-8.19 16.38,-20.48l-28.67,-450.56c0,-12.29 -8.19,-20.48 -20.48,-16.38C368.64,344.06 360.45,352.26 360.45,360.45l28.67,450.56C389.12,823.3 397.31,831.49 409.6,831.49z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M520.19,831.49c12.29,0 20.48,-8.19 20.48,-20.48l0,-450.56c0,-12.29 -8.19,-20.48 -20.48,-20.48 -12.29,0 -20.48,8.19 -20.48,20.48l0,450.56C499.71,823.3 507.9,831.49 520.19,831.49z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M839.68,229.38l-188.42,0L651.26,151.55c0,-20.48 -16.38,-36.86 -36.86,-36.86l-188.42,0c-20.48,0 -36.86,16.38 -36.86,36.86l0,73.73L200.7,225.28C188.42,229.38 180.22,237.57 180.22,245.76c0,12.29 8.19,20.48 20.48,20.48l36.86,0 36.86,602.11c4.1,40.96 32.77,73.73 73.73,73.73l339.97,0c40.96,0 69.63,-32.77 73.73,-73.73l36.86,-602.11 36.86,0C851.97,266.24 860.16,258.05 860.16,245.76 860.16,237.57 851.97,229.38 839.68,229.38zM425.98,151.55 L614.4,151.55l0,73.73 -188.42,0L425.98,151.55zM729.09,868.35c-4.1,20.48 -16.38,36.86 -36.86,36.86L352.26,905.22c-20.48,0 -32.77,-16.38 -36.86,-36.86L274.43,266.24l491.52,0L729.09,868.35z"
+        android:fillColor="#000000" />
+</vector>

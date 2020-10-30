@@ -27,7 +27,7 @@ ext {
             retrofit2          : "2.9.0",
             utilx              : "1.29.0",
             permissionx        : "1.4.0",
-            koin               : "2.0.1",
+            koin               : "2.1.6",
             autosize           : "1.2.1",
             immersionbar       : "3.0.0",
             liveDataBus        : "1.7.2",

@@ -29,11 +29,16 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+
         buildConfigField "String", "BASE_URL", "\"https://server.jx3box.com\""
+        buildConfigField "String", "HELPER_URL", "\"https://helper.jx3box.com\""
+        buildConfigField "String", "NEXT_URL", "\"https://next.jx3box.com\""
+        buildConfigField "String", "WIKI_URL", "\"https://bb.jx3box.com\""
         buildConfigField "String", "WX_URL", "\"https://api.weixin.qq.com\""
         buildConfigField "String", "WX_KEY", "\"${rootProject.ext.WeChat["appId"]}\""
         buildConfigField "String", "WX_SECRET", "\"${rootProject.ext.WeChat["appSecret"]}\""
         buildConfigField "String", "QQ_KEY", "\"${rootProject.ext.QQ["appId"]}\""
+
         manifestPlaceholders = [
                 qqID    : rootProject.ext.QQ["appId"],
                 qqKey   : rootProject.ext.QQ["appKey"],
@@ -42,10 +47,6 @@ android {
                 wbKey   : rootProject.ext.WeiBo["appKey"],
                 wbSecret: rootProject.ext.WeiBo["appSecret"],
         ]
-
-//        ndk {
-//            abiFilters 'armeabi' , 'armeabi-v7a','arm64-v8a'
-//        }
     }
 
     signingConfigs {
@@ -115,7 +116,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["licensesDialog"]
     implementation rootProject.ext.thirdPack["recyclerViewAdapter"]
     implementation rootProject.ext.thirdPack["wechat"]
-    implementation rootProject.ext.thirdPack["weibo"]
+//    implementation rootProject.ext.thirdPack["weibo"]
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]

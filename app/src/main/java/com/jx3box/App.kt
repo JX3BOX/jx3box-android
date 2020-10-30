@@ -39,6 +39,7 @@ package com.jx3box
 */
 import android.app.Application
 import android.content.Context
+import com.jx3box.di.appModule
 import com.jx3box.module_log.LogUtils
 import com.tencent.mm.opensdk.openapi.IWXAPI
 import com.tencent.mm.opensdk.openapi.WXAPIFactory

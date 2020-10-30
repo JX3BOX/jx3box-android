@@ -16,7 +16,8 @@
 
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -55,15 +56,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_200"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/bg_mine_default" />
+                    tools:src="@drawable/reactnative_assets_images_jw3_force_person_cy_1renwu" />
 
                 <ImageView
                     android:id="@+id/imgAvatar"
+                    circleImgUrl="@{viewModel.currentUser.userAvatar}"
+                    placeholder="@{appR.drawable.icon_default_avatar}"
                     android:layout_width="@dimen/dp_70"
                     android:layout_height="@dimen/dp_70"
-                    android:layout_gravity="center"
-                    circleImgUrl="@{viewModel.currentUser.userAvatar}"
-                    placeholder="@{appR.drawable.icon_default_avatar}" />
+                    android:layout_gravity="center" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/tool_bar"
@@ -99,10 +100,10 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    isVisible="@{viewModel.isLogin()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    isVisible="@{viewModel.isLogin()}">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tvWorks"

@@ -71,6 +71,9 @@
             android:name="com.jx3box.ui.article.ArticleDetailActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.jx3box.ui.search.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.jx3box.module_imagebrowser.MNImageBrowserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"

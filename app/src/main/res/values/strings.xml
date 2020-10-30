@@ -111,7 +111,15 @@
     <string name="qq_uninstall">您手机尚未安装QQ或者版本过低</string>
     <string name="network_error">没有网络连接</string>
     <string name="article_url">%1$s?pid=%2$s</string>
-
+    <string name="cancel">取消</string>
+    <string name="search_history">搜索历史</string>
+    <string name="works">作品</string>
+    <string name="author">作者</string>
+    <string name="cj">成就</string>
+    <string name="goods">物品</string>
+    <string name="wiki">百科</string>
+    <string name="hot_macro">热门宏</string>
+    <string name="hot_dat">热门插件</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

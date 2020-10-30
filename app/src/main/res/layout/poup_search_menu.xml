@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_100"
+    android:layout_height="wrap_content"
+    android:background="@drawable/pop_menu_left"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvWorks"
+        style="@style/SearchMenuText"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/works" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        style="@style/SearchMenuText"
+        android:text="@string/author" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tvCj"
+        style="@style/SearchMenuText"
+        android:text="@string/cj" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tvGoods"
+        style="@style/SearchMenuText"
+        android:text="@string/goods" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tvWiki"
+        style="@style/SearchMenuText"
+        android:text="@string/wiki" />
+
+</LinearLayout>

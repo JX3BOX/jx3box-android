@@ -29,6 +29,9 @@ interface BoxService {
     companion object {
         const val BASE_URL = BuildConfig.BASE_URL
         const val WX_URL = BuildConfig.WX_URL
+        const val NEXT_URL = BuildConfig.NEXT_URL
+        const val HELPER_URL = BuildConfig.HELPER_URL
+        const val WIKI_URL = BuildConfig.WIKI_URL
     }
 
     /**
