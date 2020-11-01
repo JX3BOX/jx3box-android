@@ -29,6 +29,7 @@ import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
 import com.jx3box.ui.article.ArticleFragment
+import com.jx3box.ui.search.SearchActivity
 import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_bbs.*
@@ -48,6 +49,7 @@ class BbsFragment : BaseVMFragment<FragmentBbsBinding>(R.layout.fragment_bbs) {
     override fun initView() {
         initBanner()
         initViewPager()
+        tvSearch.setOnClickListener { startKtxActivity<SearchActivity>() }
     }
 
     private fun initViewPager() {

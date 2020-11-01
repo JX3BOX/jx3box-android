@@ -18,6 +18,7 @@ package com.jx3box.ui.search
 
 import com.jx3box.R
 import com.jx3box.databinding.ActivitySearchBinding
+import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,9 +33,17 @@ class SearchActivity : BaseVMActivity() {
     }
 
     override fun initView() {
+        binding.run {
+            viewModel = searchViewModel
+        }
     }
 
     override fun initImmersionBar() {
+        ImmersionBar.with(this)
+            .statusBarDarkFont(true)
+            .fitsSystemWindows(true)
+            .statusBarColor(R.color.white)
+            .init()
     }
 
     override fun startObserve() {

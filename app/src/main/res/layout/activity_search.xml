@@ -19,6 +19,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.jx3box.ui.search.SearchViewModel" />
     </data>
 
     <LinearLayout
