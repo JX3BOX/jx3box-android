@@ -33,31 +33,33 @@ class LoadingDialog : Dialog {
 
     constructor(context: Context, theme: Int) : super(context, theme) {}
 
-    private lateinit var dialog: LoadingDialog
+    private var dialog: LoadingDialog? = null
 
     fun showDialog(
         context: Context,
         cancelable: Boolean,
         cancelListener: DialogInterface.OnCancelListener?
-    ): LoadingDialog {
+    ): LoadingDialog? {
         dialog = LoadingDialog(context, R.style.LoadingDialog)
-        dialog.setContentView(R.layout.view_loading)
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.setCancelable(cancelable)
-        dialog.setOnCancelListener(cancelListener)
-        dialog.window?.apply {
-            attributes.gravity = Gravity.CENTER
-            val lp = attributes
-            lp.dimAmount = 0.2f
-            attributes = lp
+        dialog?.run {
+            setContentView(R.layout.view_loading)
+            setCanceledOnTouchOutside(false)
+            setCancelable(cancelable)
+            setOnCancelListener(cancelListener)
+            window?.apply {
+                attributes.gravity = Gravity.CENTER
+                val lp = attributes
+                lp.dimAmount = 0.2f
+                attributes = lp
+            }
+            show()
         }
-
-        dialog.show()
         return dialog
     }
 
     fun dismissDialog() {
-        if (dialog.isShowing)
-            dialog.dismiss()
+        dialog?.run {
+            if (isShowing) dismiss()
+        }
     }
 }
