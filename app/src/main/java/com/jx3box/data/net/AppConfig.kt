@@ -70,7 +70,7 @@ object AppConfig {
     const val flower_price = "https://www.jx3box.com/app/flower/"
 
     /**配装器地址*/
-    const val third_pz = "https://www.j3pz.com/"
+    const val third_pz = "https://www.j3pz.com/login"
 
     /**急速阈值查询*/
     const val third_speed = "https://www.j3pz.com/tools/haste/"
