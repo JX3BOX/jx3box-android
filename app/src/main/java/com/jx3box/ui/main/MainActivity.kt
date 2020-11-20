@@ -17,6 +17,7 @@
 package com.jx3box.ui.main
 
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jx3box.R
@@ -42,6 +43,7 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         val navController = findNavController(R.id.nav_host_fragment)
         nav_view.setupWithNavController(navController)
+        delegate.localNightMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
     }
 
     override fun initImmersionBar() {}

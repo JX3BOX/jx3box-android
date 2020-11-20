@@ -97,6 +97,7 @@
                     android:layout_height="@dimen/dp_46"
                     app:tabIndicatorColor="#ADBE107E"
                     app:tabMode="scrollable"
+                    android:background="@color/white"
                     app:tabTextAppearance="@style/TabTextStyle" />
             </com.google.android.material.appbar.AppBarLayout>
 

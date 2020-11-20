@@ -19,15 +19,16 @@ package com.jx3box.ui.main.fragment.mine
 import android.content.Intent
 import android.net.Uri
 import android.view.View
+import com.google.android.material.appbar.AppBarLayout
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.jx3box.R
 import com.jx3box.databinding.FragmentMineBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.login.LoginActivity
-import com.jx3box.utils.getSpValue
-import com.jx3box.utils.startKtxActivity
+import com.jx3box.utils.*
 import de.psdev.licensesdialog.LicensesDialog
+import kotlinx.android.synthetic.main.fragment_mine.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -49,6 +50,7 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
         binding.tvFeedBack.setOnClickListener(this)
         binding.tvLicense.setOnClickListener(this)
         binding.imgAvatar.setOnClickListener(this)
+        initAppBar()
     }
 
     override fun initData() {
@@ -63,6 +65,26 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
         LiveEventBus
             .get("login_succeed", String::class.java)
             .observe(this, { mineViewModel.getUserInfo() })
+    }
+
+    private fun initAppBar() {
+        app_bar.addOnOffsetChangedListener(object : AppBarStateChangeListener() {
+            override fun onStateChanged(appBarLayout: AppBarLayout, state: State) {
+                when (state) {
+                    State.EXPANDED -> {
+                        tvNick.gone()
+                        imgSetting.setImageResource(R.drawable.icon_setting)
+                    }
+                    State.COLLAPSED -> {
+                        tvNick.visible()
+                        imgSetting.setImageResource(R.drawable.icon_setting_black)
+                    }
+                    else -> {
+                    }
+                }
+            }
+
+        })
     }
 
     override fun initImmersionBar() {
