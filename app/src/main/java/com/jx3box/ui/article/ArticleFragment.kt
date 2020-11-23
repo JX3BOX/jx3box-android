@@ -26,6 +26,7 @@ import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentArticleBinding
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
+import com.jx3box.ui.article.bbs.BbsActivity
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -54,7 +55,8 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
         binding.run {
             adapter = articleAdapter
         }
-
+        // 打开或关闭加载更多功能（默认为true）
+        articleAdapter.loadMoreModule.isEnableLoadMore = false
         articleAdapter.setOnItemClickListener { _, _, position ->
             val bundle = Bundle()
             var url = ""
@@ -128,7 +130,8 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
                 ArticleType.TOOL.type -> url = AppConfig.article_tools
             }
             bundle.putString("url", url)
-            startKtxActivity<NormalWebActivity>(extra = bundle)
+//            startKtxActivity<NormalWebActivity>(extra = bundle)
+            startKtxActivity<BbsActivity>()
         }
         return view
     }

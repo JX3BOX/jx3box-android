@@ -35,25 +35,30 @@ import kotlinx.coroutines.withContext
  *@date  2020/10/4
  */
 class ArticleViewModel(private val repository: ArticleRepository) : BaseViewModel() {
-    private var currentPage = 0
+    private var currentPage = 1
     private val _articleListState = MutableLiveData<UiState<ArticleListResult>>()
     val articleListState: LiveData<UiState<ArticleListResult>>
         get() = _articleListState
 
     val articleDetail = MutableLiveData<ArticleDetailResult>()
 
-    fun getArticleList(isRefresh: Boolean = false, params: HashMap<String, String>) {
+    fun getArticleList(isRefresh: Boolean = true, params: HashMap<String, String>) {
         viewModelScope.launch(Dispatchers.Main) {
-            if (isRefresh) currentPage = 0
+            if (isRefresh)
+                currentPage = 1
+            else {
+                currentPage++
+                params["page"] = currentPage.toString()
+            }
             val result = withContext(Dispatchers.IO) {
                 repository.getArticleList(params)
             }
             result.checkResult(
                 onSuccess = {
-                    _articleListState.value = UiState(isSuccess = it)
+                    _articleListState.value = UiState(isSuccess = it, isLoading = !isRefresh)
                 },
                 onError = {
-                    _articleListState.value = UiState(isError = it)
+                    _articleListState.value = UiState(isError = it, isLoading = !isRefresh)
                 }
             )
         }

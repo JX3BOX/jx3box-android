@@ -120,6 +120,11 @@
     <string name="wiki">百科</string>
     <string name="hot_macro">热门宏</string>
     <string name="hot_dat">热门插件</string>
+    <string name="novice">新手</string>
+    <string name="advanced">进阶</string>
+    <string name="chosen">精选</string>
+    <string name="best">骨灰</string>
+    <string name="filter">筛选</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

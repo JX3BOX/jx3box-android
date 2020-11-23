@@ -23,6 +23,7 @@ import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.carey.module_glidelib.EasyGlide.loadCircleImage
@@ -46,6 +47,11 @@ fun bindImage(
     placeholder: Int = R.color.transparent
 ) {
     imageView.loadImage(imageView.context, url, isCrossFade = false, placeHolder = placeholder)
+}
+
+@BindingAdapter("backgroundRes")
+fun bindImage(imageView: ImageView, @DrawableRes res: Int) {
+    imageView.setBackgroundResource(res)
 }
 
 @BindingAdapter("imageUrl", "subtype", requireAll = false)

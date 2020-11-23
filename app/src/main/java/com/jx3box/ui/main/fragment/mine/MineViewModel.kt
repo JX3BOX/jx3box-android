@@ -23,7 +23,9 @@ import com.jx3box.App
 import com.jx3box.data.db.BoxDatabase
 import com.jx3box.data.net.model.UserInfoResult
 import com.jx3box.mvvm.base.BaseViewModel
+import com.jx3box.utils.ProfileUtil
 import com.jx3box.utils.getSpValue
+import com.jx3box.utils.putSpValue
 
 /**
  * @author Carey
@@ -31,6 +33,7 @@ import com.jx3box.utils.getSpValue
  */
 class MineViewModel : BaseViewModel() {
     val currentUserField = ObservableField<LiveData<UserInfoResult>>()
+    val profileRes = ObservableField<Int>()
     val isLogin = MutableLiveData<Boolean>()
 
     fun getUserInfo() {
@@ -40,7 +43,14 @@ class MineViewModel : BaseViewModel() {
                 BoxDatabase.instance.userInfoDao()
                     .getCurrentUserLiveData(App.CONTEXT.getSpValue("current_user", 0))
             )
+            val bg = App.CONTEXT.getSpValue("profileRes", -1)
+            if (bg > -1) {
+                profileRes.set(bg)
+            } else {
+                val randomProfileBg = ProfileUtil.getRandomProfileBg()
+                profileRes.set(randomProfileBg)
+                App.CONTEXT.putSpValue("profileRes", randomProfileBg)
+            }
         }
     }
-
 }

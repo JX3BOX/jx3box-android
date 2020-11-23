@@ -17,6 +17,7 @@
 package com.jx3box.ui.article
 
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.jx3box.R
 import com.jx3box.data.net.model.ArticleDetailResult
@@ -29,7 +30,7 @@ import com.jx3box.databinding.ItemArticleBinding
 class ArticleAdapter :
     BaseQuickAdapter<ArticleDetailResult, BaseDataBindingHolder<ItemArticleBinding>>(
         R.layout.item_article
-    ) {
+    ), LoadMoreModule {
     override fun convert(
         holder: BaseDataBindingHolder<ItemArticleBinding>,
         item: ArticleDetailResult

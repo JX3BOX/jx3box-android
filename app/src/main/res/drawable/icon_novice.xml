@@ -1,0 +1,25 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="@color/black"
+        android:pathData="M1013.95,649.38l-157.92,-159.92c-6,-6.1 -14.19,-9.5 -22.79,-9.5L543.28,479.97v-96.15h383.91c52.87,0 95.95,-43.08 95.95,-95.95v-191.91c0,-52.87 -43.08,-95.95 -95.95,-95.95L193.36,0c-8.5,0 -16.59,3.4 -22.59,9.3L9.85,169.52c-6,6 -9.4,14.19 -9.4,22.69s3.4,16.69 9.5,22.69l160.92,159.62c6,5.9 14.09,9.3 22.49,9.3h286.06v96.15L96.4,479.97c-52.87,0 -95.95,43.08 -95.95,95.95v191.91c0,52.87 43.08,95.95 95.95,95.95h383.01L479.42,991.02c0,17.69 14.29,31.98 31.98,31.98s31.98,-14.29 31.98,-31.98L543.38,863.78h289.96c8.6,0 16.79,-3.4 22.79,-9.5l157.92,-159.92c12.19,-12.49 12.19,-32.48 -0.1,-44.98zM77.81,192.11L206.55,63.97h720.65c17.59,0 31.98,14.39 31.98,31.98v191.91c0,17.59 -14.39,31.98 -31.98,31.98h-720.65L77.81,192.11zM819.95,799.81L96.4,799.81c-17.59,0 -31.98,-14.39 -31.98,-31.98v-191.91c0,-17.59 14.39,-31.98 31.98,-31.98h723.55l126.34,127.94 -126.34,127.94z" />
+</vector>
