@@ -1,0 +1,25 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M237.57,315.9h106.5c19.46,0 35.33,-15.87 35.33,-35.33v-168.96c0,-19.46 -15.87,-35.33 -35.33,-35.33H237.57c-19.46,0 -35.33,15.87 -35.33,35.33v168.96c0,18.94 15.87,35.33 35.33,35.33zM988.16,118.27H401.41V271.36H988.16c19.97,0 35.84,-15.87 35.84,-35.84V154.11c0,-19.97 -15.87,-35.84 -35.84,-35.84zM35.84,270.85h144.38V118.27H35.84c-19.97,0 -35.84,15.87 -35.84,35.84v80.9c0,19.97 15.87,35.84 35.84,35.84zM35.84,588.8h664.58V436.22H35.84c-19.97,0 -35.84,15.87 -35.84,35.84V552.96c0,19.97 15.87,35.84 35.84,35.84zM988.16,436.22h-66.56V588.8h66.56c19.97,0 35.84,-15.87 35.84,-35.84V472.06c0,-19.97 -15.87,-35.84 -35.84,-35.84zM0,790.02v80.9c0,19.97 15.87,35.84 35.84,35.84h305.15v-153.09H35.84c-19.97,0.51 -35.84,16.38 -35.84,36.35zM988.16,754.18h-425.98v153.09H988.16c19.97,0 35.84,-15.87 35.84,-35.84v-80.9c0,-20.48 -15.87,-36.35 -35.84,-36.35zM864.26,627.71c19.46,0 35.33,-15.87 35.33,-35.33v-168.96c0,-19.46 -15.87,-35.33 -35.33,-35.33H757.76c-19.46,0 -35.33,15.87 -35.33,35.33v168.96c0,19.46 15.87,35.33 35.33,35.33h106.5zM504.83,708.1H398.34c-19.46,0 -35.33,15.87 -35.33,35.33v168.96c0,19.46 15.87,35.33 35.33,35.33h106.5c19.46,0 35.33,-15.87 35.33,-35.33v-168.96c0,-18.94 -15.87,-35.33 -35.33,-35.33z" />
+</vector>

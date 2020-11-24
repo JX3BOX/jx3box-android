@@ -46,10 +46,10 @@ class ArticleViewModel(private val repository: ArticleRepository) : BaseViewMode
         viewModelScope.launch(Dispatchers.Main) {
             if (isRefresh)
                 currentPage = 1
-            else {
+            else
                 currentPage++
-                params["page"] = currentPage.toString()
-            }
+
+            params["page"] = currentPage.toString()
             val result = withContext(Dispatchers.IO) {
                 repository.getArticleList(params)
             }

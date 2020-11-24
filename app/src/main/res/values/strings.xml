@@ -125,6 +125,18 @@
     <string name="chosen">精选</string>
     <string name="best">骨灰</string>
     <string name="filter">筛选</string>
+    <string name="filter_all">全部</string>
+    <string name="filter_all_subtitle">All</string>
+    <string name="filter_experience">玩法心得</string>
+    <string name="filter_experience_subtitle">Experience</string>
+    <string name="filter_memory">江湖回忆</string>
+    <string name="filter_memory_subtitle">Memory</string>
+    <string name="filter_media">同人影音</string>
+    <string name="filter_media_subtitle">Media</string>
+    <string name="filter_discuz">交流反馈</string>
+    <string name="filter_discuz_subtitle">Discuz</string>
+    <string name="filter_idea">反馈建议</string>
+    <string name="filter_idea_subtitle">Idea</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

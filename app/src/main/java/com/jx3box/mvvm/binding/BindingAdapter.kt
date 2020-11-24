@@ -21,6 +21,7 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.BackgroundColorSpan
 import android.text.style.ForegroundColorSpan
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
@@ -47,6 +48,14 @@ fun bindImage(
     placeholder: Int = R.color.transparent
 ) {
     imageView.loadImage(imageView.context, url, isCrossFade = false, placeHolder = placeholder)
+}
+
+@BindingAdapter("buttonRes")
+fun bindButton(
+    checkBox: CheckBox,
+    @DrawableRes resId: Int
+) {
+    checkBox.setButtonDrawable(resId)
 }
 
 @BindingAdapter("backgroundRes")

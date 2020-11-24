@@ -21,6 +21,7 @@
     android:orientation="horizontal">
 
     <RadioGroup
+        android:id="@+id/rgMarkFilter"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -28,10 +29,16 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <RadioButton
+            android:id="@+id/rbAll"
+            style="@style/FilterText"
+            android:button="@drawable/icon_mark_all"
+            android:checked="true"
+            android:text="@string/filter_all" />
+
+        <RadioButton
             android:id="@+id/rbNovice"
             style="@style/FilterText"
             android:button="@drawable/icon_novice"
-            android:checked="true"
             android:text="@string/novice" />
 
         <RadioButton
@@ -50,6 +57,7 @@
             android:id="@+id/rbBest"
             style="@style/FilterText"
             android:button="@drawable/icon_best"
+            android:layout_marginEnd="@dimen/dp_4"
             android:text="@string/best" />
     </RadioGroup>
 
