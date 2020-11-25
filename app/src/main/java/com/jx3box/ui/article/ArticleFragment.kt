@@ -26,7 +26,6 @@ import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentArticleBinding
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
-import com.jx3box.ui.article.bbs.BbsActivity
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -121,17 +120,26 @@ class ArticleFragment : BaseVMFragment<FragmentArticleBinding>(R.layout.fragment
             .inflate(R.layout.view_see_more, binding.recyclerview, false)
         view.findViewById<TextView>(R.id.tvSeeMore).setOnClickListener {
             val bundle = Bundle()
-            var url = ""
             when (articleType.type) {
-                ArticleType.BBS.type -> url = AppConfig.article_bbs
-                ArticleType.BPS.type -> url = AppConfig.article_bps
-                ArticleType.FB.type -> url = AppConfig.article_fb
-                ArticleType.JX3DAT.type -> url = AppConfig.article_jx3dat
-                ArticleType.TOOL.type -> url = AppConfig.article_tools
+                ArticleType.BBS.type -> {
+                    bundle.putString("title", requireContext().getCompatString(R.string.bbs))
+                    bundle.putString("type", articleType.type)
+                    startKtxActivity<NormalCmsListActivity>(extra = bundle)
+                }
+//                ArticleType.BPS.type -> url = AppConfig.article_bps
+//                ArticleType.FB.type -> url = AppConfig.article_fb
+//                ArticleType.JX3DAT.type -> url = AppConfig.article_jx3dat
+                ArticleType.TOOL.type -> {
+                    bundle.putString(
+                        "title",
+                        requireContext().getCompatString(R.string.tools_tutorials)
+                    )
+                    bundle.putString("type", articleType.type)
+                    startKtxActivity<NormalCmsListActivity>(extra = bundle)
+                }
             }
-            bundle.putString("url", url)
+//            bundle.putString("url", url)
 //            startKtxActivity<NormalWebActivity>(extra = bundle)
-            startKtxActivity<BbsActivity>()
         }
         return view
     }

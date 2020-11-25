@@ -75,7 +75,7 @@
             android:name="com.jx3box.ui.search.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.ui.article.bbs.BbsActivity"
+            android:name="com.jx3box.ui.article.NormalCmsListActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.jx3box.module_imagebrowser.MNImageBrowserActivity"

@@ -100,7 +100,11 @@ class MineFragment : BaseVMFragment<FragmentMineBinding>(R.layout.fragment_mine)
                 val uri = Uri.parse(getString(R.string.sendto))
                 val intent = Intent(Intent.ACTION_SENDTO, uri)
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.mail_topic))
-                startActivity(intent)
+                if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                    startActivity(intent)
+                } else {
+                    showToast("请先去应用市场下载邮箱APP,或者网页发送反馈邮件给admin@jx3box.com")
+                }
             }
             binding.tvLicense -> {
                 LicensesDialog.Builder(activity)

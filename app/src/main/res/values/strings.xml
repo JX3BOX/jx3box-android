@@ -137,6 +137,14 @@
     <string name="filter_discuz_subtitle">Discuz</string>
     <string name="filter_idea">反馈建议</string>
     <string name="filter_idea_subtitle">Idea</string>
+    <string name="filter_male">成男</string>
+    <string name="filter_male_subtitle">Male</string>
+    <string name="filter_female">成女</string>
+    <string name="filter_female_subtitle">Female</string>
+    <string name="filter_boy">正太</string>
+    <string name="filter_boy_subtitle">Boy</string>
+    <string name="filter_loli">萝莉</string>
+    <string name="filter_loli_subtitle">Loli</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

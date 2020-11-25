@@ -14,21 +14,19 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.article.bbs
+package com.jx3box.ui.article
 
 import android.os.Bundle
 import androidx.core.view.GravityCompat
 import com.jx3box.R
 import com.jx3box.data.net.AppConfig
 import com.jx3box.data.net.model.filter.getBbsFilterMenu
-import com.jx3box.data.net.model.global.ArticleType
+import com.jx3box.data.net.model.filter.getDiyFaceFilterMenu
+import com.jx3box.data.net.model.filter.getToolsFilterMenu
 import com.jx3box.databinding.ActivityListBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.NormalWebActivity
-import com.jx3box.ui.article.ArticleAdapter
-import com.jx3box.ui.article.ArticleViewModel
-import com.jx3box.ui.article.NormalFilterAdapter
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import kotlinx.android.synthetic.main.activity_list.*
@@ -40,14 +38,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  * @author Carey
  * @date 2020/11/23
  */
-class BbsActivity : BaseVMActivity() {
+class NormalCmsListActivity : BaseVMActivity() {
     private val articleViewModel by viewModel<ArticleViewModel>()
     private val binding by binding<ActivityListBinding>(R.layout.activity_list)
     private val articleAdapter by lazy { ArticleAdapter() }
     private val filterAdapter by lazy { NormalFilterAdapter() }
     private val params = HashMap<String, String>()
+    private var type: String? = null
     override fun initData() {
-        params["type"] = ArticleType.BBS.type
         getData()
     }
 
@@ -58,9 +56,12 @@ class BbsActivity : BaseVMActivity() {
         tvFilter.setOnClickListener {
             binding.drawer.openDrawer(GravityCompat.END)
         }
-        mTvTitle.text = getCompatString(R.string.bbs)
+        mTvTitle.text = intent.getStringExtra("title")
+        type = intent.getStringExtra("type")
+        params["type"] = type!!
         mImgBack.setOnClickListener { finish() }
         initRecycler()
+        initDrawer()
         initRadio()
     }
 
@@ -79,9 +80,10 @@ class BbsActivity : BaseVMActivity() {
             bundle.putString("url", url)
             startKtxActivity<NormalWebActivity>(extra = bundle)
         }
+    }
 
+    private fun initDrawer() {
         recyclerDrawer.adapter = filterAdapter
-        filterAdapter.setList(getBbsFilterMenu())
         filterAdapter.setOnItemClickListener { _, _, position ->
             val data = filterAdapter.data
             for (index in 0 until data.size) {
@@ -93,9 +95,15 @@ class BbsActivity : BaseVMActivity() {
             getData()
             drawer.closeDrawer(GravityCompat.END)
         }
+
+        when (type) {
+            "bbs" -> filterAdapter.setList(getBbsFilterMenu())
+            "face" -> filterAdapter.setList(getDiyFaceFilterMenu())
+            "tool" -> filterAdapter.setList(getToolsFilterMenu())
+        }
     }
 
-    fun initRadio() {
+    private fun initRadio() {
         rgMarkFilter.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.rbAll -> params["mark"] = ""
@@ -122,7 +130,7 @@ class BbsActivity : BaseVMActivity() {
     }
 
     override fun startObserve() {
-        articleViewModel.articleListState.observe(this@BbsActivity, {
+        articleViewModel.articleListState.observe(this@NormalCmsListActivity, {
             hideLoadingDialog()
             it.isSuccess?.let { result ->
                 articleAdapter.run {

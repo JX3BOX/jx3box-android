@@ -77,3 +77,93 @@ fun Context.getBbsFilterMenu(): List<NormalFilterMenu> {
     )
     return bbsMenu
 }
+
+fun Context.getDiyFaceFilterMenu(): List<NormalFilterMenu> {
+    val faceMenu: MutableList<NormalFilterMenu> = ArrayList()
+    faceMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_all,
+            getCompatString(R.string.filter_all),
+            getCompatString(R.string.filter_all_subtitle),
+            true
+        )
+    )
+    faceMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_female,
+            getCompatString(R.string.filter_female),
+            getCompatString(R.string.filter_female_subtitle),
+            subType = getCompatString(R.string.filter_female)
+        )
+    )
+    faceMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_male,
+            getCompatString(R.string.filter_male),
+            getCompatString(R.string.filter_male_subtitle),
+            subType = getCompatString(R.string.filter_male)
+        )
+    )
+    faceMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_loli,
+            getCompatString(R.string.filter_loli),
+            getCompatString(R.string.filter_loli_subtitle),
+            subType = getCompatString(R.string.filter_loli)
+        )
+    )
+    faceMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_boy,
+            getCompatString(R.string.filter_boy),
+            getCompatString(R.string.filter_boy_subtitle),
+            subType = getCompatString(R.string.filter_boy)
+        )
+    )
+    return faceMenu
+}
+
+fun Context.getToolsFilterMenu(): List<NormalFilterMenu> {
+    val toolsMenu: MutableList<NormalFilterMenu> = ArrayList()
+    toolsMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_all,
+            "全部",
+            getCompatString(R.string.filter_all_subtitle),
+            true
+        )
+    )
+    toolsMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_all,
+            "工具源码",
+            getCompatString(R.string.filter_all_subtitle),
+            subType = "1"
+        )
+    )
+    toolsMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_female,
+            "资源分享",
+            getCompatString(R.string.filter_female_subtitle),
+            subType = "2"
+        )
+    )
+    toolsMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_male,
+            "插件指南",
+            getCompatString(R.string.filter_male_subtitle),
+            subType = "3"
+        )
+    )
+    toolsMenu.add(
+        NormalFilterMenu(
+            R.drawable.icon_loli,
+            "帮助文档",
+            getCompatString(R.string.filter_loli_subtitle),
+            subType = "4"
+        )
+    )
+    return toolsMenu
+}
