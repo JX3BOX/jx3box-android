@@ -21,6 +21,7 @@ import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.ui.article.ArticleViewModel
 import com.jx3box.ui.login.LoginViewModel
 import com.jx3box.ui.main.fragment.mine.MineViewModel
+import com.jx3box.ui.message.MessageViewModel
 import com.jx3box.ui.register.RegisterViewModel
 import com.jx3box.ui.search.SearchViewModel
 import com.jx3box.ui.splash.SplashViewModel
@@ -40,6 +41,7 @@ val viewModelModule = module {
     viewModel { ArticleViewModel(get()) }
     viewModel { IndexViewModel(get()) }
     viewModel { SearchViewModel(get(), get()) }
+    viewModel { MessageViewModel(get()) }
 }
 
 
@@ -50,6 +52,7 @@ val repositoryModule = module {
     single { IndexRepository() }
     single { SearchRepository() }
     single { RankRepository() }
+    single { MessageRepository() }
 }
 
 val appModule = listOf(viewModelModule, repositoryModule)

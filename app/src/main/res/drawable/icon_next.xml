@@ -1,0 +1,25 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:pathData="M636.42,522.24l-397.82,387.07c-23.55,23.04 -23.55,59.9 0,82.43 23.55,23.04 61.44,23.04 84.99,0l440.32,-428.03c23.55,-23.04 23.55,-59.9 0,-82.43l-440.32,-428.03C311.81,41.47 296.45,35.84 281.09,35.84c-15.36,0 -30.72,5.63 -42.5,16.9 -23.55,23.04 -23.55,59.9 0,82.43l397.82,387.07z"
+        android:fillColor="#333333" />
+</vector>

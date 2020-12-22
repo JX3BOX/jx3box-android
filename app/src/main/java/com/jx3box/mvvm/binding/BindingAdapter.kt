@@ -31,6 +31,8 @@ import com.carey.module_glidelib.EasyGlide.loadCircleImage
 import com.carey.module_glidelib.EasyGlide.loadImage
 import com.jx3box.R
 import com.jx3box.data.net.model.global.LabelType
+import com.jx3box.utils.DateUtil
+import com.jx3box.utils.getCompatDrawable
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -165,5 +167,35 @@ fun TextView.showTime(date: String?) {
         } catch (e: Exception) {
             text = ""
         }
+    }
+}
+
+@BindingAdapter("timestamp")
+fun TextView.setTime(timestamp: String?) {
+    if (timestamp != null) {
+        text = try {
+            DateUtil.formatDataByTimestamp(DateUtil.YMD_HMS_FORMAT, timestamp.toLong())
+        } catch (e: Exception) {
+            ""
+        }
+    }
+}
+
+@BindingAdapter("messageStatus")
+fun TextView.drawableStatusCompat(status: Int) {
+    if (status == 0) {
+        setCompoundDrawablesWithIntrinsicBounds(
+            getCompatDrawable(R.drawable.icon_un_read),
+            null,
+            null,
+            null
+        )
+    } else {
+        setCompoundDrawablesWithIntrinsicBounds(
+            getCompatDrawable(R.drawable.icon_read),
+            null,
+            null,
+            null
+        )
     }
 }

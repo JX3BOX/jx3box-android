@@ -78,6 +78,12 @@
             android:name="com.jx3box.ui.article.NormalCmsListActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.jx3box.ui.message.MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.jx3box.ui.message.MessageDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.jx3box.module_imagebrowser.MNImageBrowserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"

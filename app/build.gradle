@@ -35,6 +35,7 @@ android {
         buildConfigField "String", "NEXT_URL", "\"https://next.jx3box.com\""
         buildConfigField "String", "WIKI_URL", "\"https://bb.jx3box.com\""
         buildConfigField "String", "WX_URL", "\"https://api.weixin.qq.com\""
+        buildConfigField "String", "SPIDER_URL", "\"https://spider.jx3box.com\""
         buildConfigField "String", "WX_KEY", "\"${rootProject.ext.WeChat["appId"]}\""
         buildConfigField "String", "WX_SECRET", "\"${rootProject.ext.WeChat["appSecret"]}\""
         buildConfigField "String", "QQ_KEY", "\"${rootProject.ext.QQ["appId"]}\""

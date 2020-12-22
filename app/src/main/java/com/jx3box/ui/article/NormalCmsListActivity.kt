@@ -130,7 +130,7 @@ class NormalCmsListActivity : BaseVMActivity() {
     }
 
     override fun startObserve() {
-        articleViewModel.articleListState.observe(this@NormalCmsListActivity, {
+        articleViewModel.articleListState.observe(this@NormalCmsListActivity) {
             hideLoadingDialog()
             it.isSuccess?.let { result ->
                 articleAdapter.run {
@@ -151,6 +151,6 @@ class NormalCmsListActivity : BaseVMActivity() {
                 }
                 showToast(msg)
             }
-        })
+        }
     }
 }

@@ -91,4 +91,13 @@ object NetConfig {
 
     /**热门插件*/
     const val get_hot_dat = "/api/plugins/jx3dat/rank"
+
+    /**用户消息*/
+    const val get_message = "/api/messages"
+
+    /**设置消息已读*/
+    const val read_message = "/api/messages/read"
+
+    /**官方消息*/
+    const val get_official_message = "/jx3news"
 }

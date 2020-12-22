@@ -29,7 +29,10 @@ import com.jx3box.mvvm.IndexViewModel
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
 import com.jx3box.ui.article.ArticleFragment
+import com.jx3box.ui.login.LoginActivity
+import com.jx3box.ui.message.MessageActivity
 import com.jx3box.ui.search.SearchActivity
+import com.jx3box.utils.getSpValue
 import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.BannerAdapter
 import kotlinx.android.synthetic.main.fragment_bbs.*
@@ -50,6 +53,14 @@ class BbsFragment : BaseVMFragment<FragmentBbsBinding>(R.layout.fragment_bbs) {
         initBanner()
         initViewPager()
         tvSearch.setOnClickListener { startKtxActivity<SearchActivity>() }
+        imgMsg.setOnClickListener {
+            val isLogin = requireContext().getSpValue("isLogin", false)
+            if (isLogin) {
+                startKtxActivity<MessageActivity>()
+            } else {
+                startKtxActivity<LoginActivity>()
+            }
+        }
     }
 
     private fun initViewPager() {

@@ -38,6 +38,7 @@ object RetrofitClient : BaseRetrofitClient() {
     val helperService by lazy { getJsonService(BoxService::class.java, BoxService.HELPER_URL) }
     val nextService by lazy { getJsonService(BoxService::class.java, BoxService.NEXT_URL) }
     val wikiService by lazy { getJsonService(BoxService::class.java, BoxService.WIKI_URL) }
+    val spiderService by lazy { getJsonService(BoxService::class.java, BoxService.SPIDER_URL) }
 
     private val cookieJar by lazy {
         PersistentCookieJar(

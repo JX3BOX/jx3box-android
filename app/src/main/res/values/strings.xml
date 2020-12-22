@@ -145,6 +145,9 @@
     <string name="filter_boy_subtitle">Boy</string>
     <string name="filter_loli">萝莉</string>
     <string name="filter_loli_subtitle">Loli</string>
+    <string name="message_user">用户消息</string>
+    <string name="message_official">官方消息</string>
+    <string name="message_detail">消息详情</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>
@@ -153,5 +156,4 @@
         <item>@string/bps</item>
         <item>@string/tools_tutorials</item>
     </string-array>
-
 </resources>

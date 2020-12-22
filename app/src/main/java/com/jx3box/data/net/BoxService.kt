@@ -32,6 +32,7 @@ interface BoxService {
         const val NEXT_URL = BuildConfig.NEXT_URL
         const val HELPER_URL = BuildConfig.HELPER_URL
         const val WIKI_URL = BuildConfig.WIKI_URL
+        const val SPIDER_URL = BuildConfig.SPIDER_URL
     }
 
     /**
@@ -96,5 +97,23 @@ interface BoxService {
      */
     @GET(NetConfig.get_index)
     suspend fun getIndex(@Query("type") type: String): BoxResponse<List<IndexResult>>
+
+    /**
+     * 获取用户消息
+     */
+    @GET(NetConfig.get_message)
+    suspend fun getMessage(@QueryMap params: HashMap<String, String>): BoxResponse<MessageResponse>
+
+    /**
+     * 设置消息已读
+     */
+    @PUT(NetConfig.read_message)
+    suspend fun readMessage(@Body params: RequestBody): BoxResponse<Unit>
+
+    /**
+     * 获取官方消息
+     */
+    @GET(NetConfig.get_official_message)
+    suspend fun getOfficialMessage(): List<OfficialMessageResponse>
 
 }

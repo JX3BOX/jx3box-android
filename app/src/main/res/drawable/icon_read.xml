@@ -1,0 +1,31 @@
+<!--
+  ~       Copyright (C) 2020.  jx3box.com
+  ~
+  ~    Licensed under the Apache License, Version 2.0 (the "License");
+  ~    you may not use this file except in compliance with the License.
+  ~    You may obtain a copy of the License at
+  ~
+  ~        http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~    Unless required by applicable law or agreed to in writing, software
+  ~    distributed under the License is distributed on an "AS IS" BASIS,
+  ~    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~    See the License for the specific language governing permissions and
+  ~    limitations under the License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="16dp"
+    android:height="16dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <path
+        android:fillColor="@color/color_999999"
+        android:pathData="M896,988.16H128a40.96,40.96 0,0 1,-40.96 -40.96V435.2a40.96,40.96 0,0 1,81.92 0v471.04h686.08V435.2a40.96,40.96 0,0 1,81.92 0v512a40.96,40.96 0,0 1,-40.96 40.96z" />
+    <path
+        android:fillColor="@color/color_999999"
+        android:pathData="M399.35,729.43a40.82,40.82 0,0 1,-27.94 -11.01l-271.36,-253.27a40.96,40.96 0,1 1,55.9 -59.89l271.36,253.27a40.96,40.96 0,0 1,-27.96 70.9zM624.66,729.42a40.96,40.96 0,0 1,-27.96 -70.91l271.35,-253.26a40.97,40.97 0,0 1,55.9 59.89l-271.35,253.26a40.83,40.83 0,0 1,-27.94 11.02z" />
+    <path
+        android:fillColor="@color/color_999999"
+        android:pathData="M895.99,476.16a40.83,40.83 0,0 1,-27.94 -11.01l-309.14,-288.53c-25.42,-23.74 -68.4,-23.74 -93.82,0L155.94,465.15a40.96,40.96 0,0 1,-55.9 -59.89L409.19,116.73c56.69,-52.9 148.93,-52.9 205.62,0l309.14,288.53A40.97,40.97 0,0 1,895.99 476.16zM895.95,988.16H128.05a41.01,41.01 0,0 1,-39.23 -29.1,41.01 41.01,0 0,1 13.82,-44.03l383.73,-306.99 0.75,-0.59a41.06,41.06 0,0 1,49.75 0c0.25,0.19 0.51,0.39 0.75,0.59l383.92,307.14a41.01,41.01 0,0 1,13.27 44.99,40.97 40.97,0 0,1 -38.86,27.99zM244.77,906.24h534.46L512,692.45 244.77,906.24z" />
+</vector>
