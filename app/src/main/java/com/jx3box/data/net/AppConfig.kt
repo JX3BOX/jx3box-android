@@ -83,4 +83,7 @@ object AppConfig {
 
     /**奇遇查询*/
     const val third_serendipity = "https://j3cx.com/serendipity"
+
+    /**奇遇查询*/
+    const val official_message = "https://jx3.xoyo.com/allnews/"
 }

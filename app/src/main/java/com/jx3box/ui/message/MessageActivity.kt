@@ -18,12 +18,15 @@ package com.jx3box.ui.message
 
 import android.os.Bundle
 import com.jx3box.R
+import com.jx3box.data.net.AppConfig
 import com.jx3box.databinding.ActivityMessageBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.ui.NormalWebActivity
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.activity_message.*
 import kotlinx.android.synthetic.main.layout_title_back.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,6 +48,12 @@ class MessageActivity : BaseVMActivity() {
         }
         initRecycler()
         mImgBack.setOnClickListener { onBackPressed() }
+        tvOfficialMessage.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("url", AppConfig.official_message)
+            bundle.putString("title", getCompatString(R.string.message_official))
+            startKtxActivity<NormalWebActivity>(extra = bundle)
+        }
         mTvTitle.text = getCompatString(R.string.message_user)
     }
 

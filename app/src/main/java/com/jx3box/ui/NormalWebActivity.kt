@@ -99,6 +99,18 @@ class NormalWebActivity : BaseActivity() {
 
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
+            if (url != null) {
+                if (url.contains("https://jx3.xoyo.com/")) {
+                    mWebView.loadJsHolder.loadJs(
+                        "javascript:" +
+                                "document.getElementsByClassName('xfe-group-21')[0].style.display=\"none\";" +
+                                "document.getElementsByClassName('xfe-group-1')[0].style.display=\"none\";" +
+                                "var obj=document.getElementsByClassName('public_footer')[0]; " +
+                                "obj.innerHTML = \"\";" +
+                                "var parentObj = obj.parentNode;parentObj.removeChild(obj);"
+                    )
+                }
+            }
             hideLoadingDialog()
         }
 
