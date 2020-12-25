@@ -26,6 +26,7 @@ import com.jx3box.data.net.model.global.ArticleType
 import com.jx3box.databinding.FragmentArticleBinding
 import com.jx3box.mvvm.base.BaseVMFragment
 import com.jx3box.ui.NormalWebActivity
+import com.jx3box.ui.cms.NormalCmsListActivity
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

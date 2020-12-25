@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.jx3box.ui.article
+package com.jx3box.ui.cms
 
 import android.os.Bundle
 import androidx.core.view.GravityCompat
@@ -27,6 +27,8 @@ import com.jx3box.databinding.ActivityListBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.NormalWebActivity
+import com.jx3box.ui.article.ArticleAdapter
+import com.jx3box.ui.article.ArticleViewModel
 import com.jx3box.utils.getCompatString
 import com.jx3box.utils.startKtxActivity
 import kotlinx.android.synthetic.main.activity_list.*
@@ -59,7 +61,7 @@ class NormalCmsListActivity : BaseVMActivity() {
         mTvTitle.text = intent.getStringExtra("title")
         type = intent.getStringExtra("type")
         params["type"] = type!!
-        mImgBack.setOnClickListener { finish() }
+        mImgBack.setOnClickListener { onBackPressed() }
         initRecycler()
         initDrawer()
         initRadio()
