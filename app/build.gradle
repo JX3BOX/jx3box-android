@@ -117,7 +117,7 @@ dependencies {
     implementation rootProject.ext.thirdPack["licensesDialog"]
     implementation rootProject.ext.thirdPack["recyclerViewAdapter"]
     implementation rootProject.ext.thirdPack["wechat"]
-//    implementation rootProject.ext.thirdPack["weibo"]
+    implementation rootProject.ext.thirdPack["weibo"]
     debugImplementation rootProject.ext.thirdPack["flipper"]
     debugImplementation rootProject.ext.thirdPack["flipper_network_plugin"]
     debugImplementation rootProject.ext.thirdPack["soloader"]
