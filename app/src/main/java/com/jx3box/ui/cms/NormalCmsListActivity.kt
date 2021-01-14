@@ -52,7 +52,7 @@ class NormalCmsListActivity : BaseVMActivity() {
     }
 
     override fun initView() {
-        binding.run {
+        with(binding) {
             viewModel = articleViewModel
         }
         tvFilter.setOnClickListener {
@@ -135,7 +135,7 @@ class NormalCmsListActivity : BaseVMActivity() {
         articleViewModel.articleListState.observe(this@NormalCmsListActivity) {
             hideLoadingDialog()
             it.isSuccess?.let { result ->
-                articleAdapter.run {
+                with(articleAdapter) {
                     if (it.isLoading) {
                         if (result.list.isNotEmpty()) {
                             addData(result.list)

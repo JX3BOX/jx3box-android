@@ -69,22 +69,25 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.jx3box.ui.article.ArticleDetailActivity"
+            android:name=".ui.article.ArticleDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.ui.search.SearchActivity"
+            android:name=".ui.search.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.ui.cms.NormalCmsListActivity"
+            android:name=".ui.cms.NormalCmsListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.ui.message.MessageActivity"
+            android:name=".ui.message.MessageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.ui.message.MessageDetailActivity"
+            android:name=".ui.message.MessageDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.jx3box.module_imagebrowser.MNImageBrowserActivity"
+            android:name=".ui.cms.AchievementsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".module_imagebrowser.MNImageBrowserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="sensor"

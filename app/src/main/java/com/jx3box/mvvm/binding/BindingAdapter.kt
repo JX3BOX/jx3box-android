@@ -25,6 +25,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.carey.module_glidelib.EasyGlide.loadCircleImage
@@ -33,6 +34,7 @@ import com.jx3box.R
 import com.jx3box.data.net.model.global.LabelType
 import com.jx3box.utils.DateUtil
 import com.jx3box.utils.getCompatDrawable
+import com.jx3box.utils.getCompatString
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
@@ -179,6 +181,12 @@ fun TextView.setTime(timestamp: String?) {
             ""
         }
     }
+}
+
+@BindingAdapter("stringId", "formatText")
+fun TextView.setResText(@StringRes id: Int, formatText: String?) {
+    if (!formatText.isNullOrBlank())
+        text = getCompatString(id, formatText)
 }
 
 @BindingAdapter("messageStatus")

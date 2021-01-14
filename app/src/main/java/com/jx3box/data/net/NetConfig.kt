@@ -46,6 +46,12 @@ object NetConfig {
     const val get_article_list = "/post/list"
 
     /**
+     * 获取成就列表
+     */
+    const val get_achievements_sub_list = "/api/achievements/{sub}"
+    const val get_achievements_child_list = "/api/achievements/{sub}/{detail}"
+
+    /**
      * 获取网站首页相关
      * banner  type=slider
      * 站内推广 type=activity

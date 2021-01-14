@@ -33,6 +33,7 @@ import com.jx3box.data.net.AppConfig
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseFragment
 import com.jx3box.ui.NormalWebActivity
+import com.jx3box.ui.cms.AchievementsListActivity
 import com.jx3box.utils.gone
 import com.jx3box.utils.startKtxActivity
 import kotlinx.android.synthetic.main.fragment_tools.*
@@ -118,26 +119,29 @@ class ToolsFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        val bundle = Bundle()
-        val url = when (v) {
-            tvMacro -> AppConfig.article_macro
-            tvBps -> AppConfig.article_bps
-            tvTools -> AppConfig.article_tools
-            tvJx3Dat -> AppConfig.article_jx3dat
-            tvFB -> AppConfig.article_fb
-            tvFbDrop -> AppConfig.fb_drop
-            tvNPC -> AppConfig.fb_npc_data
-            tvFbSkill -> AppConfig.fb_skill_data
-            tvGem -> AppConfig.fb_gem
-            tvGoldPrice -> AppConfig.gold_price
-            tvFlowerPrice -> AppConfig.flower_price
-            tvThirdPz -> AppConfig.third_pz
-            tvThirdDps -> AppConfig.third_dps
-            tvThirdSpeed -> AppConfig.third_speed
-            tvThirdExam -> AppConfig.third_exam
-            tvThirdQiYu -> AppConfig.third_serendipity
-            else -> ""
+        when (v) {
+            tvMacro -> startWebActivity(AppConfig.article_macro)
+            tvBps -> startWebActivity(AppConfig.article_bps)
+            tvTools -> startWebActivity(AppConfig.article_tools)
+            tvJx3Dat -> startWebActivity(AppConfig.article_jx3dat)
+            tvFB -> startWebActivity(AppConfig.article_fb)
+            tvFbDrop -> startWebActivity(AppConfig.fb_drop)
+            tvNPC -> startWebActivity(AppConfig.fb_npc_data)
+            tvFbSkill -> startWebActivity(AppConfig.fb_skill_data)
+            tvGem -> startWebActivity(AppConfig.fb_gem)
+            tvGoldPrice -> startWebActivity(AppConfig.gold_price)
+            tvFlowerPrice -> startWebActivity(AppConfig.flower_price)
+            tvThirdPz -> startWebActivity(AppConfig.third_pz)
+            tvThirdDps -> startWebActivity(AppConfig.third_dps)
+            tvThirdSpeed -> startWebActivity(AppConfig.third_speed)
+            tvThirdExam -> startWebActivity(AppConfig.third_exam)
+            tvThirdQiYu -> startWebActivity(AppConfig.third_serendipity)
+            tvCJ -> startKtxActivity<AchievementsListActivity>()
         }
+    }
+
+    private fun startWebActivity(url: String) {
+        val bundle = Bundle()
         bundle.putString("url", url)
         startKtxActivity<NormalWebActivity>(extra = bundle)
     }

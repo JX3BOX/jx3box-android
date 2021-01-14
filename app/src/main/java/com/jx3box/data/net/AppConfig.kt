@@ -86,4 +86,11 @@ object AppConfig {
 
     /**奇遇查询*/
     const val official_message = "https://jx3.xoyo.com/allnews/"
+
+    /**
+     * 获取图标地址
+     */
+    fun getIconUrl(iconId: String): String {
+        return "https://icon.jx3box.com/icon/$iconId.png"
+    }
 }

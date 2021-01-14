@@ -16,21 +16,73 @@
 
 package com.jx3box.ui.cms.provider
 
+import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
+import androidx.core.view.ViewCompat
 import com.chad.library.adapter.base.entity.node.BaseNode
-import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.jx3box.R
+import com.jx3box.data.net.model.cj.AchievementsTypeEntity
+import com.jx3box.utils.getCompatString
+import com.jx3box.view.BaseExpandNodeClickProvider
 
 /**
  * @author Carey
  * @date 2020/12/24
  */
-class AchievementsTypeProvider : BaseNodeProvider() {
+class AchievementsTypeProvider : BaseExpandNodeClickProvider<AchievementsTypeEntity>() {
     override val itemViewType: Int
         get() = 1
     override val layoutId: Int
-        get() = TODO("Not yet implemented")
+        get() = R.layout.item_achievements_type
+
 
     override fun convert(helper: BaseViewHolder, item: BaseNode) {
-        TODO("Not yet implemented")
+        val entity: AchievementsTypeEntity = item as AchievementsTypeEntity
+        helper.setText(R.id.tvTypeName, entity.name)
+        helper.setText(
+            R.id.tvColumnNum,
+            context.getCompatString(
+                R.string.cj_column_num,
+                entity.achievements_count
+            )
+        )
+        helper.setImageResource(R.id.imgExpand, R.drawable.icon_next)
+
+        setArrowSpin(helper, item, true)
+    }
+
+    private fun setArrowSpin(helper: BaseViewHolder, data: BaseNode, isAnimate: Boolean) {
+        val entity = data as AchievementsTypeEntity
+        val imageView = helper.getView<ImageView>(R.id.imgExpand)
+        if (entity.isExpanded) {
+            if (isAnimate) {
+                ViewCompat.animate(imageView).setDuration(200)
+                    .setInterpolator(DecelerateInterpolator())
+                    .rotation(90f)
+                    .start()
+            } else {
+                imageView.rotation = 90f
+            }
+        } else {
+            if (isAnimate) {
+                ViewCompat.animate(imageView).setDuration(200)
+                    .setInterpolator(DecelerateInterpolator())
+                    .rotation(0f)
+                    .start()
+            } else {
+                imageView.rotation = 0f
+            }
+        }
+    }
+
+    override fun onClick(helper: BaseViewHolder, view: View, data: BaseNode, position: Int) {
+        val entity = data as AchievementsTypeEntity
+        if (entity.own_achievements_count > 0)
+            mItemClickListener?.onTypeItemClick(entity)
+
+        // 这里使用payload进行增量刷新（避免整个item刷新导致的闪烁，不自然）
+        getAdapter()!!.expandOrCollapse(position)
     }
 }

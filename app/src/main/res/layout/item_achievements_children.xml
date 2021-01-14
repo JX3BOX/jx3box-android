@@ -25,6 +25,7 @@
         android:id="@+id/tvTypeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_18"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,13 +43,4 @@
         app:layout_constraintStart_toEndOf="@+id/tvTypeName"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/cj_column_num" />
-
-    <ImageView
-        android:id="@+id/imgExpand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

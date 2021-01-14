@@ -1,5 +1,5 @@
 /*
- *       Copyright (C) 2020.  jx3box.com
+ *       Copyright (C) 2021.  jx3box.com
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,23 +14,26 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.model.cj
+package com.jx3box.data.net.model
 
-import com.chad.library.adapter.base.entity.node.BaseExpandNode
-import com.chad.library.adapter.base.entity.node.BaseNode
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * @author Carey
- * @date 2020/12/24
+ * @date 2021/1/14
  */
-data class AchievementsTypeEntity(
+data class SeriesAchievementEntity(
+    @SerializedName("Detail")
+    val detail: Any,
+    @SerializedName("ID")
     val id: Int,
-    val sub: Int,
+    @SerializedName("IconID")
+    val iconId: String,
+    @SerializedName("Name")
     val name: String,
-    val achievements_count: String,
-    val own_achievements_count: Int,
-    val children: List<AchievementsChildrenEntity>
-) : BaseExpandNode() {
-    override val childNode: MutableList<BaseNode>
-        get() = ArrayList(children)
-}
+    @SerializedName("ShortDesc")
+    val shortDesc: String,
+    @SerializedName("Sub")
+    val sub: String
+)

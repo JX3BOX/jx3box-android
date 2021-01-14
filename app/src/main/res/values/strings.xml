@@ -148,6 +148,8 @@
     <string name="message_user">用户消息</string>
     <string name="message_official">官方消息</string>
     <string name="message_detail">消息详情</string>
+    <string name="cj_column_num">(%s)</string>
+    <string name="revision_time">修订时间:%s</string>
 
     <string-array name="article_type">
         <item>@string/bbs</item>

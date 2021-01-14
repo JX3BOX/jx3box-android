@@ -16,20 +16,46 @@
 
 package com.jx3box.ui.cms
 
-import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
+import com.jx3box.data.net.model.cj.AchievementsChildrenEntity
+import com.jx3box.data.net.model.cj.AchievementsTypeEntity
+import com.jx3box.ui.cms.provider.AchievementsChildrenProvider
 import com.jx3box.ui.cms.provider.AchievementsTypeProvider
+import com.jx3box.view.BaseExpandNodeClickProvider
+import com.jx3box.view.BaseNodeClickAdapter
+import com.jx3box.view.BaseNodeClickProvider
 
 /**
  * @author Carey
  * @date 2020/12/24
  */
-class AchievementsTreeAdapter : BaseNodeAdapter() {
+class AchievementsTreeAdapter : BaseNodeClickAdapter() {
     init {
-        addNodeProvider(AchievementsTypeProvider())
+        val typeProvider = AchievementsTypeProvider()
+        val childrenProvider = AchievementsChildrenProvider()
+        typeProvider.setItemClickListener(object :
+            BaseExpandNodeClickProvider.ItemClickListener<AchievementsTypeEntity> {
+            override fun onTypeItemClick(data: AchievementsTypeEntity) {
+                mItemClickListener?.onTypeClick(data)
+            }
+        })
+        childrenProvider.setItemClickListener(object :
+            BaseNodeClickProvider.ItemClickListener<AchievementsChildrenEntity> {
+            override fun onChildrenClick(data: AchievementsChildrenEntity) {
+                mItemClickListener?.onChildrenClick(data)
+            }
+        })
+        addNodeProvider(typeProvider)
+        addNodeProvider(childrenProvider)
     }
 
     override fun getItemType(data: List<BaseNode>, position: Int): Int {
-        TODO("Not yet implemented")
+        val node = data[position]
+        if (node is AchievementsTypeEntity) {
+            return 1
+        } else if (node is AchievementsChildrenEntity) {
+            return 2
+        }
+        return -1
     }
 }

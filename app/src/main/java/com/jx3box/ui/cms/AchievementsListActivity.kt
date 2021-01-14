@@ -17,11 +17,19 @@
 package com.jx3box.ui.cms
 
 import androidx.core.view.GravityCompat
+import com.chad.library.adapter.base.entity.node.BaseExpandNode
+import com.chad.library.adapter.base.entity.node.BaseNode
+import com.google.gson.Gson
 import com.jx3box.R
+import com.jx3box.data.net.model.cj.AchievementsChildrenEntity
+import com.jx3box.data.net.model.cj.AchievementsTypeEntity
 import com.jx3box.databinding.ActivityListBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
 import com.jx3box.ui.article.ArticleViewModel
+import com.jx3box.utils.fromListJson
+import com.jx3box.view.BaseNodeClickAdapter
+import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.layout_title_back.*
 import kotlinx.android.synthetic.main.view_data_filter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,21 +41,46 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class AchievementsListActivity : BaseVMActivity() {
     private val articleViewModel by viewModel<ArticleViewModel>()
     private val binding by binding<ActivityListBinding>(R.layout.activity_list)
-    private val params = HashMap<String, String>()
-    private val menu by lazy { getFromAssets() }
+    private val menu by lazy { Gson().fromListJson<List<AchievementsTypeEntity>>(getFromAssets()) }
+    private val mMenuAdapter by lazy { AchievementsTreeAdapter() }
+    private val mAdapter by lazy { AchievementAdapter() }
 
     override fun initData() {
-        TODO("Not yet implemented")
+        getData("1")
     }
 
     override fun initView() {
-        binding.run {
+        with(binding) {
             viewModel = articleViewModel
         }
         tvFilter.setOnClickListener {
             binding.drawer.openDrawer(GravityCompat.END)
         }
+        binding.drawer.openDrawer(GravityCompat.END)
         mImgBack.setOnClickListener { onBackPressed() }
+        initDrawer()
+        initRecycler()
+    }
+
+    private fun initRecycler() {
+        recyclerData.adapter = mAdapter
+    }
+
+    private fun initDrawer() {
+        recyclerDrawer.adapter = mMenuAdapter
+        mMenuAdapter.setList(menu)
+        mMenuAdapter.setItemClickListener(object : BaseNodeClickAdapter.OnNodeClickListener {
+            override fun onTypeClick(data: BaseExpandNode) {
+                val entity = data as AchievementsTypeEntity
+                getData(entity.sub.toString())
+            }
+
+            override fun onChildrenClick(data: BaseNode) {
+                val entity = data as AchievementsChildrenEntity
+                getData(entity.sub.toString(), entity.detail.toString())
+            }
+        })
+        mMenuAdapter.expand(0)
     }
 
     override fun initImmersionBar() {
@@ -58,8 +91,18 @@ class AchievementsListActivity : BaseVMActivity() {
             .init()
     }
 
+    private fun getData(subId: String, detailId: String? = null) {
+        showLoadingDialog(this)
+        articleViewModel.getAchievementsList(subId, detailId)
+    }
+
     override fun startObserve() {
-        TODO("Not yet implemented")
+        articleViewModel.achievementsListState.observe(this@AchievementsListActivity) {
+            hideLoadingDialog()
+            it.isSuccess?.run {
+                mAdapter.setList(achievements)
+            }
+        }
     }
 
     private fun getFromAssets(): String {

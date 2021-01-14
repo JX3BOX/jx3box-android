@@ -21,6 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.jx3box.App
 import com.jx3box.data.net.checkResult
+import com.jx3box.data.net.model.AchievementsResponse
 import com.jx3box.data.net.model.ArticleDetailResult
 import com.jx3box.data.net.model.ArticleListResult
 import com.jx3box.data.net.repository.ArticleRepository
@@ -37,10 +38,15 @@ import kotlinx.coroutines.withContext
 class ArticleViewModel(private val repository: ArticleRepository) : BaseViewModel() {
     private var currentPage = 1
     private val _articleListState = MutableLiveData<UiState<ArticleListResult>>()
+    private val _articleDetail = MutableLiveData<ArticleDetailResult>()
+    private val _achievementsListState = MutableLiveData<UiState<AchievementsResponse>>()
     val articleListState: LiveData<UiState<ArticleListResult>>
         get() = _articleListState
+    val articleDetail: LiveData<ArticleDetailResult>
+        get() = _articleDetail
+    val achievementsListState: LiveData<UiState<AchievementsResponse>>
+        get() = _achievementsListState
 
-    val articleDetail = MutableLiveData<ArticleDetailResult>()
 
     fun getArticleList(isRefresh: Boolean = true, params: HashMap<String, String>) {
         viewModelScope.launch(Dispatchers.Main) {
@@ -71,7 +77,7 @@ class ArticleViewModel(private val repository: ArticleRepository) : BaseViewMode
             }
             result.checkResult(
                 onSuccess = {
-                    articleDetail.value = it
+                    _articleDetail.value = it
                 },
                 onError = {
                     App.CONTEXT.toast(it!!)
@@ -79,4 +85,23 @@ class ArticleViewModel(private val repository: ArticleRepository) : BaseViewMode
             )
         }
     }
+
+    fun getAchievementsList(subId: String, detailId: String? = null) {
+        viewModelScope.launch(Dispatchers.Main) {
+            val result = withContext(Dispatchers.IO) {
+                repository.getAchievementList(subId, detailId)
+            }
+            result.checkResult(
+                onSuccess = {
+                    _achievementsListState.value = UiState(isSuccess = it)
+                },
+                onError = {
+                    _achievementsListState.value = UiState(isError = it)
+
+                }
+            )
+        }
+    }
+
+
 }

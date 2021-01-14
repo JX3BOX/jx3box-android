@@ -1,5 +1,5 @@
 /*
- *       Copyright (C) 2020.  jx3box.com
+ *       Copyright (C) 2021.  jx3box.com
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,23 +14,22 @@
  *    limitations under the License.
  */
 
-package com.jx3box.data.net.model.cj
+package com.jx3box.view
 
-import com.chad.library.adapter.base.entity.node.BaseExpandNode
-import com.chad.library.adapter.base.entity.node.BaseNode
+import com.chad.library.adapter.base.provider.BaseNodeProvider
 
 /**
  * @author Carey
- * @date 2020/12/24
+ * @date 2021/1/14
  */
-data class AchievementsTypeEntity(
-    val id: Int,
-    val sub: Int,
-    val name: String,
-    val achievements_count: String,
-    val own_achievements_count: Int,
-    val children: List<AchievementsChildrenEntity>
-) : BaseExpandNode() {
-    override val childNode: MutableList<BaseNode>
-        get() = ArrayList(children)
+abstract class BaseExpandNodeClickProvider<T> : BaseNodeProvider() {
+    var mItemClickListener: ItemClickListener<T>? = null
+
+    fun setItemClickListener(itemClickListener: ItemClickListener<T>) {
+        mItemClickListener = itemClickListener
+    }
+
+    interface ItemClickListener<T> {
+        fun onTypeItemClick(data: T)
+    }
 }

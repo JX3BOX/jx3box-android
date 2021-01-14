@@ -87,6 +87,18 @@ interface BoxService {
     suspend fun getArticleList(@QueryMap params: HashMap<String, String>): BoxResponse<ArticleListResult>
 
     /**
+     * 获取成就列表
+     */
+    @GET(NetConfig.get_achievements_sub_list)
+    suspend fun getAchievementSubList(@Path("sub") sub: String): BoxResponse<AchievementsResponse>
+
+    @GET(NetConfig.get_achievements_child_list)
+    suspend fun getAchievementChildList(
+        @Path("sub") sub: String,
+        @Path("detail") detail: String
+    ): BoxResponse<AchievementsResponse>
+
+    /**
      * 获取文章详情
      */
     @GET(NetConfig.get_article_detail)

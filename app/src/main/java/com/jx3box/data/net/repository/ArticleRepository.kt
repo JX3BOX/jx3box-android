@@ -20,6 +20,7 @@ import com.jx3box.App
 import com.jx3box.R
 import com.jx3box.data.net.Result
 import com.jx3box.data.net.RetrofitClient
+import com.jx3box.data.net.model.AchievementsResponse
 import com.jx3box.data.net.model.ArticleDetailResult
 import com.jx3box.data.net.model.ArticleListResult
 
@@ -40,6 +41,23 @@ class ArticleRepository : BaseRepository() {
             RetrofitClient.boxService.getArticleDetail(id = id),
             successCode = 10064
         )
+    }
+
+    private suspend fun requestAchievementList(
+        subId: String,
+        detailId: String? = null
+    ): Result<AchievementsResponse> {
+        return if (detailId != null) {
+            executeResponse(
+                RetrofitClient.helperService.getAchievementChildList(subId, detailId),
+                successCode = 200
+            )
+        } else {
+            executeResponse(
+                RetrofitClient.helperService.getAchievementSubList(subId),
+                successCode = 200
+            )
+        }
     }
 
     /***
@@ -69,5 +87,23 @@ class ArticleRepository : BaseRepository() {
             call = { requestArticleDetail(id) },
             errorMessage = App.CONTEXT.resources.getString(R.string.cms_error)
         )
+    }
+
+    /**
+     * 获取成就列表
+     */
+    suspend fun getAchievementList(
+        subId: String,
+        detailId: String? = null
+    ): Result<AchievementsResponse> {
+        return if (detailId != null) {
+            safeApiCall(
+                call = { requestAchievementList(subId, detailId) }
+            )
+        } else {
+            safeApiCall(
+                call = { requestAchievementList(subId) }
+            )
+        }
     }
 }
