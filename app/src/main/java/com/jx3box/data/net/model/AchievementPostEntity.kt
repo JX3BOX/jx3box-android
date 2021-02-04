@@ -32,7 +32,7 @@ data class AchievementPostEntity(
     @SerializedName("checked_at")
     val checkedAt: Long,
     @SerializedName("checker_id")
-    val checkerId: Any,
+    val checkerId: String,
     @SerializedName("content")
     val content: String,
     @SerializedName("created")

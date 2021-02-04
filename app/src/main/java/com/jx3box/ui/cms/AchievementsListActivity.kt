@@ -16,18 +16,22 @@
 
 package com.jx3box.ui.cms
 
+import android.os.Bundle
 import androidx.core.view.GravityCompat
 import com.chad.library.adapter.base.entity.node.BaseExpandNode
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.gson.Gson
 import com.jx3box.R
+import com.jx3box.data.net.AppConfig
 import com.jx3box.data.net.model.cj.AchievementsChildrenEntity
 import com.jx3box.data.net.model.cj.AchievementsTypeEntity
 import com.jx3box.databinding.ActivityListBinding
 import com.jx3box.module_imagebrowser.utils.immersionbar.ImmersionBar
 import com.jx3box.mvvm.base.BaseVMActivity
+import com.jx3box.ui.NormalWebActivity
 import com.jx3box.ui.article.ArticleViewModel
 import com.jx3box.utils.fromListJson
+import com.jx3box.utils.startKtxActivity
 import com.jx3box.view.BaseNodeClickAdapter
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.layout_title_back.*
@@ -64,6 +68,12 @@ class AchievementsListActivity : BaseVMActivity() {
 
     private fun initRecycler() {
         recyclerData.adapter = mAdapter
+        mAdapter.setOnItemClickListener { _, _, position ->
+            val bundle = Bundle()
+            bundle.putString("url", AppConfig.getCjCmsUrl(mAdapter.getItem(position).post.sourceId))
+            bundle.putString("title", "成就百科")
+            startKtxActivity<NormalWebActivity>(extra = bundle)
+        }
     }
 
     private fun initDrawer() {

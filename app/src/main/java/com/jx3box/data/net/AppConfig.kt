@@ -93,4 +93,11 @@ object AppConfig {
     fun getIconUrl(iconId: String): String {
         return "https://icon.jx3box.com/icon/$iconId.png"
     }
+
+    /**
+     * 获取成就文章地址
+     */
+    fun getCjCmsUrl(sourceId: String): String {
+        return "https://www.jx3box.com/cj/#/view/$sourceId"
+    }
 }

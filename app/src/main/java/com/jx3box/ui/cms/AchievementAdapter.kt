@@ -16,11 +16,17 @@
 
 package com.jx3box.ui.cms
 
+import android.view.animation.DecelerateInterpolator
+import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.jx3box.R
 import com.jx3box.data.net.model.AchievementEntity
 import com.jx3box.databinding.ItemAchievementBinding
+import com.jx3box.utils.gone
+import com.jx3box.utils.isVisible
+import com.jx3box.utils.visible
 
 /**
  * @author Carey
@@ -30,6 +36,7 @@ class AchievementAdapter :
     BaseQuickAdapter<AchievementEntity, BaseDataBindingHolder<ItemAchievementBinding>>(
         R.layout.item_achievement
     ) {
+
     override fun convert(
         holder: BaseDataBindingHolder<ItemAchievementBinding>,
         item: AchievementEntity
@@ -38,6 +45,63 @@ class AchievementAdapter :
         dataBinding?.apply {
             data = item
             executePendingBindings()
+            if (item.item != null) {
+                rewardIcon.visible()
+            } else {
+                rewardIcon.gone()
+            }
+            if (item.postfixName.isNotBlank() || item.prefixName.isNotBlank()) {
+                tvCJSubTitle.visible()
+            } else {
+                tvCJSubTitle.gone()
+            }
+            val seriesAchievementList = item.seriesAchievementList
+            if (!seriesAchievementList.isNullOrEmpty()) {
+                lineBottomLeft.visible()
+                lineBottomRight.visible()
+                imgPullMore.visible()
+                val layoutManager = LinearLayoutManager(context)
+                layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+                recyclerChild.layoutManager = layoutManager
+                val seriesAdapter = SeriesAchievementAdapter()
+                recyclerChild.adapter = seriesAdapter
+                for (index in seriesAchievementList.indices) {
+                    seriesAchievementList[index].isChecked = false
+                }
+                seriesAchievementList[0].isChecked = true
+                seriesAdapter.setList(seriesAchievementList)
+                imgPullMore.rotation = 0f
+                imgPullMore.setOnClickListener {
+                    if (recyclerChild.isVisible) {
+                        recyclerChild.gone()
+                        ViewCompat.animate(imgPullMore).setDuration(200)
+                            .setInterpolator(DecelerateInterpolator())
+                            .rotation(0f)
+                            .start()
+                    } else {
+                        recyclerChild.visible()
+                        ViewCompat.animate(imgPullMore).setDuration(200)
+                            .setInterpolator(DecelerateInterpolator())
+                            .rotation(180f)
+                            .start()
+                    }
+
+                }
+                seriesAdapter.setOnItemClickListener { adapter, view, position ->
+                    for (index in seriesAchievementList.indices) {
+                        seriesAchievementList[index].isChecked = false
+                    }
+                    seriesAchievementList[position].isChecked = true
+                    tvName.text = seriesAchievementList[position].name
+                    tvDesc.text = seriesAchievementList[position].shortDesc
+                    seriesAdapter.notifyDataSetChanged()
+                }
+            } else {
+                recyclerChild.gone()
+                lineBottomLeft.gone()
+                lineBottomRight.gone()
+                imgPullMore.gone()
+            }
         }
     }
 }

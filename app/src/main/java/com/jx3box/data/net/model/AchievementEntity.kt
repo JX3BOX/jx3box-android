@@ -18,7 +18,10 @@ package com.jx3box.data.net.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.jx3box.App
+import com.jx3box.R
 import com.jx3box.data.net.AppConfig
+import com.jx3box.utils.getCompatString
 
 /**
  * @author Carey
@@ -28,27 +31,27 @@ data class AchievementEntity(
     @SerializedName("AnnounceType")
     val announceType: String,
     @SerializedName("bDLCOther")
-    val bDLCOther: Any,
+    val bDLCOther: String,
     @SerializedName("BossID")
-    val bossId: Any,
+    val bossId: String,
     @SerializedName("BossName")
-    val bossName: Any,
+    val bossName: String,
     @SerializedName("Counters")
-    val counters: Any,
+    val counters: String,
     @SerializedName("Desc")
     val desc: String,
     @SerializedName("Detail")
-    val detail: Any,
+    val detail: String,
     @SerializedName("dwDLCID")
     val dwDLCId: String,
     @SerializedName("dwMapID")
     val dwMapId: String,
     @SerializedName("Exp")
-    val exp: Any,
+    val exp: String,
     @SerializedName("General")
     val general: String,
     @SerializedName("HolidayID")
-    val holidayId: Any,
+    val holidayId: String,
     @SerializedName("ID")
     val id: Int,
     @SerializedName("IconID")
@@ -56,17 +59,17 @@ data class AchievementEntity(
     @SerializedName("IsSplendid")
     val isSplendid: String,
     @SerializedName("Item")
-    val item: Any,
+    val item: AchievementRewardEntity?,
     @SerializedName("ItemID")
     val itemID: String,
     @SerializedName("ItemName")
-    val itemName: Any,
+    val itemName: String,
     @SerializedName("ItemType")
     val itemType: String,
     @SerializedName("LayerName")
-    val layerName: Any,
+    val layerName: String,
     @SerializedName("Message")
-    val message: Any,
+    val message: String,
     @SerializedName("Name")
     val name: String,
     @SerializedName("Note")
@@ -76,17 +79,17 @@ data class AchievementEntity(
     @SerializedName("post")
     val post: AchievementPostEntity,
     @SerializedName("Postfix")
-    val postfix: Any,
+    val postfix: String,
     @SerializedName("PostfixName")
-    val postfixName: Any,
+    val postfixName: String,
     @SerializedName("Prefix")
-    val prefix: Any,
+    val prefix: String,
     @SerializedName("PrefixName")
-    val prefixName: Any,
+    val prefixName: String,
     @SerializedName("SceneID")
     val sceneID: String,
     @SerializedName("SceneName")
-    val sceneName: Any,
+    val sceneName: String,
     @SerializedName("Series")
     val series: String,
     @SerializedName("SeriesAchievementList")
@@ -106,7 +109,7 @@ data class AchievementEntity(
     @SerializedName("SubAchievementList")
     val subAchievementList: Any,
     @SerializedName("SubAchievements")
-    val subAchievements: Any,
+    val subAchievements: String,
     @SerializedName("TriggerVal")
     val triggerVal: String,
     @SerializedName("Visible")
@@ -114,5 +117,19 @@ data class AchievementEntity(
 ) {
     fun getIconUrl(): String {
         return AppConfig.getIconUrl(iconId)
+    }
+
+    fun getTitleName(): String {
+        return when {
+            postfixName.isNotBlank() -> {
+                App.CONTEXT.getCompatString(R.string.postfix_name, postfixName)
+            }
+            prefixName.isNotBlank() -> {
+                App.CONTEXT.getCompatString(R.string.prefix_name, prefixName)
+            }
+            else -> {
+                ""
+            }
+        }
     }
 }

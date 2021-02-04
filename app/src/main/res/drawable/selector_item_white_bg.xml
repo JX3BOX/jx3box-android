@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--修复第一次touch时涟漪效果起点不正确-->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#FFC8C8C8">
+    <!-- 2.7.1 统一添加 -->
+    <item>
+        <selector>
+            <item android:state_pressed="false">
+                <shape>
+                    <solid android:color="@color/white" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

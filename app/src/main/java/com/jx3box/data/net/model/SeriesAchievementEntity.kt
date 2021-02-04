@@ -18,6 +18,7 @@ package com.jx3box.data.net.model
 
 
 import com.google.gson.annotations.SerializedName
+import com.jx3box.data.net.AppConfig
 
 /**
  * @author Carey
@@ -25,7 +26,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class SeriesAchievementEntity(
     @SerializedName("Detail")
-    val detail: Any,
+    val detail: String,
     @SerializedName("ID")
     val id: Int,
     @SerializedName("IconID")
@@ -35,5 +36,12 @@ data class SeriesAchievementEntity(
     @SerializedName("ShortDesc")
     val shortDesc: String,
     @SerializedName("Sub")
-    val sub: String
-)
+    val sub: String,
+
+    var isChecked: Boolean
+
+) {
+    fun getIconUrl(): String {
+        return AppConfig.getIconUrl(iconId)
+    }
+}
