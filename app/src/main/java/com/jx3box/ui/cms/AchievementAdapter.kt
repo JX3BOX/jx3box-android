@@ -69,6 +69,7 @@ class AchievementAdapter :
                     seriesAchievementList[index].isChecked = false
                 }
                 seriesAchievementList[0].isChecked = true
+                item.seriesId = null
                 seriesAdapter.setList(seriesAchievementList)
                 imgPullMore.rotation = 0f
                 imgPullMore.setOnClickListener {
@@ -87,11 +88,12 @@ class AchievementAdapter :
                     }
 
                 }
-                seriesAdapter.setOnItemClickListener { adapter, view, position ->
+                seriesAdapter.setOnItemClickListener { _, _, position ->
                     for (index in seriesAchievementList.indices) {
                         seriesAchievementList[index].isChecked = false
                     }
                     seriesAchievementList[position].isChecked = true
+                    item.seriesId = position
                     tvName.text = seriesAchievementList[position].name
                     tvDesc.text = seriesAchievementList[position].shortDesc
                     seriesAdapter.notifyDataSetChanged()

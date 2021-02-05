@@ -69,9 +69,16 @@ class AchievementsListActivity : BaseVMActivity() {
     private fun initRecycler() {
         recyclerData.adapter = mAdapter
         mAdapter.setOnItemClickListener { _, _, position ->
+            val item = mAdapter.getItem(position)
             val bundle = Bundle()
-            bundle.putString("url", AppConfig.getCjCmsUrl(mAdapter.getItem(position).post.sourceId))
-            bundle.putString("title", "成就百科")
+            if (item.seriesId != null) {
+                val seriesAchievementEntity = item.seriesAchievementList[item.seriesId!!]
+                bundle.putString("url", AppConfig.getCjCmsUrl(seriesAchievementEntity.id))
+                bundle.putString("title", seriesAchievementEntity.name)
+            } else {
+                bundle.putString("url", AppConfig.getCjCmsUrl(item.post.sourceId))
+                bundle.putString("title", item.name)
+            }
             startKtxActivity<NormalWebActivity>(extra = bundle)
         }
     }

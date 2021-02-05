@@ -28,7 +28,7 @@ data class SeriesAchievementEntity(
     @SerializedName("Detail")
     val detail: String,
     @SerializedName("ID")
-    val id: Int,
+    val id: String,
     @SerializedName("IconID")
     val iconId: String,
     @SerializedName("Name")

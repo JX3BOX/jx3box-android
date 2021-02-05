@@ -113,7 +113,12 @@ data class AchievementEntity(
     @SerializedName("TriggerVal")
     val triggerVal: String,
     @SerializedName("Visible")
-    val visible: Int
+    val visible: Int,
+
+    /**
+     * 选中的成就子项ID
+     */
+    var seriesId: Int?
 ) {
     fun getIconUrl(): String {
         return AppConfig.getIconUrl(iconId)
